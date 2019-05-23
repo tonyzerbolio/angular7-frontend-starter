@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  angular:
+    container_name: angularjs_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      API_URL: http://localhost:4000
+      LOCAL_DEV: 'true'

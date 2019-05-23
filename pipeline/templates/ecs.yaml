@@ -1,0 +1,166 @@
+Description: Demo AngularJS App
+Parameters:
+  Cluster:
+    Description: ID of ECS cluster to deploy into
+    Type: String
+  ClusterSize:
+    Description: Nominal size of deployment
+    Type: String
+    Default: 1
+  TargetGroup:
+    Description: Target Group to use for ECS service
+    Type: String
+  DockerImage:
+    Description: Docker image for container
+    Type: String
+  DeploymentID:
+    Description: Deployment ID
+    Type: String
+  SecretsBucket:
+    Description: Bucket containing secrets file
+    Type: String
+  SecretsFile:
+    Description: File containing SonarQube Secrets
+    Type: String
+Resources:
+  Task:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      TaskRoleArn:
+        Fn::GetAtt:
+        - TaskRole
+        - Arn
+      ContainerDefinitions:
+      - Name: angularjs_app
+        Hostname: intellact-ui
+        Cpu: 512
+        MemoryReservation: 1536
+        Essential: true
+        Image:
+          Ref: DockerImage
+        LogConfiguration:
+          LogDriver: syslog
+        PortMappings:
+        - HostPort: 0
+          ContainerPort: 8080
+        EntryPoint:
+        - "/app/docker-entrypoint.sh"
+        DockerSecurityOptions:
+        - apparmor:docker-default
+        Environment:
+        - Name: AWS_DEFAULT_REGION
+          Value:
+            Ref: AWS::Region
+        - Name: AWS_REGION
+          Value:
+            Ref: AWS::Region
+        - Name: region
+          Value:
+            Ref: AWS::Region
+        - Name: secrets_bucket
+          Value:
+            Ref: SecretsBucket
+        - Name: secrets_file
+          Value:
+            Ref: SecretsFile
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - ecs.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      Path: "/"
+      Policies:
+      - PolicyName: AmazonEC2ContainerServiceRole
+        PolicyDocument:
+          Statement:
+          - Effect: Allow
+            Action:
+            - ec2:AuthorizeSecurityGroupIngress
+            - ec2:AuthorizeSecurityGroupEgress
+            - ec2:DescribeInstances
+            - ec2:DescribeImages
+            - ec2:DescribeSecurityGroups
+            - elasticloadbalancing:DeregisterInstancesFromLoadBalancers
+            - elasticloadbalancing:DescribeTargets
+            - elasticloadbalancing:RegisterInstancesWithLoadBalancer
+            - elasticloadbalancing:DeregisterTargets
+            - elasticloadbalancing:DescribeTargetGroups
+            - elasticloadbalancing:DescribeTargetHealth
+            - elasticloadbalancing:RegisterTargets
+            Resource: "*"
+  TaskRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - ecs-tasks.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      Path: "/"
+      Policies:
+      - PolicyName: ECSTaskDefinitionContainerRole
+        PolicyDocument:
+          Statement:
+          - Effect: Allow
+            Action:
+            - s3:GetObject
+            - kms:Encrypt
+            - kms:Decrypt
+            Resource: "*"
+      - PolicyName: DemoContainerRole
+        PolicyDocument:
+          Statement:
+          - Effect: Allow
+            Action:
+            - dynamodb:BatchGetItem
+            - dynamodb:BatchWriteItem
+            - dynamodb:GetItem
+            - dynamodb:ListTables
+            - dynamodb:PutItem
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+            Resource: "*"
+  Service:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster:
+        Ref: Cluster
+      DesiredCount:
+        Ref: ClusterSize
+      TaskDefinition:
+        Ref: Task
+      Role:
+        Ref: Role
+      DeploymentConfiguration:
+        MaximumPercent: 100
+        MinimumHealthyPercent: 50
+      LoadBalancers:
+      - ContainerName: angularjs_app
+        ContainerPort: '8080'
+        TargetGroupArn:
+          Ref: TargetGroup
+Outputs:
+  Cluster:
+    Value:
+      Ref: Cluster
+  Service:
+    Value:
+      Ref: Service
+  Task:
+    Value:
+      Ref: Task
+  DeploymentID:
+    Value:
+      Ref: DeploymentID
+AWSTemplateFormatVersion: '2010-09-09'
