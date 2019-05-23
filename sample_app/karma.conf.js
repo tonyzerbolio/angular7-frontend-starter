@@ -15,7 +15,7 @@ module.exports = function(config) {
           require('karma-coverage'),
           require('karma-typescript'),
           require('karma-mocha-reporter'),
-          require('@angular/cli/plugins/karma')
+          require('@angular-devkit/build-angular/plugins/karma')
         ],
         files: [
             { pattern: "src/**/*.ts" }
