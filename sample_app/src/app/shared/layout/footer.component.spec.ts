@@ -11,8 +11,8 @@ import {Component, Directive} from '@angular/core';
 import {FooterComponent} from './footer.component';
 
 describe('FooterComponent', () => {
-  let fixture;
-  let component;
+  let component: FooterComponent;
+  let fixture: ComponentFixture<FooterComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -33,17 +33,17 @@ describe('FooterComponent', () => {
   });
 
   it('The Footer Component should contain a link to the home page', async () => {
-    fixture = TestBed.createComponent(FooterComponent);
+    const fixture = TestBed.createComponent(FooterComponent);
     fixture.detectChanges();
-    component = fixture.debugElement.nativeElement;
-    expect(component.querySelector('a').textContent).toContain('conduit');
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('a').textContent).toContain('conduit');
   });
 
   it(`The Footer Component should contain additional text`, async () => {
-    fixture = TestBed.createComponent(FooterComponent);
+    const fixture = TestBed.createComponent(FooterComponent);
     fixture.detectChanges();
-    component = fixture.debugElement.nativeElement;
-    expect(component.querySelector('.attribution').textContent).toContain('An interactive learning project');
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.attribution').textContent).toContain('An interactive learning project');
   });
 
 });

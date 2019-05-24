@@ -1,0 +1,13 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: angular_app
+  labels:
+    app: angular_app
+spec:
+  ports:
+  - port: 8080
+    targetPort: angular_app
+  selector:
+    app: angular_app

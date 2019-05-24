@@ -1,0 +1,22 @@
+---
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: angular_app
+  labels:
+    app: angular_app
+spec:
+  replicas: 1
+  selector:
+    app: angular_app
+  template:
+    metadata:
+      labels:
+        app: angular_app
+    spec:
+      containers:
+      - name: angular_app
+        image: angular_app:latest
+        ports:
+        - name: angular_app
+          containerPort: 8080

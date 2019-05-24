@@ -42,14 +42,6 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('The Header Component should contain a link to the home page', async () => {
-    fixture = TestBed.createComponent(HeaderComponent);
-    fixture.detectChanges();
-    component = fixture.debugElement.nativeElement;
-    expect(component.querySelector('a').textContent).toContain('conduit');
-  });
-
-
   it('should run #ngOnInit()', async () => {
     // const result = component.ngOnInit();
   });
