@@ -9,12 +9,6 @@ import { ArticleListConfig, TagsService, UserService } from '../core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(
-    private router: Router,
-    private tagsService: TagsService,
-    private userService: UserService
-  ) {}
-
   isAuthenticated: boolean;
   listConfig: ArticleListConfig = {
     type: 'all',
@@ -22,6 +16,12 @@ export class HomeComponent implements OnInit {
   };
   tags: Array<string> = [];
   tagsLoaded = false;
+
+  constructor(
+    private router: Router,
+    private tagsService: TagsService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
     this.userService.isAuthenticated.subscribe(

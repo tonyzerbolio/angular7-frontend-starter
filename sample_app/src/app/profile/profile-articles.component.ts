@@ -8,16 +8,16 @@ import { ArticleListConfig, Profile } from '../core';
   templateUrl: './profile-articles.component.html'
 })
 export class ProfileArticlesComponent implements OnInit {
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
-
   profile: Profile;
   articlesConfig: ArticleListConfig = {
     type: 'all',
     filters: {}
   };
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.route.parent.data.subscribe(
