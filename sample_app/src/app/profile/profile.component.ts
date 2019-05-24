@@ -9,14 +9,14 @@ import { concatMap ,  tap } from 'rxjs/operators';
   templateUrl: './profile.component.html'
 })
 export class ProfileComponent implements OnInit {
+  profile: Profile;
+  currentUser: User;
+  isUser: boolean;
+
   constructor(
     private route: ActivatedRoute,
     private userService: UserService
   ) { }
-
-  profile: Profile;
-  currentUser: User;
-  isUser: boolean;
 
   ngOnInit() {
     this.route.data.pipe(

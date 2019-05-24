@@ -7,10 +7,6 @@ import { Article, ArticleListConfig, ArticlesService } from '../../core';
   templateUrl: './article-list.component.html'
 })
 export class ArticleListComponent {
-  constructor (
-    private articlesService: ArticlesService
-  ) {}
-
   @Input() limit: number;
   @Input()
   set config(config: ArticleListConfig) {
@@ -26,6 +22,10 @@ export class ArticleListComponent {
   loading = false;
   currentPage = 1;
   totalPages: Array<number> = [1];
+
+  constructor (
+    private articlesService: ArticlesService
+  ) {}
 
   setPageTo(pageNumber) {
     this.currentPage = pageNumber;

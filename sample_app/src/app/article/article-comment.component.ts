@@ -8,16 +8,16 @@ import { Subscription } from 'rxjs';
   templateUrl: './article-comment.component.html'
 })
 export class ArticleCommentComponent implements OnInit, OnDestroy {
-  constructor(
-    private userService: UserService
-  ) {}
-
   private subscription: Subscription;
 
   @Input() comment: Comment;
   @Output() deleteComment = new EventEmitter<boolean>();
 
   canModify: boolean;
+
+  constructor(
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
     // Load the current user's data
