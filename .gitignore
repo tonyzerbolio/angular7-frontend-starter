@@ -1,3 +1,6 @@
+dist/
+e2e/
+reports/
 /build/
 /deploy/
 /benchpress-build/
