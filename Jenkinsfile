@@ -14,5 +14,6 @@ demoPipeline {
   runSmokeTest = true
   runCisBenchmark = true
   enforceSonarQuality = false
+  deployALB = false
   downstreamEnv = []
 }

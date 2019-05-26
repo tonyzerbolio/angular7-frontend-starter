@@ -4,7 +4,7 @@ services:
     container_name: angularjs_app
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: DockerfileMultiStage
     ports:
       - 8080:8080
     environment:
