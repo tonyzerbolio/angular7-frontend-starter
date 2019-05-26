@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-tc-deployment
+  namespace: development
+  labels:
+    app: angular-tc
+spec:
+  replicas: <%= @angular_tc_replica_count %>
+  revisionHistoryLimit: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%
+      maxSurge: 150%
+  selector:
+    matchLabels:
+      app: angular-tc-app
+  template:
+    metadata:
+      namespace: <%= @namespace %>
+      labels:
+        app: angular-tc-app
+    spec:
+      containers:
+      - name: angular-tc-app
+        image: <%= @angular_tc_docker_image %>
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        env:
+          - name: AWS_DEFAULT_REGION
+            value: <%= @region %>
+          - name: region
+            value: <%= @region %>
+          - name: secrets_bucket
+            value: <%= @secrets_bucket %>
+          - name: secrets_file
+            value: <%= @secrets_file %>
+          - name: API_URL
+            value: <%= @api_url %>

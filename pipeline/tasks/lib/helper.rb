@@ -57,3 +57,16 @@ def run_benchmark(images)
   SHELL
 end
 
+def render_k8s_template(template)
+  erb_template = ERB.new(File.read(template)).result
+  rendered_service = YAML.safe_load(erb_template)
+  # Write Rendered Config Data to file
+  File.open(template, 'w') \
+    { |file| file.write(rendered_service.to_yaml) }
+end
+
+def k8s_apply(template)
+  <<-SHELL
+    kubectl apply -f #{template}
+  SHELL
+end
