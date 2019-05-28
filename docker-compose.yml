@@ -1,6 +1,12 @@
 version: '3.7'
 services:
-  angular:
+  app_build:
+    container_name: angularjs_app
+    build:
+      context: .
+      dockerfile: DockerfileMultiStage
+      target: BUILD_STAGE
+  app_deploy:
     container_name: angularjs_app
     build:
       context: .
