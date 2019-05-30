@@ -38,5 +38,3 @@ spec:
             value: <%= @secrets_bucket %>
           - name: secrets_file
             value: <%= @secrets_file %>
-          - name: API_URL
-            value: <%= @api_url %>

@@ -31,8 +31,12 @@ http {
             try_files $uri $uri/ /index.html;
         }
 
-        location /api/ {
-            proxy_pass <%=ENV['API_URL']%>;
+        location /api/v1/ {
+            proxy_pass <%=ENV['SERVICE1_API_URL']%>;
+        }
+
+        location /api/v2/ {
+            proxy_pass <%=ENV['SERVICE2_API_URL']%>;
         }
     }
 }

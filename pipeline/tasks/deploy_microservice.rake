@@ -21,7 +21,6 @@ task :"deploy:container" do
   # Generate K8s Deployment Template
   @angular_tc_replica_count = 2
   @angular_tc_docker_image = @keystore.retrieve("#{deploy_env}_ANGULARJS_APP_IMAGE_ID")
-  @api_url = 'http://dummy.com'
   @region = ENV['AWS_REGION']
   @secrets_bucket = @keystore.retrieve(env_vars['deployment_bucket'])
   @secrets_file = "angularjs-app-configs-#{ENV['deployment_id']}.sh"

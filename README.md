@@ -26,6 +26,10 @@ make e2e
 
 To Deploy the App locally
 
+Ensure you have Zuul running locally You can clone [comet-rds](https://gitlab.com/unisyscomet/comet-zuul) and run `make deploy` to startup the local zuul container.
+
+Zuul is necessary to route requests to the backend services running. The goal is to setup the local dev environment to be as close as possible to the deployed infrastructure
+
 ```bash
 make deploy
 ```

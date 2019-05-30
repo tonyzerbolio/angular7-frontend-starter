@@ -8,7 +8,7 @@ task :"build:application" do
   puts "Image Tag: #{image_id}"
   $stdout.flush
   @docker.build_docker_image(image_id,
-                             dockerfile: 'Dockerfile')
+                             dockerfile: 'containers/angularjs_app/DockerfileBuild')
   puts "Built Image Tag: #{image_id}"
 end
 
@@ -23,7 +23,7 @@ task :"build:image:angularjs_app" do
   image_id = "#{ecr_repo}:#{ENV['deployment_id']}"
   puts "Image Tag: #{image_id}"
   @docker.build_docker_image(image_id,
-                             dockerfile: 'containers/angularjs_app/Dockerfile')
+                             dockerfile: 'containers/angularjs_app/DockerfileDeploy')
   puts "Built Image Tag: #{image_id}"
   @keystore.store("#{deploy_env}_ANGULARJS_APP_IMAGE_ID", image_id)
 end
