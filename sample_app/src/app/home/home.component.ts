@@ -5,8 +5,7 @@ import { ArticleListConfig, TagsService, UserService } from '../core';
 
 @Component({
   selector: 'app-home-page',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
   isAuthenticated: boolean;

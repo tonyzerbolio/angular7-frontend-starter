@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { Article, ArticleListConfig, ArticlesService } from '../../core';
 @Component({
   selector: 'app-article-list',
-  styleUrls: ['article-list.component.css'],
+  styleUrls: ['./article-list.component.scss'],
   templateUrl: './article-list.component.html'
 })
 export class ArticleListComponent {

@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+========================================
+styles.scss
+----------------------------------------
+*/
+
+// Styles from conduit starter app
+@import 'assets/conduit-styles.scss';
+
+// USWDS styles
+@import 'assets/uswds-2.0.2/scss/uswds.scss';
+
+// Unisys starter kit adjustments
+@import 'assets/button-styles.scss';
+
+@import 'assets/container-styles.scss';
+
+@import 'assets/form-styles.scss';
+
+@import 'assets/list-styles.scss';
+
+@import 'assets/navigation-styles.scss';
+
+@import 'assets/typography-styles.scss';
+

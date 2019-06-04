@@ -1,0 +1,14 @@
+/**
+ * Nav
+ */
+.usa-nav__primary{
+  margin-bottom: unset;
+  >.usa-nav__primary-item {
+    >a {
+      cursor: pointer;
+      &.active {
+        color: #005ea2;
+      }
+    }
+  }
+}
