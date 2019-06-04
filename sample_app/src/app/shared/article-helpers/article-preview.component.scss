@@ -5,8 +5,8 @@ Article Preview Component Styles
 articel-preview.component.scss
 ----------------------------------------
 */
-@import '../../../assets/uswds-2.0.2/scss/settings/settings-typography.scss';
-@import '../../../assets/uswds-2.0.2/scss/theme/uswds-theme-custom-styles.scss';
+@import 'src/assets/uswds-2.0.2/scss/settings/settings-typography.scss';
+@import 'src/assets/uswds-2.0.2/scss/theme/uswds-theme-custom-styles.scss';
 
 .article-preview {
     border-top: 1px solid rgba(0, 0, 0, .1);

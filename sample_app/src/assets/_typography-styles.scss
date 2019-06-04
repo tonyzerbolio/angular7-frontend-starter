@@ -25,6 +25,9 @@ a {
         color: $gsa-link-visited-color;
     }
 }
+.page-link {
+    cursor: pointer;
+}
 
 // General text alignment classes
 .text-center {
@@ -40,7 +43,3 @@ a {
     }
 }
 
-// Tag Cloud
-.tag-pill{
-  cursor:pointer;
-}

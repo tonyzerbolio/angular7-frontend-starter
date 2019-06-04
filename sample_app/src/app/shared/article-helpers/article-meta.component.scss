@@ -5,8 +5,7 @@ Article Meta Component Styles
 article-meta.component.scss
 ----------------------------------------
 */
-@import '../../../assets/uswds-2.0.2/scss/settings/settings-typography.scss';
-@import '../../../assets/uswds-2.0.2/scss/theme/uswds-theme-custom-styles.scss';
+@import 'src/assets/uswds-2.0.2/scss/theme/uswds-theme-custom-styles.scss';
 
 .article-meta {
     color: $gsa-body-text-color;

@@ -5,4 +5,12 @@
     &.usa-nav__primary {
         list-style-type: none;
     }
+    &.tag-list {
+        padding-left: 0!important;
+        display: inline-block;
+        list-style: none!important;
+        &li {
+            display: inline-block!important
+        }
+    }
  }
