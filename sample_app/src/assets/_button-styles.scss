@@ -1,0 +1,24 @@
+/**
+ * Button Styles
+ */
+
+ // GSA Header Buttons
+
+ button {
+    .usa-header & {
+        color: $gsa-header-button-color;
+        &:hover {
+            background: $gsa-header-button-bg-hover-color;
+            color: $gsa-header-button-hover-color;
+        }
+        &:active {
+            background: $gsa-header-button-bg-active-color;
+            color: $gsa-header-button-active-color;
+        }
+        &:visited {
+            background: $gsa-header-button-bg-visited-color;
+            color: $gsa-header-button-visited-color;
+        }
+    }
+    
+ }

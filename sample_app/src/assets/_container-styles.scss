@@ -1,0 +1,42 @@
+/*
+------------------------------------------------------
+General Containers
+
+All color variables for GSA elements are defined in
+--> uswds-2.0.2/scss/theme/_uswds-theme-custom-styles
+------------------------------------------------------
+*/
+
+/*
+----------------------------------------
+Header Elements
+----------------------------------------
+*/
+// Primary Site Navigation
+.usa-header {
+    background: $gsa-header-bg-color;
+}
+// Feature displayed on the Home Page
+.banner {
+    background-color: $gsa-header-banner-bg-color;
+    padding: 1rem;
+}
+
+/*
+----------------------------------------
+Containers
+----------------------------------------
+*/
+// Main page content container
+.container.page {
+    margin-top: 0;
+    margin-bottom: 6.5rem;
+    max-width: 64rem;
+}
+// Center a container
+main#main-content {
+    margin-bottom: 12rem;
+}
+.margin-auto {
+    margin: auto;
+}

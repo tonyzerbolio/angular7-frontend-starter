@@ -25,25 +25,25 @@ describe('FooterComponent', () => {
     }).compileComponents();
   });
 
-  it('The application should create a Footer Component', async () => {
+  it(`The application should create a Footer Component`, async () => {
     fixture = TestBed.createComponent(FooterComponent);
     fixture.detectChanges();
     component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
   });
 
-  it('The Footer Component should contain a link to the home page', async () => {
+  it(`The Footer Component should contain phone number`, async () => {
     const fixture = TestBed.createComponent(FooterComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('a').textContent).toContain('conduit');
+    expect(compiled.querySelector('.contact-phone-number a').textContent).toContain('(800) CALL-GOVT');
   });
 
-  it(`The Footer Component should contain additional text`, async () => {
+  it(`The Footer Component should contain an email address`, async () => {
     const fixture = TestBed.createComponent(FooterComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.attribution').textContent).toContain('An interactive learning project');
+    expect(compiled.querySelector('.contact-email-address a').textContent).toContain('info@agency.gov');
   });
 
 });

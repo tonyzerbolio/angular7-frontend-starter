@@ -1,7 +1,7 @@
-<button class="btn btn-sm"
+<button class="usa-button"
  [ngClass]="{ 'disabled' : isSubmitting,
-              'btn-outline-primary': !article.favorited,
-              'btn-primary': article.favorited }"
+              'usa-button--outline': !article.favorited,
+              'usa-button': article.favorited }"
  (click)="toggleFavorite()">
   <em class="ion-heart"></em> <ng-content></ng-content>
 </button>

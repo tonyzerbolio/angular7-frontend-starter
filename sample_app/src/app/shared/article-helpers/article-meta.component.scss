@@ -1,0 +1,35 @@
+/*
+----------------------------------------
+Article Meta Component Styles
+
+article-meta.component.scss
+----------------------------------------
+*/
+@import 'src/assets/uswds-2.0.2/scss/theme/uswds-theme-custom-styles.scss';
+
+.article-meta {
+    color: $gsa-body-text-color;
+    display: block;
+    position: relative;
+    img {
+        display: inline-block;
+        vertical-align: middle;
+        height: 32px;
+        width: 32px;
+        border-radius: 30px
+    }
+    .info {
+        display: inline-block;
+        margin: 0 1.5rem 0 .3rem;
+        line-height: 1rem;
+        vertical-align: middle;
+        .author {
+            display: block;
+            font-weight: 500;
+        }
+        .date {
+            display: block;
+            font-size: $gsa-small-font-size;
+        }
+    }
+}

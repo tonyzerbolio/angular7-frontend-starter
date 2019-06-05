@@ -1,45 +1,40 @@
 <div class="article-page">
-
-  <div class="banner">
-    <div class="container">
-      <h1>{{ article.title }}</h1>
-
-      <app-article-meta [article]="article">
-
-          <span [hidden]="!canModify">
-          <a class="btn btn-sm btn-outline-secondary"
-             [routerLink]="['/editor', article.slug]">
-            <em class="ion-edit"></em> Edit Article
-          </a>
-
-          <button class="btn btn-sm btn-outline-danger"
-            [ngClass]="{disabled: isDeleting}"
-            (click)="deleteArticle()">
-            <em class="ion-trash-a"></em> Delete Article
+  <section class="banner">
+    <div class="grid-container">
+      <div class="grid-col-12">
+      <h1 class="text-center">{{ article.title }}</h1>
+        <app-article-meta [article]="article">
+          <span [hidden]="!canModify" class="grid-col-6 grid-offset-6 text-right">
+            <button class="usa-button"
+              [routerLink]="['/editor', article.slug]">
+              <em class="ion-edit"></em> Edit Article
           </button>
-        </span>
-
-        <span [hidden]="canModify">
-          <app-follow-button
-            [profile]="article.author"
-            (toggle)="onToggleFollowing($event)">
-          </app-follow-button>
-
-          <app-favorite-button
-            [article]="article"
-            (toggle)="onToggleFavorite($event)">
-            {{ article.favorited ? 'Unfavorite' : 'Favorite' }} Article <span class="counter">({{ article.favoritesCount }})</span>
-          </app-favorite-button>
-        </span>
-
-      </app-article-meta>
+            <button class="usa-button usa-button--secondary"
+              [ngClass]="{disabled: isDeleting}"
+              (click)="deleteArticle()">
+              <em class="ion-trash-a"></em> Delete Article
+            </button>
+          </span>
+          <span [hidden]="canModify" class="grid-col-6 grid-offset-6 text-right">
+            <app-follow-button
+              [profile]="article.author"
+              (toggle)="onToggleFollowing($event)">
+            </app-follow-button>
+            <app-favorite-button
+              [article]="article"
+              (toggle)="onToggleFavorite($event)">
+              {{ article.favorited ? 'Unfavorite' : 'Favorite' }} Article <span class="counter">({{ article.favoritesCount }})</span>
+            </app-favorite-button>
+          </span>
+        </app-article-meta>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="container page">
 
-    <div class="row article-content">
-      <div class="col-md-12">
+  <section class="grid-container">
+    <div class="grid-row grid-gap">
+      <div class="tablet:grid-col-8">
 
         <div [innerHTML]="article.body | markdown"></div>
 
@@ -92,5 +87,5 @@
       </div>
     </div>
 
-  </div>
+  </section>
 </div>

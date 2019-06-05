@@ -1,0 +1,49 @@
+/*
+----------------------------------------
+Article Preview Component Styles
+
+articel-preview.component.scss
+----------------------------------------
+*/
+@import 'src/assets/uswds-2.0.2/scss/settings/settings-typography.scss';
+@import 'src/assets/uswds-2.0.2/scss/theme/uswds-theme-custom-styles.scss';
+
+.article-preview {
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    padding: 1.5rem 0;
+    .article-meta {
+        margin: 0 0 1rem
+    }
+    .preview-link {
+        h1 {
+            font-size: 1.5rem!important;
+            margin-bottom: 3px
+        }
+        p {
+            font-weight: 300;
+            font-size: 24px;
+            color: #999;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.3rem
+          }
+          span {
+            max-width: 30%;
+            font-size: .8rem;
+            font-weight: 300;
+            color: #bbb;
+            vertical-align: middle
+          }
+          ul {
+            float: right;
+            max-width: 50%;
+            vertical-align: top
+            li {
+                font-weight: 300;
+                font-size: .8rem!important;
+                padding-top: 0!important;
+                padding-bottom: 0!important
+              }
+          }
+    } 
+}

@@ -1,0 +1,45 @@
+/**
+* Typography
+*/
+html, body {
+    color: $gsa-body-text-color;
+    font-size: $gsa-body-font-size;
+}
+.h1 {
+    .home-page & {
+        margin: 0;
+    }
+}
+a {
+    color: $gsa-link-color;
+    &:active {
+        color: $gsa-link-active-color;
+    }
+    &:hover {
+        color: $gsa-link-hover-color;
+    }
+    &:focus {
+        color: $gsa-link-focus-color;
+    }
+    &:visited {
+        color: $gsa-link-visited-color;
+    }
+}
+.page-link {
+    cursor: pointer;
+}
+
+// General text alignment classes
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+
+.usa-logo__text {
+    a {
+        color: $gsa-header-logo-color;
+    }
+}
+
