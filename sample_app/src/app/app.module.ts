@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { OktaAuthModule } from '@okta/okta-angular';
+import { OktaAuthModule, OktaAuthService } from '@okta/okta-angular';
 
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
@@ -31,7 +31,7 @@ import { PeopleComponent } from './people/people.component';
       clientId: '0oap9awncShF0sL5R356'
     })
   ],
-  providers: [],
+  providers: [OktaAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
