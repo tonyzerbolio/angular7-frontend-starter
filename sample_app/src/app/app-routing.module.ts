@@ -1,22 +1,42 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { OktaCallbackComponent, OktaAuthGuard, OktaAuthService } from '@okta/okta-angular';
+
+import { AuthComponent } from './auth/auth.component';
+
+import { PeopleComponent } from './people/people.component';
 
 const routes: Routes = [
+  { path: 'people', component: PeopleComponent },
   {
     path: 'settings',
-    loadChildren: './settings/settings.module#SettingsModule'
+    loadChildren: './settings/settings.module#SettingsModule',
+    canActivate: [OktaAuthGuard],
+    data: { onAuthRequired }
   },
   {
     path: 'profile',
-    loadChildren: './profile/profile.module#ProfileModule'
+    loadChildren: './profile/profile.module#ProfileModule',
+    canActivate: [OktaAuthGuard],
+    data: { onAuthRequired }
   },
   {
     path: 'editor',
-    loadChildren: './editor/editor.module#EditorModule'
+    loadChildren: './editor/editor.module#EditorModule',
+    canActivate: [OktaAuthGuard],
+    data: { onAuthRequired }
   },
   {
     path: 'article',
-    loadChildren: './article/article.module#ArticleModule'
+    loadChildren: './article/article.module#ArticleModule',
+    canActivate: [OktaAuthGuard],
+    data: { onAuthRequired }
+  },
+  {
+    path: 'login', component: AuthComponent
+  },
+  {
+    path: 'implicit/callback', component: OktaCallbackComponent
   }
 ];
 
@@ -30,3 +50,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+export function onAuthRequired({ oktaAuth, router }) {
+  router.navigate(['/login']);
+}
