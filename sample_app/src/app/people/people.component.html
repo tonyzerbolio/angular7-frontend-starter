@@ -1,6 +1,6 @@
 <section class="grid-container usa-section">
   <div class="grid-row grid-gap">
-    <div class="tablet:grid-col-8">
+    <div class="tablet:grid-col-12">
       <h2>People</h2>
       <ul class="people">
         <li *ngFor="let person of people"
@@ -10,44 +10,44 @@
         </li>
       </ul>
       <div *ngIf="selectedPerson">
-        <h2>{{ selectedPerson.fullName | uppercase }} Details</h2>
-        <ul>
-          <li>
-            <label>Full Name: 
-              <input [(ngModel)] = "selectedPerson.fullName" placeholder="fullName" />
-            </label>
-          </li>
-          <li>
-            <label>First Name: 
-              <input [(ngModel)] = "selectedPerson.firstName" placeholder="firstName" />
-            </label>
-          </li>
-          <li>
-            <label>Last Name: 
-              <input [(ngModel)] = "selectedPerson.lastName" placeholder="lastName" />
-            </label>
-          </li>
-          <li>
-            <label>Title:
-              <input [(ngModel)] = "selectedPerson.jobTitle" placeholder="jobTitle" />
-            </label>
-          </li>
-          <li>
-            <label>Email:
-              <input [(ngModel)] = "selectedPerson.email" placeholder="email" />
-            </label>
-          </li>
-          <li>
-            <label>Phone:
-              <input [(ngModel)] = "selectedPerson.phoneNumber" placeholder="phoneNumber" />
-            </label>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="tablet:grid-col-4 usa-prose">
-      <div class="sidebar">
-        <p>Sidebar</p>
+        
+        <form>
+          <fieldset>
+            <legend><h2>{{ selectedPerson.fullName | uppercase }} Details:</h2></legend>
+            <ul>
+              <li>
+                <label>Full Name: 
+                  <input [(ngModel)] = "selectedPerson.fullName" placeholder="fullName" [ngModelOptions]="{standalone: true}" />
+                </label>
+              </li>
+              <li>
+                <label>First Name: 
+                  <input [(ngModel)] = "selectedPerson.firstName" placeholder="firstName" [ngModelOptions]="{standalone: true}" />
+                </label>
+              </li>
+              <li>
+                <label>Last Name: 
+                  <input [(ngModel)] = "selectedPerson.lastName" placeholder="lastName" [ngModelOptions]="{standalone: true}" />
+                </label>
+              </li>
+              <li>
+                <label>Title:
+                  <input [(ngModel)] = "selectedPerson.jobTitle" placeholder="jobTitle" [ngModelOptions]="{standalone: true}" />
+                </label>
+              </li>
+              <li>
+                <label>Email:
+                  <input [(ngModel)] = "selectedPerson.email" placeholder="email" [ngModelOptions]="{standalone: true}" />
+                </label>
+              </li>
+              <li>
+                <label>Phone:
+                  <input [(ngModel)] = "selectedPerson.phoneNumber" placeholder="phoneNumber" [ngModelOptions]="{standalone: true}" />
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+        </form>
       </div>
     </div>
   </div>

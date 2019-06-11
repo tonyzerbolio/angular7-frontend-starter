@@ -13,16 +13,17 @@ import {
 } from './shared';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-import { PeopleComponent } from './people/people.component';
+import { PeopleModule } from './people/people.module';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent, PeopleComponent],
+  declarations: [AppComponent, FooterComponent, HeaderComponent],
   imports: [
     BrowserModule,
     FormsModule,
     CoreModule,
     SharedModule,
     HomeModule,
+    PeopleModule,
     AuthModule,
     AppRoutingModule,
     OktaAuthModule.initAuth({

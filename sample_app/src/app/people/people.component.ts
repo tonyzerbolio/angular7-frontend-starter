@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PEOPLE } from '../core/models/mock-people';
-import { Person } from 'app/core/models/person.model';
+import { Person } from '../core/models/person.model';
 
 @Component({
   selector: 'app-people',

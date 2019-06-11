@@ -1,21 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
 
-import { User, UserService } from '../../core';
-
 @Component({
   selector: 'app-layout-header',
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
-  currentUser: User;
-
   isAuthenticated: boolean; // Okta
 
   constructor(
-    private userService: UserService,
+    //private userService: UserService,
     private oktaAuth: OktaAuthService
-    
+
   ) {
     // Okta
     this.oktaAuth.$authenticationState.subscribe(
@@ -28,12 +24,6 @@ export class HeaderComponent implements OnInit {
     this.oktaAuth.isAuthenticated().then((auth) => {
       this.isAuthenticated = auth;
     });
-    // Conduit
-    this.userService.currentUser.subscribe(
-      (userData) => {
-        this.currentUser = userData;
-      }
-    );
   }
 
   // Okta

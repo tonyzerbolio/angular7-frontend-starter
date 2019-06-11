@@ -36,8 +36,8 @@ export class AuthComponent implements OnInit {
   ) {
     // Okta
     router.events.forEach(event => {
-      if (event instanceof NavigationStart) {
-        switch(event.url) {
+      if ( event instanceof NavigationStart ) {
+        switch ( event.url ) {
           case '/login':
             break;
           default:
