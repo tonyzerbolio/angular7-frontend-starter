@@ -14,9 +14,10 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { PeopleModule } from './people/people.module';
+import { CustomersComponent } from './customers/customers.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent],
+  declarations: [AppComponent, FooterComponent, HeaderComponent, CustomersComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -27,9 +28,9 @@ import { PeopleModule } from './people/people.module';
     AuthModule,
     AppRoutingModule,
     OktaAuthModule.initAuth({
-      issuer: 'https://dev-167188.okta.com/oauth2/default',
+      issuer: 'https://dev-167188.okta.com',
       redirectUri: 'http://localhost:4200/implicit/callback',
-      clientId: '0oap9awncShF0sL5R356'
+      clientId: '0oaon8e270OSiUnsC356'
     })
   ],
   providers: [OktaAuthService],

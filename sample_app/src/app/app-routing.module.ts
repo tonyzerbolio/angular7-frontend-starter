@@ -5,9 +5,11 @@ import { OktaCallbackComponent, OktaAuthGuard, OktaAuthService } from '@okta/okt
 import { AuthComponent } from './auth/auth.component';
 
 import { PeopleComponent } from './people/people.component';
+import { CustomersComponent } from './customers/customers.component';
 
 const routes: Routes = [
   { path: 'people', component: PeopleComponent },
+  { path: 'customers', component: CustomersComponent },
   {
     path: 'settings',
     loadChildren: './settings/settings.module#SettingsModule',
