@@ -2,17 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
-import { Customer } from '../models/customer.model';
+import { Service1 } from '../models/service1.model';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomersApiService {
+export class Service1ApiService {
 
-   // Define API - REST Service URL
-   // svc1_api = 'http://localhost:8090';
+   // REST Service URL
+   // service1_url: defined in environments/environments.ts;
+
+   path = 'svc1'; // << Hardcoding for now - should be passed as arg
 
   constructor(private http: HttpClient) { }
 
@@ -27,23 +29,14 @@ export class CustomersApiService {
     })
   }  
 
-  // HttpClient API get() method => Fetch customers list
-  getCustomers(): Observable<Customer> {
-    return this.http.get<Customer>(`${environment.customers_url}` + '/customers')
+  // HttpClient API get() method => Fetch results
+  getService1(): Observable<Service1> {
+    return this.http.get<Service1>(`${environment.service1_url}/` + this.path + `/world` )
     .pipe(
       retry(1),
       catchError(this.handleError)
     )
   }
-
-  // HttpClient API get() method => Fetch Customer
-  getCustomer(id): Observable<Customer> {
-    return this.http.get<Customer>(`${environment.customers_url}` + '/customers/' + id)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
-  }  
 
   // Error handling 
   handleError(error) {

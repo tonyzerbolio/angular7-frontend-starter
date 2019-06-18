@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { OktaAuthModule, OktaAuthService } from '@okta/okta-angular';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
@@ -15,9 +16,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { PeopleModule } from './people/people.module';
 import { CustomersComponent } from './customers/customers.component';
+import { Service1Component } from './service1/service1.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent, CustomersComponent],
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    HeaderComponent,
+    CustomersComponent,
+    Service1Component],
   imports: [
     BrowserModule,
     FormsModule,
@@ -27,13 +34,14 @@ import { CustomersComponent } from './customers/customers.component';
     PeopleModule,
     AuthModule,
     AppRoutingModule,
+    HttpClientModule,
     OktaAuthModule.initAuth({
-      issuer: 'https://dev-167188.okta.com',
-      redirectUri: 'http://localhost:4200/implicit/callback',
-      clientId: '0oaon8e270OSiUnsC356'
+      issuer: 'https://dev-486305.okta.com/oauth2/default',
+      redirectUri: 'http://localhost:4200',
+      clientId: '0oakau102ZE29iuuJ356'
     })
   ],
-  providers: [OktaAuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

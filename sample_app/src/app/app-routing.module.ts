@@ -1,38 +1,36 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { OktaCallbackComponent, OktaAuthGuard, OktaAuthService } from '@okta/okta-angular';
+import {
+  OktaAuthModule,
+  OktaCallbackComponent,
+  OktaAuthGuard
+} from '@okta/okta-angular';
 
 import { AuthComponent } from './auth/auth.component';
 
+import { Service1Component } from './service1/service1.component';
 import { PeopleComponent } from './people/people.component';
 import { CustomersComponent } from './customers/customers.component';
 
 const routes: Routes = [
+  { path: 'service1', component: Service1Component },
   { path: 'people', component: PeopleComponent },
   { path: 'customers', component: CustomersComponent },
   {
     path: 'settings',
-    loadChildren: './settings/settings.module#SettingsModule',
-    canActivate: [OktaAuthGuard],
-    data: { onAuthRequired }
+    loadChildren: './settings/settings.module#SettingsModule'
   },
   {
     path: 'profile',
-    loadChildren: './profile/profile.module#ProfileModule',
-    canActivate: [OktaAuthGuard],
-    data: { onAuthRequired }
+    loadChildren: './profile/profile.module#ProfileModule'
   },
   {
     path: 'editor',
-    loadChildren: './editor/editor.module#EditorModule',
-    canActivate: [OktaAuthGuard],
-    data: { onAuthRequired }
+    loadChildren: './editor/editor.module#EditorModule'
   },
   {
     path: 'article',
-    loadChildren: './article/article.module#ArticleModule',
-    canActivate: [OktaAuthGuard],
-    data: { onAuthRequired }
+    loadChildren: './article/article.module#ArticleModule'
   },
   {
     path: 'login', component: AuthComponent

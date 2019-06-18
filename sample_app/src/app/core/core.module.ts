@@ -13,7 +13,8 @@ import {
   ProfilesService,
   TagsService,
   UserService,
-  CustomersApiService
+  CustomersApiService,
+  Service1ApiService
 } from './services';
 
 @NgModule({
@@ -32,6 +33,7 @@ import {
     TagsService,
     UserService,
     CustomersApiService,
+    Service1ApiService
   ],
   declarations: []
 })

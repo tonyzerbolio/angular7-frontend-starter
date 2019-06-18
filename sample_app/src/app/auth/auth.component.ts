@@ -16,7 +16,7 @@ import { Errors, UserService } from '../core';
 export class AuthComponent implements OnInit {
   // Okta
   widget = new OktaSignIn({
-    baseUrl: 'https://dev-167188.okta.com'
+    baseUrl: 'https://dev-486305.okta.com'
   });
 
   // Conduit
@@ -26,7 +26,7 @@ export class AuthComponent implements OnInit {
   isSubmitting = false;
   authForm: FormGroup;
 
-  // Okta = oktaAuth: OktaAuthService
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,

@@ -9,3 +9,4 @@ export * from './tags.service';
 export * from './user.service';
 export * from './okta-auth-guard.service';
 export * from './customers.service';
+export * from './service1Api.service';
