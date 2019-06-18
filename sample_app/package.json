@@ -31,8 +31,6 @@
     "@angular/platform-browser": "^7.2.15",
     "@angular/platform-browser-dynamic": "^7.2.15",
     "@angular/router": "^7.2.15",
-    "@okta/okta-angular": "^1.0.7",
-    "@okta/okta-signin-widget": "^2.20.0",
     "core-js": "^2.4.1",
     "jest": "^24.8.0",
     "jest-preset-angular": "^7.1.1",

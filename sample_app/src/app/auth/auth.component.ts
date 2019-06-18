@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
 
-// Okta
-import { OktaAuthService } from '@okta/okta-angular';
-import * as OktaSignIn from '@okta/okta-signin-widget';
-
 // Conduit
 import { Errors, UserService } from '../core';
 
@@ -14,11 +10,7 @@ import { Errors, UserService } from '../core';
   templateUrl: './auth.component.html'
 })
 export class AuthComponent implements OnInit {
-  // Okta
-  widget = new OktaSignIn({
-    baseUrl: 'https://dev-486305.okta.com'
-  });
-
+  
   // Conduit
   authType = '';
   title = '';
@@ -31,21 +23,8 @@ export class AuthComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private fb: FormBuilder,
-    private oktaAuth: OktaAuthService
+    private fb: FormBuilder
   ) {
-    // Okta
-    router.events.forEach(event => {
-      if ( event instanceof NavigationStart ) {
-        switch ( event.url ) {
-          case '/login':
-            break;
-          default:
-            this.widget.remove();
-            break;
-        }
-      }
-    });
 
     // Conduit - use FormBuilder to create a form group
     this.authForm = this.fb.group({
@@ -55,21 +34,6 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Okta
-    this.widget.renderEl({
-      el: '#okta-signin-container'},
-      (res) => {
-        if (res.status === 'SUCCESS') {
-          this.oktaAuth.loginRedirect('/', { sessionToken: res.session.token });
-          // Hide the widget
-          this.widget.hide();
-        }
-      },
-      (err) => {
-        throw err;
-      }
-    );
-
     // Conduit
     this.route.url.subscribe(data => {
       // Get the last piece of the URL (it's either 'login' or 'register')

@@ -1,10 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import {
-  OktaAuthModule,
-  OktaCallbackComponent,
-  OktaAuthGuard
-} from '@okta/okta-angular';
 
 import { AuthComponent } from './auth/auth.component';
 
@@ -34,9 +29,6 @@ const routes: Routes = [
   },
   {
     path: 'login', component: AuthComponent
-  },
-  {
-    path: 'implicit/callback', component: OktaCallbackComponent
   }
 ];
 
@@ -50,6 +42,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-export function onAuthRequired({ oktaAuth, router }) {
-  router.navigate(['/login']);
-}
+

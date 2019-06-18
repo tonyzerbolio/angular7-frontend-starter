@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { OktaAuthModule, OktaAuthService } from '@okta/okta-angular';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -34,12 +33,7 @@ import { Service1Component } from './service1/service1.component';
     PeopleModule,
     AuthModule,
     AppRoutingModule,
-    HttpClientModule,
-    OktaAuthModule.initAuth({
-      issuer: 'https://dev-486305.okta.com/oauth2/default',
-      redirectUri: 'http://localhost:4200',
-      clientId: '0oakau102ZE29iuuJ356'
-    })
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
