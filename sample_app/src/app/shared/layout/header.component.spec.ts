@@ -9,9 +9,6 @@ import { By } from '@angular/platform-browser';
 // import 'rxjs/add/observable/throw';
 
 import { HeaderComponent } from './header.component';
-import { UserService } from '../../core';
-import { ShowAuthedDirective } from '../show-authed.directive';
-
 
 @Injectable()
 class MockUserService { }
@@ -26,12 +23,9 @@ describe('HeaderComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        HeaderComponent,
-        ShowAuthedDirective
+        HeaderComponent
       ],
-      providers: [
-        {provide: UserService, useClass: MockUserService},
-      ],
+      providers: [ ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
     fixture = TestBed.createComponent(HeaderComponent);
