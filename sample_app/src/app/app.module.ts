@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { AuthGuard } from './core/services/auth-guard.service';
-import { OktaAuthService } from '@okta/okta-angular';
 
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
