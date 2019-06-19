@@ -12,3 +12,8 @@
     }
   }
 }
+.usa-nav {
+  &.is-visible {
+    background: $gsa-header-bg-color;
+  }
+}
