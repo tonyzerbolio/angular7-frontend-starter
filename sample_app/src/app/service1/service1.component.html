@@ -1,0 +1,29 @@
+<div class="service1-container">
+
+  <!-- Results table - it hides when there are no results -->
+  <section class="grid-container usa-section">
+    <div *ngIf="Customer.length !== 0" class="grid-row grid-gap">
+      <div class="tablet:grid-col-12">
+          <h3 class="mb-3 text-center">Customers List</h3>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">User Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Pesel</th>
+                <th scope="col">Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let customer of Customer">
+                <td>{{customer.id}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.pesel}}</td>
+                <td>{{customer.type}}</td>
+              </tr>
+            </tbody>
+          </table>          
+      </div>
+    </div>
+  </section>
+</div>

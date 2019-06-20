@@ -1,56 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { OAuthService } from 'angular-oauth2-oidc';
 
-import { ArticleListConfig, TagsService, UserService } from '../core';
+
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  isAuthenticated: boolean;
-  listConfig: ArticleListConfig = {
-    type: 'all',
-    filters: {}
-  };
-  tags: Array<string> = [];
-  tagsLoaded = false;
 
-  constructor(
-    private router: Router,
-    private tagsService: TagsService,
-    private userService: UserService
-  ) {}
+  constructor(private oauthService: OAuthService) { }
 
-  ngOnInit() {
-    this.userService.isAuthenticated.subscribe(
-      (authenticated) => {
-        this.isAuthenticated = authenticated;
-
-        // set the article list accordingly
-        if (authenticated) {
-          this.setListTo('feed');
-        } else {
-          this.setListTo('all');
-        }
-      }
-    );
-
-    this.tagsService.getAll()
-    .subscribe(tags => {
-      this.tags = tags;
-      this.tagsLoaded = true;
-    });
+  login() {
+    this.oauthService.initImplicitFlow();
   }
 
-  setListTo(type: string = '', filters: Object = {}) {
-    // If feed is requested but user is not authenticated, redirect to login
-    if (type === 'feed' && !this.isAuthenticated) {
-      this.router.navigateByUrl('/login');
-      return;
+  logout() {
+    this.oauthService.logOut();
+  }
+
+  get givenName() {
+    const claims = this.oauthService.getIdentityClaims();
+    if (!claims) {
+      return null;
     }
-
-    // Otherwise, set the list object
-    this.listConfig = {type: type, filters: filters};
+    return claims['name'];
   }
+
+  ngOnInit() { }
 }

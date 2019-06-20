@@ -1,63 +1,15 @@
 <div class="home-page">
 
-  <section class="usa-hero"  *appShowAuthed="false">
-    <div class="grid-container">
-      <div class="usa-hero__callout">
-        <h1 class="usa-hero__heading"><span class="usa-hero__heading--alt">Hero callout:</span>Bring attention to a project priority
-        </h1><p>Support the callout with some short explanatory text. You don’t need more than a couple of sentences.</p>
-        <a class="usa-button" href="javascript:void(0)">Call to action</a>
-      </div>
-    </div>
-  </section>
-
   <section class="grid-container usa-section">
     <div class="grid-row grid-gap">
-      <div class="tablet:grid-col-8">
-        <div class="feed-toggle">
-          <ul class="usa-nav__primary outline-active">
-            <li class="usa-nav__primary-item">
-              <a class="usa-link"
-                 [ngClass]="{'active': listConfig.type === 'feed'}"
-                 (click)="setListTo('feed')">
-                 Your Feed
-              </a>
-            </li>
-            <li class="usa-nav__primary-item">
-              <a class="usa-link"
-                 [ngClass]="{'active': listConfig.type === 'all' && !listConfig.filters.tag}"
-                 (click)="setListTo('all')">
-                 Global Feed
-              </a>
-            </li>
-            <li class="usa-nav__primary-item" [hidden]="!listConfig.filters.tag">
-              <a class="usa-link active">
-                <em class="ion-pound"></em> {{ listConfig.filters.tag }}
-              </a>
-            </li>
-          </ul>
+      <div class="tablet:grid-col-12">
+        
+        <div *ngIf="givenName">
+          <h2>Welcome, {{givenName}}!</h2>
+          <button (click)="logout()">Logout</button>
         </div>
-
-        <app-article-list [limit]="10" [config]="listConfig"></app-article-list>
-      </div>
-      <div class="tablet:grid-col-4 usa-prose">
-        <div class="sidebar">
-          <p>Popular Tags</p>
-
-          <div class="tag-list">
-            <a *ngFor="let tag of tags"
-               (click)="setListTo('all', {tag: tag})"
-               class="tag-default tag-pill">
-               {{ tag }}
-            </a>
-          </div>
-
-          <div [hidden]="tagsLoaded">
-            Loading tags...
-          </div>
-
-          <div [hidden]="!tagsLoaded || tags.length > 0">
-            No tags are here... yet.
-          </div>
+        <div *ngIf="!givenName">
+          <button (click)="login()">Login</button>
         </div>
 
       </div>

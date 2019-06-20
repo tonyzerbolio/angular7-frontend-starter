@@ -5,5 +5,8 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://conduit.productionready.io/api'
+  api_url: 'https://conduit.productionready.io/api',
+  customers_url: 'http://localhost:8090',
+  service1_url: 'http://localhost:8081' 
+  
 };

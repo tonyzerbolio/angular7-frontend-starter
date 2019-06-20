@@ -1,0 +1,13 @@
+ul {
+    &.people {
+        list-style-type: none;
+        li {
+            &:hover {
+                cursor: pointer;
+            }
+            &.selected {
+                font-weight: bold;
+            }
+        }
+    }
+}
