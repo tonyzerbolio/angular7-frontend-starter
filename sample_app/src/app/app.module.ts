@@ -7,6 +7,7 @@ import { AuthGuard } from './core/services/auth-guard.service';
 
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
+import { AuthenticateModule } from './authenticate/authenticate.module';
 import {
   FooterComponent,
   HeaderComponent,
@@ -32,6 +33,7 @@ import { Service1Component } from './service1/service1.component';
     CoreModule,
     SharedModule,
     HomeModule,
+    AuthenticateModule,
     PeopleModule,
     AppRoutingModule,
     HttpClientModule,
