@@ -6,12 +6,11 @@
         
         <div *ngIf="givenName">
           <h2>Welcome, {{givenName}}!</h2>
-          <button (click)="logout()">Logout</button>
         </div>
         <div *ngIf="!givenName">
-          <button (click)="login()">Login</button>
+          <h2>Welcome</h2>
         </div>
-
+        <p>You are on the Home page. (content pending)</p>
       </div>
     </div>
   </section>

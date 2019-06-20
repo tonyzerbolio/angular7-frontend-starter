@@ -11,14 +11,6 @@ export class HomeComponent implements OnInit {
 
   constructor(private oauthService: OAuthService) { }
 
-  login() {
-    this.oauthService.initImplicitFlow();
-  }
-
-  logout() {
-    this.oauthService.logOut();
-  }
-
   get givenName() {
     const claims = this.oauthService.getIdentityClaims();
     if (!claims) {
