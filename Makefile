@@ -1,3 +1,12 @@
+list:
+	@echo 'build'
+	@echo 'deploy'
+	@echo 'e2e'
+	@echo 'list'
+	@echo 'pull'
+	@echo 'stop'
+	@echo 'unit'
+
 build:
 	docker-compose build angular_tc_build
 
