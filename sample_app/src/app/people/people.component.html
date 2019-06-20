@@ -2,6 +2,8 @@
   <div class="grid-row grid-gap">
     <div class="tablet:grid-col-12">
       <h2>People</h2>
+      <p>This page is not backed by any micorservices yet. It demonstrates Angular two-way binding. It can be used to update user profiles or other similar functions.</p>
+      <p>Click on a user to see two-way binding in action.</p>
       <ul class="people">
         <li *ngFor="let person of people"
           (click)="onSelect(person)"
@@ -13,7 +15,7 @@
         
         <form>
           <fieldset>
-            <legend><h2>{{ selectedPerson.fullName | uppercase }} Details:</h2></legend>
+            <legend><h3>{{ selectedPerson.fullName | uppercase }} Details:</h3></legend>
             <ul>
               <li>
                 <label>Full Name: 
