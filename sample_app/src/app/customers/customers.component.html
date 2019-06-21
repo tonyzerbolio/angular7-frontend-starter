@@ -4,25 +4,32 @@
   <section class="grid-container usa-section">
     <div *ngIf="Customer.length !== 0" class="grid-row grid-gap">
       <div class="tablet:grid-col-12">
-          <h3 class="mb-3 text-center">Customers List</h3>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th scope="col">User Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Pesel</th>
-                <th scope="col">Type</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let customer of Customer">
-                <td>{{customer.id}}</td>
-                <td>{{customer.name}}</td>
-                <td>{{customer.pesel}}</td>
-                <td>{{customer.type}}</td>
-              </tr>
-            </tbody>
-          </table>          
+          <header>
+            <p class="site-subheading">Okta Protected Back End Service Consumer Page</p>
+          </header>
+          <h2 class="site-page-title">Customers List</h2>
+          <p>The results in the table below come from a back end microservice served on :8090. The results you see on the <a href="/service1">Customers2</a> page come from another microservice served on :8081.</p>
+          <p>This page cannot be viewed unless the user is logged in using Okta. This microservice is NOT protected by Okta like the microservices on the Customers2 page.</p>
+          <div class="preview usa-prose site-prose">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">User Id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Pesel</th>
+                  <th scope="col">Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let customer of Customer">
+                  <td>{{customer.id}}</td>
+                  <td>{{customer.name}}</td>
+                  <td>{{customer.pesel}}</td>
+                  <td>{{customer.type}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
       </div>
     </div>
   </section>

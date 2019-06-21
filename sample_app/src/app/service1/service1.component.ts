@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Service1ApiService } from "../core/services/service1Api.service";
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-service1',
@@ -9,6 +10,7 @@ import { Service1ApiService } from "../core/services/service1Api.service";
 export class Service1Component implements OnInit {
 
   Customer: any = [];
+  ServiceURL = `${environment.service1_url}`;
   ServiceString = '/svc1/customers';
 
   constructor(
@@ -20,7 +22,7 @@ export class Service1Component implements OnInit {
   }
  
   getData() {
-    return this.svcApi.getService1(this.ServiceString).subscribe((data: {}) => {
+    return this.svcApi.getService1(this.ServiceURL, this.ServiceString).subscribe((data: {}) => {
         this.Customer = data;
     })
   }
