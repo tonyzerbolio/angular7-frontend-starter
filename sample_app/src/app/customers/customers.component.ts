@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomersApiService } from "../core/services/customers.service";
+import { Service1ApiService } from "../core/services/service1Api.service";
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-customers',
@@ -9,19 +11,20 @@ import { CustomersApiService } from "../core/services/customers.service";
 export class CustomersComponent implements OnInit {
 
   Customer: any = [];
+  ServiceURL = `${environment.customers_url}`;
+  ServiceString = '/customers';
 
   constructor(
-    public restApi: CustomersApiService
+    public svcApi: Service1ApiService
   ) { }
 
   ngOnInit() {
-    this.loadCustomers()
+    this.getData()
   }
 
-  // Get customers list
-  loadCustomers() {
-    return this.restApi.getCustomers().subscribe((data: {}) => {
-      this.Customer = data;
+  getData() {
+    return this.svcApi.getService1(this.ServiceURL, this.ServiceString).subscribe((data: {}) => {
+        this.Customer = data;
     })
   }
 

@@ -5,7 +5,7 @@ import { OAuthService, JwksValidationHandler, AuthConfig } from 'angular-oauth2-
 export const authConfig: AuthConfig = {
   issuer: 'https://dev-486305.okta.com/oauth2/default',
   clientId: '0oakau102ZE29iuuJ356',
-  redirectUri: window.location.origin,
+  redirectUri: window.location.origin + '/login',
   scope: 'openid profile email'
 };
 

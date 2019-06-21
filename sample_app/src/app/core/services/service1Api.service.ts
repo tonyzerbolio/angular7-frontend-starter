@@ -29,11 +29,11 @@ export class Service1ApiService {
 
 
   // HttpClient API get() method => Fetch results
-  getService1(svcstr:string): Observable<Svc1Result> {
+  getService1(svcurl:string, svcstr:string): Observable<Svc1Result> {
 
     const accessToken = this.oktaAuth.getAccessToken();
     //return this.http.get<Svc1Result>(`${environment.service1_url}/` + this.path + `/customers`, {
-    return this.http.get<Svc1Result>(`${environment.service1_url}` + svcstr, {
+    return this.http.get<Svc1Result>(svcurl + svcstr, {
       headers: {
         Authorization: 'Bearer ' + accessToken,
       }

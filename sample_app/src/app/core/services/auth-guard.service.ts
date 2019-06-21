@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
 export class AuthGuard implements CanActivate {
 
@@ -14,7 +16,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
 
     return false;
   }
