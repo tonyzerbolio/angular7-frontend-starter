@@ -11,8 +11,9 @@ export class Service1Component implements OnInit {
 
   Customer: any = [];
   ServiceURL = `${environment.service1_url}`;
-  ServiceString = '/svc1/customers';
-
+  ServicePORT = `${environment.service1_port}`;
+  ServiceString = `${environment.service1_str}`;
+  
   constructor(
     public svcApi: Service1ApiService
   ) { }
@@ -22,7 +23,7 @@ export class Service1Component implements OnInit {
   }
  
   getData() {
-    return this.svcApi.getService1(this.ServiceURL, this.ServiceString).subscribe((data: {}) => {
+    return this.svcApi.getService1(this.ServiceURL + this.ServicePORT, this.ServiceString).subscribe((data: {}) => {
         this.Customer = data;
     })
   }
