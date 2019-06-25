@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-layout-header',
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
+
+  prodBuild = `${environment.production}`
 
   constructor(private oauthService: OAuthService) { }
 

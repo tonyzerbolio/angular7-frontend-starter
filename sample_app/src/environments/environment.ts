@@ -13,7 +13,10 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://conduit.productionready.io/api',
-  customers_url: 'http://localhost:8090',
-  service1_url: 'http://localhost:8081'
+  customers_url: 'http://localhost',
+  customers_port: ':8090',
+  customers_str: '/customers',
+  service1_url: 'http://localhost',
+  service1_port: ':8092',
+  service1_str: '/customers'
 };

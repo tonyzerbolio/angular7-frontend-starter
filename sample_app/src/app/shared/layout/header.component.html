@@ -61,13 +61,13 @@
               Home
             </button>
           </li>
-          <li *ngIf="givenName">
+          <li *ngIf="!production">
             <button class="usa-button" routerLink="/customers"> Customers1 </button>
           </li>
           <li *ngIf="givenName">
             <button class="usa-button" routerLink="/service1"> Customers2 </button>
           </li>
-          <li *ngIf="givenName">
+          <li *ngIf="!production">
             <button class="usa-button" routerLink="/people"> People </button>
           </li>
           <li *ngIf="!givenName">
