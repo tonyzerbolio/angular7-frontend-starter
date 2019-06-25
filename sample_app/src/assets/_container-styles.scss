@@ -24,6 +24,15 @@ Header Elements
 
 /*
 ----------------------------------------
+Footer Elements
+----------------------------------------
+*/
+footer {
+    padding-bottom: 0;
+}
+
+/*
+----------------------------------------
 Containers
 ----------------------------------------
 */
@@ -39,6 +48,14 @@ main#main-content {
 }
 .margin-auto {
     margin: auto;
+}
+
+.preview {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    background-color: #fff;
+    padding: 1rem;
+    border: 1px solid #f0f0f0;
 }
 
 @media only screen 

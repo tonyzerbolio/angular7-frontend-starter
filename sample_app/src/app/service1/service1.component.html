@@ -1,0 +1,36 @@
+<div class="service1-container">
+
+  <!-- Results table - it hides when there are no results -->
+  <section class="grid-container usa-section">
+    <div *ngIf="Customer.length !== 0" class="grid-row grid-gap">
+      <div class="tablet:grid-col-12">
+          <header>
+            <p class="site-subheading">Okta Protected Back End Service Consumer Page</p>
+          </header>
+          <h2 class="site-page-title">Customers List</h2>
+          <p>The results in the table below come from a back end microservice served on :8081. The results you see on the <a href="/customers">Customers1</a> page come from another microservice served on :8090.</p>
+          <p>This page cannot be viewed unless the user is logged in using Okta. The microservice responsible for the results below is also protected by Okta.</p>
+          <div class="preview usa-prose site-prose">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">User Id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Pesel</th>
+                  <th scope="col">Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let customer of Customer">
+                  <td>{{customer.id}}</td>
+                  <td>{{customer.name}}</td>
+                  <td>{{customer.pesel}}</td>
+                  <td>{{customer.type}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  </section>
+</div>

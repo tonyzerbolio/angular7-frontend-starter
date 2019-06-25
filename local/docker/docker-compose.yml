@@ -21,3 +21,4 @@ networks:
   default:
     external:
       name: comet-network
+

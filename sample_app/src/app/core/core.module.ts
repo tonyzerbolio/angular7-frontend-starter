@@ -4,14 +4,10 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpTokenInterceptor } from './interceptors/http.token.interceptor';
 
 import {
-  ApiService,
-  ArticlesService,
   AuthGuard,
-  CommentsService,
   JwtService,
-  ProfilesService,
-  TagsService,
-  UserService
+  CustomersApiService,
+  Service1ApiService
 } from './services';
 
 @NgModule({
@@ -20,14 +16,10 @@ import {
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true },
-    ApiService,
-    ArticlesService,
     AuthGuard,
-    CommentsService,
     JwtService,
-    ProfilesService,
-    TagsService,
-    UserService
+    CustomersApiService,
+    Service1ApiService
   ],
   declarations: []
 })

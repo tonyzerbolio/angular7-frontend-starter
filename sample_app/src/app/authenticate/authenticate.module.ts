@@ -1,18 +1,18 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home.component';
+import { AuthenticateComponent } from './authenticate.component';
 import { SharedModule } from '../shared';
-import { HomeRoutingModule } from './home-routing.module';
+import { AuthenticateRoutingModule } from './authenticate-routing.module';
 
 @NgModule({
   imports: [
     SharedModule,
-    HomeRoutingModule
+    AuthenticateRoutingModule
   ],
   declarations: [
-    HomeComponent
+    AuthenticateComponent
   ],
   providers: [ ]
 })
-export class HomeModule {}
+export class AuthenticateModule {}
