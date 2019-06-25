@@ -3,21 +3,22 @@ services:
   angularjs_build:
     container_name: comet_angularjs_build
     build:
-      context: ../../
+      context: ././
       dockerfile: DockerfileMultiStage
       target: BUILD_STAGE
   angularjs_deploy:
     container_name: comet_angularjs
     build:
-      context: ../../
+      context: ././
       dockerfile: DockerfileMultiStage
     ports:
       - 8080:8080
     environment:
-      SERVICE1_API_URL: http://zuul_deploy:8081/svc1
-      SERVICE2_API_URL: http://zuul_deploy:8081/svc2
+      SERVICE1_API_URL: http://comet_zuul:8081/svc1
+      SERVICE2_API_URL: http://comet_zuul:8081/svc2
       LOCAL_DEV: 'true'
 networks:
   default:
     external:
       name: comet-network
+
