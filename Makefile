@@ -22,7 +22,7 @@ list:
 	@echo 'list'
 
 build:
-	docker-compose --project-name comet --project-directory . -f local/docker/docker-compose.yml build angularjs_deploy
+	docker-compose --project-name comet --project-directory . -f local/docker/docker-compose.yml build angularjs_build
 
 docker-clean:
 	$(call header,Stopping DynamoDB and Pruning Docker)
@@ -44,7 +44,7 @@ docker-running:
 
 docker-stop:
 	$(call header,Stopping DynamoDB)
-	docker-compose --project-directory . -f local/docker/docker-compose.yml down
+	docker-compose --project-name comet --project-directory . -f local/docker/docker-compose.yml down
 
 docker-unit:
 	$(docker_setup_network)
