@@ -1,30 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
+
+import { User, UserService } from '../../core';
 
 @Component({
   selector: 'app-layout-header',
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
+  currentUser: User;
 
-  constructor(private oauthService: OAuthService) { }
+  constructor(
+    private userService: UserService
+  ) {}
 
-  login() {
-    this.oauthService.initImplicitFlow();
+  ngOnInit() {
+    this.userService.currentUser.subscribe(
+      (userData) => {
+        this.currentUser = userData;
+      }
+    );
   }
-
-  logout() {
-    this.oauthService.logOut();
-  }
-  
-  get givenName() {
-    const claims = this.oauthService.getIdentityClaims();
-    if (!claims) {
-      return null;
-    }
-    return claims['name'];
-  }
-
-  ngOnInit() { }
-
 }

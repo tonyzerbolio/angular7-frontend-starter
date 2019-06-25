@@ -1,9 +1,5 @@
 // tslint:disable
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
-import {
-  HttpClientTestingModule,
-  HttpTestingController
-} from '@angular/common/http/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Injectable, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { isPlatformBrowser } from '@angular/common';
@@ -13,8 +9,9 @@ import { By } from '@angular/platform-browser';
 // import 'rxjs/add/observable/throw';
 
 import { HeaderComponent } from './header.component';
-import { OAuthService, UrlHelperService, OAuthLogger } from 'angular-oauth2-oidc';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { UserService } from '../../core';
+import { ShowAuthedDirective } from '../show-authed.directive';
+
 
 @Injectable()
 class MockUserService { }
@@ -26,26 +23,24 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule,
-        HttpClientTestingModule
+        RouterTestingModule
       ],
       declarations: [
-        HeaderComponent
+        HeaderComponent,
+        ShowAuthedDirective
       ],
-      providers: [ OAuthService, HttpClient, HttpHandler, UrlHelperService, OAuthLogger ],
+      providers: [
+        {provide: UserService, useClass: MockUserService},
+      ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.debugElement.componentInstance;
   });
 
-  it(
-    'should be initialized',
-    inject([OAuthService], (oauthService: OAuthService) => {
-      expect(oauthService).toBeTruthy();
-    })
-  );
-
+  it('The application should create a Header Component', async () => {
+    expect(component).toBeTruthy();
+  });
 
   it('should run #ngOnInit()', async () => {
     // const result = component.ngOnInit();

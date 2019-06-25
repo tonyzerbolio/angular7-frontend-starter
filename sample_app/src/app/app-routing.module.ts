@@ -1,27 +1,32 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { OAuthModule } from 'angular-oauth2-oidc';
-
-import { Service1Component } from './service1/service1.component';
-import { PeopleComponent } from './people/people.component';
-import { CustomersComponent } from './customers/customers.component';
-import { AuthGuard } from './core/services/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'service1', component: Service1Component, canActivate: [AuthGuard] },
-  { path: 'people', component: PeopleComponent, canActivate: [AuthGuard] },
-  { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard] }
+  {
+    path: 'settings',
+    loadChildren: './settings/settings.module#SettingsModule'
+  },
+  {
+    path: 'profile',
+    loadChildren: './profile/profile.module#ProfileModule'
+  },
+  {
+    path: 'editor',
+    loadChildren: './editor/editor.module#EditorModule'
+  },
+  {
+    path: 'article',
+    loadChildren: './article/article.module#ArticleModule'
+  }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
-    OAuthModule.forRoot()
-  ],
-  providers: [
-    AuthGuard
-  ],
+  imports: [RouterModule.forRoot(routes, {
+    // preload all modules; optionally we could
+    // implement a custom preloading strategy for just some
+    // of the modules (PRs welcome 😉)
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-

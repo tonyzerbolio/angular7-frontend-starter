@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+import { UserService } from './user.service';
+import { take } from 'rxjs/operators';
 
+@Injectable()
 export class AuthGuard implements CanActivate {
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ) {}
 
-  constructor(private oauthService: OAuthService, private router: Router) {}
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> {
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    return this.userService.isAuthenticated.pipe(take(1));
 
-    if (this.oauthService.hasValidIdToken()) {
-      return true;
-    }
-
-    this.router.navigate(['/login']);
-
-    return false;
   }
 }
