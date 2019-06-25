@@ -27,10 +27,10 @@ spec:
         - name: LOCAL_DEV
           value: "true"
         - name: SERVICE1_API_URL
-          value: http://zuul_deploy:8081/svc1
+          value: http://comet_zuul:8081/svc1
         - name: SERVICE2_API_URL
-          value: http://zuul_deploy:8081/svc2
-        image: comet-angular-app-tc_angular_tc_deploy
+          value: http://comet_zuul:8081/svc2
+        image: comet_angularjs_build
         name: angularjs
         ports:
         - containerPort: 8080
