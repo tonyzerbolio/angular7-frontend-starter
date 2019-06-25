@@ -6,6 +6,7 @@ metadata:
   labels:
     comet.service: angularjs
   name: angularjs
+  namespace: comet
 spec:
   ports:
   - name: "8080"

@@ -4,7 +4,7 @@ metadata:
   annotations:
     author: Levon Becker
   labels:
-    comet.app: angularjs
+    app: angularjs
   name: angularjs
 spec:
   replicas: 1
@@ -15,12 +15,12 @@ spec:
       maxSurge: 150%
   selector:
     matchLabels:
-      comet.app: angularjs
+      app: angularjs
   template:
     metadata:
       labels:
-        comet.app: angularjs
-      namespace: default
+        app: angularjs
+      namespace: comet
     spec:
       containers:
       - env:
