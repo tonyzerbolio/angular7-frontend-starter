@@ -29,6 +29,7 @@ build:
 docker-clean:
 	$(call header,Stopping DynamoDB and Pruning Docker)
 	@make docker-stop
+	@docker image ls | grep comet | xargs -n1 docker image rm -f
 	@docker system prune -f
 
 docker-deploy:
