@@ -6,6 +6,7 @@ metadata:
   labels:
     comet.app: angularjs
   name: angularjs
+  namespace: comet
 spec:
   replicas: 1
   strategy:
@@ -27,9 +28,9 @@ spec:
         - name: LOCAL_DEV
           value: "true"
         - name: SERVICE1_API_URL
-          value: http://comet_zuul:8081/svc1
+          value: http://zuul.comet.svc.cluster.local:8081/svc1
         - name: SERVICE2_API_URL
-          value: http://comet_zuul:8081/svc2
+          value: http://zuul.comet.svc.cluster.local:8081/svc2
         image: comet_angularjs_deploy
         name: angularjs
         ports:
