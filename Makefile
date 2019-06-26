@@ -20,6 +20,7 @@ list:
 	@echo 'docker-unit'
 	@echo 'k8s-delete'
 	@echo 'k8s-deploy'
+	@echo 'k8s-running'
 	@echo 'list'
 
 build:
@@ -60,3 +61,6 @@ k8s-delete:
 	$(call header,Deleting AngularJS & Services from K8S)
 	kubectl delete -f local/kubernetes/service.yml
 	kubectl delete -f local/kubernetes/deployment.yml
+
+k8s-running:
+	kubectl get pods --namespace comet
