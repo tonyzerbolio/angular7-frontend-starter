@@ -19,7 +19,7 @@ spec:
   template:
     metadata:
       labels:
-        app: angularjs
+        comet.app: angularjs
       namespace: comet
     spec:
       containers:
