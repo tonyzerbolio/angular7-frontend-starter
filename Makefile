@@ -18,9 +18,9 @@ list:
 	@echo 'docker-running'
 	@echo 'docker-stop'
 	@echo 'docker-unit'
-	@echo 'k8s-delete'
-	@echo 'k8s-deploy'
-	@echo 'k8s-running'
+	@echo 'kub-stop'
+	@echo 'kub-deploy'
+	@echo 'kub-running'
 	@echo 'list'
 
 build:
@@ -52,15 +52,15 @@ docker-unit:
 	$(docker_setup_network)
 	docker-compose --project-name comet --project-directory . -f local/docker/docker-compose.yml run angularjs_deploy npm run test
 
-k8s-deploy:
-	$(call header,Deploying AngularJS on K8S)
+kub-deploy:
+	$(call header,Deploying AngularJS on Kubernetes)
 	@kubectl apply -f local/kubernetes/deployment.yml
 	@kubectl apply -f local/kubernetes/service.yml
 
-k8s-delete:
-	$(call header,Deleting AngularJS & Services from K8S)
+kub-delete:
+	$(call header,Deleting AngularJS & Services from Kubernetes)
 	kubectl delete -f local/kubernetes/service.yml
 	kubectl delete -f local/kubernetes/deployment.yml
 
-k8s-running:
+kub-running:
 	kubectl get pods --namespace comet
