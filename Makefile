@@ -11,19 +11,20 @@ define docker_setup_network
 endef
 
 list:
-	@echo 'build'
+	@echo 'docker-build'
 	@echo 'docker-clean'
 	@echo 'docker-deploy'
 	@echo 'docker-e2e'
 	@echo 'docker-running'
 	@echo 'docker-stop'
 	@echo 'docker-unit'
+	@echo 'kub-build'
 	@echo 'kub-stop'
 	@echo 'kub-deploy'
 	@echo 'kub-running'
 	@echo 'list'
 
-build:
+docker-build:
 	docker-compose --project-name comet --project-directory . -f local/docker/docker-compose.yml build angularjs_build
 
 docker-clean:
@@ -52,6 +53,10 @@ docker-stop:
 docker-unit:
 	$(docker_setup_network)
 	docker-compose --project-name comet --project-directory . -f local/docker/docker-compose.yml run angularjs_deploy npm run test
+
+kub-build:
+	@docker build -f DockerfileMultiStage --target DEPLOY_STAGE -t comet/zuul:latest .
+	@docker system prune -f
 
 kub-deploy:
 	$(call header,Deploying AngularJS on Kubernetes)
