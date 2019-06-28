@@ -19,4 +19,17 @@ export const environment = {
   service1_url: 'http://localhost',
   service1_port: ':8092',
   service1_str: '/customers'
+
+  // customers_url: 'http://service2.comet.svc.cluster',
+  // customers_port: '.local',
+  // customers_str: '/customers',
+  // service1_url" 'http://service1.comet.svc.cluster',
+  // service1_port: '.local',
+  // service1_str: '/customers'
+
+  // service_url: 'http://zuul.comet.svc.cluster',
+  // sercice_port: '.local'
+  // sercice_str: '/service-name'
+
 };
+
