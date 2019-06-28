@@ -20,7 +20,49 @@ list:
 	@echo 'unit'
 
 ##################################################
-# Docker
+# Kubernetes
+##################################################
+build:
+	@docker build -f DockerfileMultiStage --target BUILD_STAGE -t comet/angularjs_build:latest .
+	@docker build -f DockerfileMultiStage --target DEPLOY_STAGE -t comet/angularjs:latest .
+
+clean:
+	$(call header,Removing Service1 Docker Images)
+	@docker image rm -f comet/angularjs comet/angularjs_build
+
+build-app:
+	@docker build -f DockerfileMultiStage --target BUILD_STAGE -t comet/angularjs_build:latest .
+
+build-deploy:
+	@docker build -f DockerfileMultiStage --target DEPLOY_STAGE -t comet/angularjs:latest .
+
+deploy:
+	$(call header,Checking for Comet Namespace on Kubernetes)
+	@kubectl get namespaces | grep -w comet || kubectl create namespace comet
+
+	$(call header,Deploying Service 1 on Kubernetes)
+	@docker image ls | grep -w "comet/angularjs_build" &> /dev/null || docker build -f DockerfileMultiStage --target BUILD_STAGE -t comet/angularjs_build:latest .
+	@docker image ls | grep -w "comet/angularjs" &> /dev/null || docker build -f DockerfileMultiStage --target DEPLOY_STAGE -t comet/angularjs:latest .
+	@kubectl apply -f local/kubernetes/deployment.yml
+	@kubectl apply -f local/kubernetes/service.yml
+
+stop:
+	$(call header,Deleting Service 1 Kubernetes Objects)
+	@kubectl get pods --namespace comet | grep "angularjs" | grep -v "Terminating" && \
+	kubectl delete -f local/kubernetes/service.yml && \
+	kubectl delete -f local/kubernetes/deployment.yml
+
+running:
+	@kubectl get pods --namespace comet
+
+unit:
+	@docker run comet/angularjs_build npm run test
+
+
+
+
+##################################################
+# Docker Compose - Deprecating
 ##################################################
 docker-build:
 	docker-compose --project-name comet --project-directory . -f local/docker/docker-compose.yml build angularjs_build
@@ -51,39 +93,3 @@ docker-stop:
 docker-unit:
 	$(docker_setup_network)
 	docker-compose --project-name comet --project-directory . -f local/docker/docker-compose.yml run angularjs_deploy npm run test
-
-##################################################
-# Kubernetes
-##################################################
-build:
-	@docker build -f DockerfileMultiStage --target BUILD_STAGE -t comet/angularjs_build:latest .
-	@docker build -f DockerfileMultiStage --target DEPLOY_STAGE -t comet/angularjs:latest .
-
-clean:
-	$(call header,Removing Service1 Docker Images)
-	@docker image rm -f comet/angularjs comet/angularjs_build
-
-build-app:
-	@docker build -f DockerfileMultiStage --target BUILD_STAGE -t comet/angularjs_build:latest .
-
-build-deploy:
-	@docker build -f DockerfileMultiStage --target DEPLOY_STAGE -t comet/angularjs:latest .
-
-deploy:
-	$(call header,Deploying Service 1 on Kubernetes)
-	@docker image ls | grep -w "comet/angularjs_build" &> /dev/null || docker build -f DockerfileMultiStage --target BUILD_STAGE -t comet/angularjs_build:latest .
-	@docker image ls | grep -w "comet/angularjs" &> /dev/null || docker build -f DockerfileMultiStage --target DEPLOY_STAGE -t comet/angularjs:latest .
-	@kubectl apply -f local/kubernetes/deployment.yml
-	@kubectl apply -f local/kubernetes/service.yml
-
-stop:
-	$(call header,Deleting Service 1 Kubernetes Objects)
-	@kubectl get pods --namespace comet | grep "angularjs" | grep -v "Terminating" && \
-	kubectl delete -f local/kubernetes/service.yml && \
-	kubectl delete -f local/kubernetes/deployment.yml
-
-running:
-	@kubectl get pods --namespace comet
-
-unit:
-	@docker run comet/angularjs npm run test
