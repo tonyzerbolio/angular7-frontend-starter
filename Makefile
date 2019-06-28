@@ -11,19 +11,17 @@ define docker_setup_network
 endef
 
 list:
-	@echo 'docker-build'
-	@echo 'docker-clean'
-	@echo 'docker-deploy'
-	@echo 'docker-e2e'
-	@echo 'docker-running'
-	@echo 'docker-stop'
-	@echo 'docker-unit'
-	@echo 'kub-build'
-	@echo 'kub-stop'
-	@echo 'kub-deploy'
-	@echo 'kub-running'
+	@echo 'build'
+	@echo 'clean'
+	@echo 'deploy'
 	@echo 'list'
+	@echo 'running'
+	@echo 'stop'
+	@echo 'unit'
 
+##################################################
+# Docker
+##################################################
 docker-build:
 	docker-compose --project-name comet --project-directory . -f local/docker/docker-compose.yml build angularjs_build
 
@@ -54,19 +52,38 @@ docker-unit:
 	$(docker_setup_network)
 	docker-compose --project-name comet --project-directory . -f local/docker/docker-compose.yml run angularjs_deploy npm run test
 
-kub-build:
-	@docker build -f DockerfileMultiStage --target DEPLOY_STAGE -t comet/zuul:latest .
-	@docker system prune -f
+##################################################
+# Kubernetes
+##################################################
+build:
+	@docker build -f DockerfileMultiStage --target BUILD_STAGE -t comet/angularjs_build:latest .
+	@docker build -f DockerfileMultiStage --target DEPLOY_STAGE -t comet/angularjs:latest .
 
-kub-deploy:
-	$(call header,Deploying AngularJS on Kubernetes)
+clean:
+	$(call header,Removing Service1 Docker Images)
+	@docker image rm -f comet/angularjs comet/angularjs_build
+
+build-app:
+	@docker build -f DockerfileMultiStage --target BUILD_STAGE -t comet/angularjs_build:latest .
+
+build-deploy:
+	@docker build -f DockerfileMultiStage --target DEPLOY_STAGE -t comet/angularjs:latest .
+
+deploy:
+	$(call header,Deploying Service 1 on Kubernetes)
+	@docker image ls | grep -w "comet/angularjs_build" &> /dev/null || docker build -f DockerfileMultiStage --target BUILD_STAGE -t comet/angularjs_build:latest .
+	@docker image ls | grep -w "comet/angularjs" &> /dev/null || docker build -f DockerfileMultiStage --target DEPLOY_STAGE -t comet/angularjs:latest .
 	@kubectl apply -f local/kubernetes/deployment.yml
 	@kubectl apply -f local/kubernetes/service.yml
 
-kub-delete:
-	$(call header,Deleting AngularJS & Services from Kubernetes)
-	kubectl delete -f local/kubernetes/service.yml
+stop:
+	$(call header,Deleting Service 1 Kubernetes Objects)
+	@kubectl get pods --namespace comet | grep "angularjs" | grep -v "Terminating" && \
+	kubectl delete -f local/kubernetes/service.yml && \
 	kubectl delete -f local/kubernetes/deployment.yml
 
-kub-running:
-	kubectl get pods --namespace comet
+running:
+	@kubectl get pods --namespace comet
+
+unit:
+	@docker run comet/angularjs npm run test
