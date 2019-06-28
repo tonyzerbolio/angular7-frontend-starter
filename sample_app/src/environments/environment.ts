@@ -13,10 +13,10 @@
 
 export const environment = {
   production: false,
-  customers_url: 'http://localhost',
+  customers_url: window.location.protocol + '//' + window.location.hostname,
   customers_port: ':8090',
   customers_str: '/customers',
-  service1_url: 'http://localhost',
+  service1_url: window.location.protocol + '//' + window.location.hostname,
   service1_port: ':8092',
   service1_str: '/customers'
 
