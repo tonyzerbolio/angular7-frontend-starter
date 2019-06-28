@@ -1,7 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
 
 import { Svc1Result } from '../models/service1.model';
 import { Observable, throwError } from 'rxjs';
