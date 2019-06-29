@@ -9,9 +9,10 @@ metadata:
   namespace: comet
 spec:
   ports:
-    - protocol: TCP
+    - name: "service-port"
+      protocol: TCP
       port: 8080
-      targetPort: 80
+      targetPort: 8080
   selector:
-    comet.service: angularjs
+    comet.app: angularjs
   type: LoadBalancer
