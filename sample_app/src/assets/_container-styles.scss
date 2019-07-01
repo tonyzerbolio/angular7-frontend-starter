@@ -14,7 +14,7 @@ Header Elements
 */
 // Primary Site Navigation
 .usa-header {
-    background: $gsa-header-bg-color;
+    //background: $gsa-header-bg-color;
 }
 // Feature displayed on the Home Page
 .banner {
@@ -42,10 +42,7 @@ Containers
     margin-bottom: 6.5rem;
     max-width: 64rem;
 }
-// Center a container
-main#main-content {
-    margin-bottom: 12rem;
-}
+
 .margin-auto {
     margin: auto;
 }
