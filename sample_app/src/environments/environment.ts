@@ -19,9 +19,14 @@ export const environment = {
   service2_url: window.location.protocol + '//' + window.location.hostname,
   service2_port: ':8090',
   service2_str: '/customers',
-  service1_url: window.location.protocol + '//' + window.location.hostname,
-  service1_port: ':8092',
-  service1_str: '/customers'
+
+  service1_url: 'http://zuul.comet.svc.cluster',
+  service1_port: '.local',
+  service1_str: '/service1/customers'
+
+  // service1_url: window.location.protocol + '//' + window.location.hostname,
+  // service1_port: ':8092',
+  // service1_str: '/customers'
 
   // service2_url: 'http://service2.comet.svc.cluster',
   // service2_port: '.local',
