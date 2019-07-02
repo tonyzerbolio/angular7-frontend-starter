@@ -19,20 +19,11 @@ export const environment = {
   service2_url: window.location.protocol + '//' + window.location.hostname,
   service2_port: ':8090',
   service2_str: '/customers',
+  
+  // Configured to hit Zuul in local K8s cluster using port-forwarding
   service1_url: window.location.protocol + '//' + window.location.hostname,
-  service1_port: ':8092',
-  service1_str: '/customers'
-
-  // service2_url: 'http://service2.comet.svc.cluster',
-  // service2_port: '.local',
-  // service2_str: '/customers',
-  // service1_url" 'http://service1.comet.svc.cluster',
-  // service1_port: '.local',
-  // service1_str: '/customers'
-
-  // service_url: 'http://zuul.comet.svc.cluster',
-  // sercice_port: '.local'
-  // sercice_str: '/service-name'
+  service1_port: ':8081',
+  service1_str: '/service1/customers'
 
 };
 

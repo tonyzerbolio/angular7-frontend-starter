@@ -1,36 +1,41 @@
-<div class="service1-container">
+<div class="service1-container padding-y-4 bg-base-lightest">
 
   <!-- Results table - it hides when there are no results -->
-  <section class="grid-container usa-section">
-    <div *ngIf="Customer.length !== 0" class="grid-row grid-gap">
-      <div class="tablet:grid-col-12">
-          <header>
-            <p class="site-subheading">Okta Protected Back End Service Consumer Page</p>
-          </header>
-          <h2 class="site-page-title">Customers2 List</h2>
-          <p>The results in the table below come from a back end microservice accessed using {{ServiceURL}}{{ServicePORT}}{{ServiceString}}. The results you see on the <a href="/customers">Customers1</a> page come from another microservice accessed using a different url, port and service name.</p>
-          <p>This page cannot be viewed unless the user is logged in using Okta. The microservice responsible for the results below is also protected by Okta.</p>
-          <div class="preview usa-prose site-prose">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col">User Id</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Pesel</th>
-                  <th scope="col">Type</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let customer of Customer">
-                  <td>{{customer.id}}</td>
-                  <td>{{customer.name}}</td>
-                  <td>{{customer.pesel}}</td>
-                  <td>{{customer.type}}</td>
-                </tr>
-              </tbody>
-            </table>
+  <div class="grid-container">
+    <div class="grid-row grid-gap">
+      <aside class="usa-layout-docs__sidenav desktop:grid-col-3">
+        <div class="tablet:grid-col">
+          <div class="card border-top-05 border-secondary-dark">
+            <div class="card-content padding-1 text-base-darkest">
+              <h1>Clients</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur sem ta adipiscing elit. Fusce lel ullamcorper accumsan sem ut blandit.</p>
+              <p>Aliquam a vestibulum sa.</p>
+            </div>
+            <div class="card-image bg-primary-lighter">
+              card image here
+            </div>
           </div>
+        </div>
+      </aside>
+
+      <div *ngIf="Customer.length !== 0" class="usa-layout-docs__main tablet:grid-col-9 usa-prose">
+        <div class="grid-container padding-x-0">
+          <div class="grid-row grid-gap">
+            <div *ngFor="let customer of Customer" class="tablet:grid-col-4">
+              <div class="card">
+                <div class="card-content padding-1 text-base-darkest">
+                  <h2>{{customer.name}}</h2>
+                  <p><strong>Customer Info</strong></p>
+                  <p>Customer ID: {{customer.id}}<br>
+                  Customer Account: {{customer.pesel}}<br>
+                  Customer Account: {{customer.type}}</p>
+                  <a href="https://www.gsa.gov/">View Website</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 </div>

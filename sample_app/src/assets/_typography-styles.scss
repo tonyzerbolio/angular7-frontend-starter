@@ -10,8 +10,12 @@ html, body {
         margin: 0;
     }
 }
+p {
+    line-height: 1.63432rem;
+}
 a {
     color: $gsa-link-color;
+    cursor: pointer;
     &:active {
         color: $gsa-link-active-color;
     }
@@ -37,9 +41,63 @@ a {
     text-align: right;
 }
 
-// .usa-logo__text {
-//     a {
-//         color: $gsa-header-logo-color;
-//     }
-// }
+.usa-logo {
+    display: flex;
+    font-size: 1.875em;
+    line-height: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    a {
+        &:visited,
+        &:active,
+        &:hover {
+            color: color('base-darker');
+        }
+    }
+}
+.usa-logo__text {
+    display: inline-flex;
+    align-items: baseline;
+    font-style: normal;
+    font-weight: normal;
+    margin: 70px 0 0 4px;
+}
 
+.usa-banner__header-text, 
+.usa-accordion,
+.usa-banner__button-text {
+    color: color('base-lightest');
+}
+
+/** 
+ * Card Text Styles
+ */
+.card {
+    h1, h2 {
+        font-family: $theme-font-type-serif;
+        font-weight: bold;
+        line-height: 1.625rem;
+        margin: 0.47rem 0;
+    }
+    h1 {
+        @include u-text('secondary-darker');
+    }
+    h2 {
+        @include u-text('primary');
+        font-size: 1.2rem;
+    }
+    .sub-title {
+        font-size: 1.2rem;
+    }
+ } 
+
+@media screen and (min-width: 1300px) {
+    footer {
+        h3 {
+            &.footer-logo {
+                font-size: 2.0rem;
+                font-weight: normal;
+            }            
+        }
+    } 
+}

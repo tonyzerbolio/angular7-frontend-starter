@@ -4,6 +4,15 @@
 
  // GSA Header Buttons
 
+ .usa-nav__primary {
+    button:focus {
+        // border-bottom: 0.25rem solid #2491ff;
+        // outline: none;
+        /* outline-offset: 0; */
+    }
+ }
+
+
 //  button {
 //     .usa-header & {
 //         color: $gsa-header-button-color;
