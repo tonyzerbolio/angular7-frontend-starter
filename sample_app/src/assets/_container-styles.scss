@@ -65,9 +65,23 @@ Containers
         min-height: 3.2rem;
     }
 }
+.page {
+    padding-bottom: 1.2rem;
+}
 table {
     width: 100%;
     &.clients {
+        tbody {
+            tr {
+                th, td {
+                    background-color: transparent;
+                }
+                &:hover {
+                    cursor: pointer;
+                    @include u-bg('primary-lighter')
+                }
+            }
+        }
         th, td {
            text-align: left;
         }

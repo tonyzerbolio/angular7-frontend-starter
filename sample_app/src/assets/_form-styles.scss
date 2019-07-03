@@ -3,6 +3,7 @@
  */
  form.usa-form {
     margin: auto;
+    max-width: unset;
 }
 
 fieldset {
@@ -10,4 +11,10 @@ fieldset {
 }
 input, textarea {
     margin-bottom: 0.5em;
+}
+.clients {
+    label {
+        display: inline-flex;
+        min-width: 5.675rem;
+    }
 }

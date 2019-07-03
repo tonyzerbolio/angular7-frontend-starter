@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   logout() {
     this.oauthService.logOut();
   }
-  
+
   get givenName() {
     const claims = this.oauthService.getIdentityClaims();
     if (!claims) {
