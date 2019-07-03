@@ -13,4 +13,10 @@
             display: inline-block!important
         }
     }
+    &.clients {
+        list-style-type: none;
+        margin: 0 0 2rem 0;
+        padding: 0;
+        width: 100%;
+    }
  }

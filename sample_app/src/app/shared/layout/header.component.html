@@ -64,14 +64,14 @@
               Home
             </button>
           </li>
-          <li *ngIf="!production">
-            <button class="usa-button" routerLink="/customers"> Customers1 </button>
+          <li>
+            <button class="usa-button" routerLink="/customers"> Events </button>
           </li>
           <li *ngIf="givenName">
-            <button class="usa-button" routerLink="/service1"> Customers2 </button>
+            <button class="usa-button" routerLink="/service1"> Clients </button>
           </li>
-          <li *ngIf="!production">
-            <button class="usa-button" routerLink="/people"> People </button>
+          <li *ngIf="givenName">
+            <button class="usa-button" routerLink="/people"> Client Update </button>
           </li>
           <li *ngIf="!givenName">
             <button class="usa-button"  (click)="login()">Login</button>

@@ -1,56 +1,103 @@
-<section class="grid-container usa-section">
-  <div class="grid-row grid-gap">
-    <div class="tablet:grid-col-12">
-      <h2>People</h2>
-      <p>This page is not backed by any micorservices yet. It demonstrates Angular two-way binding. It can be used to update user profiles or other similar functions.</p>
-      <p>Click on a user to see two-way binding in action.</p>
-      <ul class="people">
-        <li *ngFor="let person of people"
-          (click)="onSelect(person)"
-          [class.selected]="person === selectedPerson">
-          <span class="badge">{{person.id}}</span> {{person.fullName}}
-        </li>
-      </ul>
-      <div *ngIf="selectedPerson">
-        
-        <form>
-          <fieldset>
-            <legend><h3>{{ selectedPerson.fullName | uppercase }} Details:</h3></legend>
-            <ul>
-              <li>
-                <label>Full Name: 
-                  <input [(ngModel)] = "selectedPerson.fullName" placeholder="fullName" [ngModelOptions]="{standalone: true}" />
-                </label>
-              </li>
-              <li>
-                <label>First Name: 
-                  <input [(ngModel)] = "selectedPerson.firstName" placeholder="firstName" [ngModelOptions]="{standalone: true}" />
-                </label>
-              </li>
-              <li>
-                <label>Last Name: 
-                  <input [(ngModel)] = "selectedPerson.lastName" placeholder="lastName" [ngModelOptions]="{standalone: true}" />
-                </label>
-              </li>
-              <li>
-                <label>Title:
-                  <input [(ngModel)] = "selectedPerson.jobTitle" placeholder="jobTitle" [ngModelOptions]="{standalone: true}" />
-                </label>
-              </li>
-              <li>
-                <label>Email:
-                  <input [(ngModel)] = "selectedPerson.email" placeholder="email" [ngModelOptions]="{standalone: true}" />
-                </label>
-              </li>
-              <li>
-                <label>Phone:
-                  <input [(ngModel)] = "selectedPerson.phoneNumber" placeholder="phoneNumber" [ngModelOptions]="{standalone: true}" />
-                </label>
-              </li>
-            </ul>
-          </fieldset>
-        </form>
+<div class="forms-container padding-y-4 bg-base-lightest">
+
+  <!-- Results table - it hides when there are no results -->
+  <div class="grid-container">
+    <div class="grid-row grid-gap">
+      <aside class="usa-layout-docs__sidenav desktop:grid-col-3">
+        <div class="tablet:grid-col">
+          <div class="card border-top-05 border-secondary-dark">
+            <div class="card-content padding-1 text-base-darkest">
+              <h1>Client Update</h1>
+              <nav class="interior">
+                <ul>
+                  <li>
+                    <a href="#">Interior Link</a>
+                  </li>
+                  <li>
+                    <a href="#">Interior Link</a>
+                  </li>
+                  <li>
+                    <a href="#">Interior Link</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div class="usa-layout-docs__main tablet:grid-col-9 usa-prose page">
+        <div class="grid-container padding-x-0">
+          <div class="grid-row grid-gap">
+            <div class="tablet:grid-col">
+              <h3>Instructions</h3>
+              <p>This page is not backed by any micorservices yet. It demonstrates Angular two-way binding. It can be used to update user profiles or other similar functions.</p>
+              <p>Click on an item to see two-way binding in action.</p>
+            </div>
+          </div>
+          <div class="grid-row grid-gap">
+            <div class="tablet:grid-col">
+              <table class="usa-table clients">
+                <thead>
+                  <tr class="border-bottom border-base-light padding-y-1">
+                    <th scope="col">ID</th>
+                    <th scope="col">Client Name</th>
+                    <th scope="col">Account</th>
+                    <th scope="col">Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let person of people"
+                  (click)="onSelect(person)"
+                  [class.selected]="person === selectedPerson"
+                  class="border-bottom border-base-light">
+                  <th scope="row">{{person.id}}</th>
+                    <th scope="row">{{person.fullName}}</th>
+                    <td>{{person.account}}</td>
+                    <td>{{person.type}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              <div *ngIf="selectedPerson">
+                <form class="usa-form">
+                  <fieldset class="usa-fieldset">
+                    <legend class="usa-legend">
+                      <h2>{{ selectedPerson.fullName | uppercase }} Profile Details:</h2>
+                    </legend>
+                    <ul class="clients">
+                      <li>
+                        <label>Full Name: 
+                          <input [(ngModel)] = "selectedPerson.fullName" placeholder="fullName" [ngModelOptions]="{standalone: true}" />
+                        </label>
+                      </li>
+                      <li>
+                        <label>First Name: 
+                          <input [(ngModel)] = "selectedPerson.firstName" placeholder="firstName" [ngModelOptions]="{standalone: true}" />
+                        </label>
+                      </li>
+                      <li>
+                        <label>Last Name: 
+                          <input [(ngModel)] = "selectedPerson.lastName" placeholder="lastName" [ngModelOptions]="{standalone: true}" />
+                        </label>
+                      </li>
+                      <li>
+                        <label>Account:
+                          <input [(ngModel)] = "selectedPerson.account" placeholder="account" [ngModelOptions]="{standalone: true}" />
+                        </label>
+                      </li>
+                      <li>
+                        <label>Type:
+                          <input [(ngModel)] = "selectedPerson.type" placeholder="type" [ngModelOptions]="{standalone: true}" />
+                        </label>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>

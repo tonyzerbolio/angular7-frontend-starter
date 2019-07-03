@@ -1,7 +1,7 @@
 /**
  * Nav
  */
-.usa-nav__primary{
+.usa-nav__primary {
   margin-bottom: unset;
   >.usa-nav__primary-item {
     >a {
@@ -11,9 +11,25 @@
       }
     }
   }
+  button {
+    padding: 1rem 0.5rem;
+  }
 }
 .usa-nav {
   &.is-visible {
     background: $gsa-header-bg-color;
+  }
+}
+
+nav {
+  &.interior {
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      margin: 1rem 0;
+    }
   }
 }

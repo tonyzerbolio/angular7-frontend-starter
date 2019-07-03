@@ -5,10 +5,10 @@ html, body {
     color: $gsa-body-text-color;
     font-size: $gsa-body-font-size;
 }
-.h1 {
-    .home-page & {
-        margin: 0;
-    }
+h1, h2, h3 {
+    font-family: $theme-font-type-serif;
+    font-weight: bold;
+    line-height: 1.625rem;
 }
 p {
     line-height: 1.63432rem;
@@ -73,10 +73,7 @@ a {
  * Card Text Styles
  */
 .card {
-    h1, h2 {
-        font-family: $theme-font-type-serif;
-        font-weight: bold;
-        line-height: 1.625rem;
+    h1, h2, h3 {
         margin: 0.47rem 0;
     }
     h1 {
@@ -87,10 +84,19 @@ a {
         font-size: 1.2rem;
     }
     .sub-title {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+} 
+.page {
+    h1, h2 {
+        margin: 0.47rem 0;
+    }
+    h2 {
+        @include u-text('primary');
         font-size: 1.2rem;
     }
- } 
-
+}
 @media screen and (min-width: 1300px) {
     footer {
         h3 {

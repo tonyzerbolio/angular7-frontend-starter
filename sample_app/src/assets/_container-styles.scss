@@ -56,12 +56,25 @@ Containers
     max-width: 64rem;
 }
 
-.card {
+.card,
+.page {
     background-color: #fff;
     @include u-shadow(2);
     margin-bottom: 1.6rem;
     .card-image {
         min-height: 3.2rem;
+    }
+}
+table {
+    width: 100%;
+    &.clients {
+        th, td {
+           text-align: left;
+        }
+        th:first-child, td:first-child {
+            text-align: center;
+            width: 10%;
+        }
     }
 }
 

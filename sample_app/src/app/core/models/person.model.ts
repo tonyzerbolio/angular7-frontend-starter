@@ -1,9 +1,9 @@
 export interface Person {
-  email: string;
+  type: string;
   id: number;
   firstName: string;
   lastName: string;
   fullName: string;
-  jobTitle: string;
+  account: string;
   phoneNumber: string;
 }
