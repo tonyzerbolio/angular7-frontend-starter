@@ -26,4 +26,3 @@ export const environment = {
   service1_str: '/service1/customers'
 
 };
-
