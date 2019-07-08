@@ -5,14 +5,14 @@
     <div class="grid-row grid-gap">
       <aside class="usa-layout-docs__sidenav desktop:grid-col-3">
         <div class="tablet:grid-col">
-          <div class="card border-top-05 border-secondary-dark">
+          <div class="card aside">
             <div class="card-content padding-1 text-base-darkest">
               <h1>Clients</h1>
               <p>Lorem ipsum dolor sit amet, consectetur sem ta adipiscing elit. Fusce lel ullamcorper accumsan sem ut blandit.</p>
               <p>Aliquam a vestibulum sa.</p>
             </div>
             <div class="card-image bg-primary-lighter">
-              card image here
+              <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-1.png" alt="Clients Card Decoration Image" />
             </div>
           </div>
         </div>
@@ -23,8 +23,8 @@
           <div class="grid-row grid-gap">
             <div *ngFor="let customer of Customer" class="tablet:grid-col-4">
               <div class="card">
-                <div class="card-content padding-1 text-base-darkest">
-                  <h2>{{customer.name}}</h2>
+                <div class="card-content text-base-darkest">
+                  <h3>{{customer.name}}</h3>
                   <p>
                     <span class="sub-title">Customer Info</span><br>
                     ID: {{customer.id}}<br>

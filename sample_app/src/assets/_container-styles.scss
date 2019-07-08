@@ -56,18 +56,54 @@ Containers
     max-width: 64rem;
 }
 
+/**
+ * Defines attributes of CARDS and main content area 'PAGE' areas.
+ * Note that 'pages' in this context does not mean the entire
+ * main content area but rather a large section of the main
+ * content area shown with a white background over the main
+ * content area's gray background.
+ */
+
 .card,
 .page {
-    background-color: #fff;
     @include u-shadow(2);
     margin-bottom: 1.6rem;
+    background-color: #fff;
+    &.aside {
+        border-top: 5px solid color('secondary-dark');
+        border-right: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        border-left: 1px solid #fff;
+    }
+    &:not(.aside) {
+        border: 1px solid #fff;
+    }
     .card-image {
         min-height: 3.2rem;
     }
 }
+
 .page {
     padding-bottom: 1.2rem;
 }
+
+// Content in Cards
+.card-content {
+    padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+}
+// Image containers in Cards
+.card-image {
+    line-height: 0;
+    margin: 0px;
+    padding: 0px;
+    img {
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+    }
+} 
+
+// Table for tabular data
 table {
     width: 100%;
     &.clients {
@@ -104,10 +140,21 @@ table {
     border: 1px solid #f0f0f0;
 }
 
+// Mobile
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) { 
     footer {
         position: relative;
+    }
+}
+
+// Larger Screens
+@media (min-width: 64em) {
+    .usa-header--basic {
+        .usa-search {
+            top: unset;
+            bottom: -0.4rem;
+        }
     }
 }

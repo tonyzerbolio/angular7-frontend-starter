@@ -47,6 +47,8 @@ a {
     background-repeat: no-repeat;
     background-size: contain;
     display: flex;
+    flex: 1;
+    flex-direction: row;
     font-size: 1.5rem;
     height: auto;
     line-height: 2rem;
@@ -58,6 +60,7 @@ a {
         align-items: flex-end;
         color: color('base-darker');
         display: flex;
+        flex: 1;
         flex-direction: row;
         justify-content: flex-end;
         min-width: 7.6rem;
@@ -96,8 +99,12 @@ a {
         @include u-text('primary');
         font-size: 1.2rem;
     }
+    h3 {
+        @include u-text('primary');
+    }
     .sub-title {
-        font-size: 1rem;
+        font-family: $theme-font-type-serif;
+        font-size: 1.2rem;
         font-weight: bold;
     }
 } 
@@ -110,6 +117,46 @@ a {
         font-size: 1.2rem;
     }
 }
+
+// Tablet Landscape
+@media (min-width: 64em) {
+    
+    .usa-nav-container {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+    }
+    .usa-navbar {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        height: auto;
+        min-height: 66.51px;
+        a {
+            min-width: 10.4rem;
+        }
+    }
+    
+
+    // Logo Graphic (if used) and Logo Text
+    .usa-logo {
+        font-size: 2rem;
+        height: auto;
+        line-height: 2.5rem;
+        max-width: 10.33rem;
+        min-height: 3rem;
+        width: auto;
+    }
+}
+
+// Tablet Portrait
+@media (max-width: 63.99em) {
+    .usa-logo {
+        max-width: 7.6rem;
+    }
+}
+
+// Large screens
 @media screen and (min-width: 1300px) {
     .usa-logo {
         display: flex;
