@@ -28,6 +28,13 @@ a {
     &:visited {
         color: $gsa-link-visited-color;
     }
+    &.usa-footer__primary-link {
+        @include u-text('base-darkest');
+        font-family: $theme-font-type-serif;
+        &:active, &:hover, &:focus, &:visited {
+            @include u-text('base-darkest');
+        }
+    }
 }
 .page-link {
     cursor: pointer;

@@ -5,16 +5,24 @@
         <nav class="usa-footer__nav">
           <ul class="add-list-reset grid-row grid-gap">
             <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="javascript:void(0);">Primary link</a>
+              <a class="usa-footer__primary-link" href="javascript:void(0);" routerLink="/">
+                Home
+              </a>
             </li>
-            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="javascript:void(0);">Primary link</a>
+            <!-- <li>
+              <button class="usa-button" routerLink="/customers"> Events </button>
+            </li> -->
+            <li *ngIf="givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" routerLink="/service1"> Clients </a>
             </li>
-            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="javascript:void(0);">Primary link</a>
+            <li *ngIf="givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" routerLink="/people"> Client Update </a>
             </li>
-            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="javascript:void(0);">Primary link</a>
+            <li *ngIf="!givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" (click)="login()">Login</a>
+            </li>
+            <li *ngIf="givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" (click)="logout()">Logout</a>
             </li>
           </ul>
         </nav>
