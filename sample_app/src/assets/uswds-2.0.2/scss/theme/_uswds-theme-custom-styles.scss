@@ -38,7 +38,7 @@ Header Elements
 */
 
 // Header Backgrounds
-$gsa-header-bg-color:       color('blue-80');
+$gsa-header-bg-color:       color('white');
 $gsa-header-banner-bg-color:       color('blue-50');
 
 // -- Header Button Text
@@ -54,12 +54,16 @@ $gsa-header-button-bg-active-color:      color('transparent');
 // -- Header Logo Color
 $gsa-header-logo-color:             color('white');
 
-
 /*
 ----------------------------------------
 Footer Elements
 ----------------------------------------
 */
+// Footer Primary
+$gsa-footer-bg-primary: 'ccd6e0';
+// Footer Secondary
+$gsa-footer-bg-secondary: 'bccad6';
+
 // -- Footer Link Text
 $gsa-footer-link-hover-color:             color('blue-60v');
 

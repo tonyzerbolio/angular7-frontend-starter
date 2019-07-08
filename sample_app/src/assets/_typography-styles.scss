@@ -41,17 +41,31 @@ a {
     text-align: right;
 }
 
+// Logo Graphic (if used) and Logo Text
 .usa-logo {
+    background-image: url(/assets/uswds-2.0.2/img/gsa-logo.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
     display: flex;
-    font-size: 1.875em;
-    line-height: 0;
+    font-size: 1.5rem;
+    height: auto;
+    line-height: 2rem;
     margin-top: 0;
     margin-bottom: 0;
+    min-height: 3rem;
+    width: auto;
     a {
+        align-items: flex-end;
+        color: color('base-darker');
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        min-width: 7.6rem;
         &:visited,
         &:active,
-        &:hover {
-            color: color('base-darker');
+        &:hover,
+        &:focus {
+            outline: none;
         }
     }
 }
@@ -60,7 +74,6 @@ a {
     align-items: baseline;
     font-style: normal;
     font-weight: normal;
-    margin: 70px 0 0 4px;
 }
 
 .usa-banner__header-text, 
@@ -98,6 +111,17 @@ a {
     }
 }
 @media screen and (min-width: 1300px) {
+    .usa-logo {
+        display: flex;
+        min-height: 5rem;
+        a {
+            font-size: 2rem;
+            min-width: 11.23456rem;
+        }
+    }
+    .usa-logo__text {
+        line-height: 3rem;
+    }
     footer {
         h3 {
             &.footer-logo {

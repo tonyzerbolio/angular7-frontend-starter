@@ -27,10 +27,10 @@ Footer Elements
 footer {
     padding-bottom: 0;
     .usa-footer__primary-section {
-        background-color: #ccd6e0;
+        background-color: $gsa-footer-bg-primary;
     }
     .usa-footer__secondary-section {
-        background-color:#bccad6;
+        background-color: $gsa-footer-bg-secondary;
     }
     h3 {
         &.footer-logo {

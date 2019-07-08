@@ -13,12 +13,24 @@
   }
   button {
     padding: 1rem 0.5rem;
+    @include u-text('white');
+    &:focus,
+    &:active,
+    &:hover {
+        border-bottom: 0.25rem solid $gsa-header-button-bg-hover-color;
+        margin-bottom: -0.25rem;
+        outline: none;
+    }
   }
 }
 .usa-nav {
   &.is-visible {
     background: $gsa-header-bg-color;
   }
+}
+
+.usa-navbar {
+  border: none;
 }
 
 nav {
@@ -32,4 +44,22 @@ nav {
       margin: 1rem 0;
     }
   }
+}
+
+@media screen and (min-width: 1300px) {
+  .usa-header--basic {
+    .usa-nav {
+      padding: 0 0 0.25rem 0.5rem;
+      width: 66%;
+    }
+  }
+
+  .usa-nav__primary {
+      button {
+          @include u-text('base-dark');
+          &:focus {
+              outline: none;
+          }
+      }
+   }
 }
