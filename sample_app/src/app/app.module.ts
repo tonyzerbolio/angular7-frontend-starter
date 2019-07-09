@@ -18,12 +18,14 @@ import { CoreModule } from './core/core.module';
 import { PeopleModule } from './people/people.module';
 import { Service1Module } from './service1/service1.module';
 import { CustomersModule } from './customers/customers.module';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

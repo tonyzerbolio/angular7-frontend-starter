@@ -21,39 +21,19 @@ Header Elements
 
 /*
 ----------------------------------------
-Footer Elements
+Main Content Container Elements
 ----------------------------------------
 */
-footer {
-    padding-bottom: 0;
-    .usa-footer__primary-section {
-        background-color: $gsa-footer-bg-primary;
-    }
-    .usa-footer__secondary-section {
-        background-color: $gsa-footer-bg-secondary;
-    }
-    h3 {
-        &.footer-logo {
-            color: #004f87;
-            padding: 68px 0 0 77px;
-            background: url('#{$theme-image-path}/footer-logo.png') no-repeat -1px 97%;
-            background-size: auto 70px;
-            font-size: 17px;
-            border: none;
-        }
-    }
-}
-
 /*
 ----------------------------------------
 Containers
 ----------------------------------------
 */
 // Main page content container
-.container.page {
-    margin-top: 0;
-    margin-bottom: 6.5rem;
-    max-width: 64rem;
+main {
+    &.main-content {
+        background-color: color('base-lightest');
+    }
 }
 
 /**
@@ -140,6 +120,33 @@ table {
     padding: 1rem;
     border: 1px solid #f0f0f0;
 }
+
+/*
+----------------------------------------
+Footer Elements
+----------------------------------------
+*/
+footer {
+    padding-bottom: 0;
+    .usa-footer__primary-section {
+        background-color: $gsa-footer-bg-primary;
+    }
+    .usa-footer__secondary-section {
+        background-color: $gsa-footer-bg-secondary;
+    }
+    h3 {
+        &.footer-logo {
+            color: #004f87;
+            padding: 68px 0 0 77px;
+            background: url('#{$theme-image-path}/footer-logo.png') no-repeat -1px 97%;
+            background-size: auto 70px;
+            font-size: 17px;
+            border: none;
+        }
+    }
+}
+
+
 
 // Mobile
 @media only screen 
