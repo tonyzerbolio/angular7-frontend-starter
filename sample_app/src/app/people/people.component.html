@@ -1,4 +1,4 @@
-<div class="people-container">
+<div class="people-page padding-y-5">
 
   <!-- Results table - it hides when there are no results -->
   <div class="grid-container">
@@ -29,7 +29,7 @@
           <h3>Instructions</h3>
           <p>This page is not backed by any micorservices yet and is using mock data for demonstation purposes only. It demonstrates Angular two-way binding. It can be used to update user profiles or other similar functions.</p>
           <p>Click on a client's row in the table below to see an example of how one might edit their details.</p>
-          <table class="usa-table clients">
+          <table class="usa-table">
             <thead>
               <tr class="border-bottom border-base-light padding-y-1">
                 <th scope="col">ID</th>
@@ -53,7 +53,7 @@
             
           <div *ngIf="selectedPerson">
             <form class="usa-form">
-              <fieldset class="usa-fieldset clients">
+              <fieldset class="usa-fieldset crudForm">
                 <legend class="usa-legend">
                   <h2>Update Client {{ selectedPerson.fullName }} Details:</h2>
                 </legend>

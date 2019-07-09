@@ -1,7 +1,14 @@
-<div class="service1-container">
+<div class="service1-page padding-top-2 padding-bottom-5">
 
   <!-- Results table - it hides when there are no results -->
   <div class="grid-container">
+    <div class="grid-row">
+      <div class="tablet:grid-col-12 text-right padding-y-1">
+          <a href="javascript:void(0);"
+          class="font-sans-3xs"
+          (click)="toggleList()">List/Grid</a>
+      </div>
+    </div>
     <div class="grid-row grid-gap">
       <div class="tablet:grid-col-3">
         <div class="card aside">
@@ -15,13 +22,22 @@
           </div>
         </div>
       </div>
-      <div *ngIf="Customer.length !== 0" class="tablet:grid-col-9 usa-prose">
+
+      <div *ngIf="Customers.length !== 0" class="tablet:grid-col-9 usa-prose position-relative">
         <div class="grid-container padding-x-0">
           <div class="grid-row grid-gap">
-            <div *ngFor="let customer of Customer" class="tablet:grid-col-4">
+            <div *ngFor="let customer of Customers"
+                    [ngClass]="{
+                      'tablet:grid-col-12': list,
+                      'tablet:grid-col-4': !list
+                    }">
               <div class="card">
                 <div class="card-content text-base-darkest">
                   <h3>{{customer.name}}</h3>
+                  <a href="javascript:void(0);"
+                  (click)="onSelect(customer)"
+                  class="font-sans-3xs"
+                  [class.selected]="customer === selectedCustomer">edit</a>
                   <p>
                     <span class="sub-title">Customer Info</span><br>
                     ID: {{customer.id}}<br>
@@ -29,6 +45,75 @@
                     Type: {{customer.type}}
                   </p>
                   <a href="https://www.gsa.gov/">View Website</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="selectedCustomer" class="crudInterface z-top">
+          <div class="page">
+            <div class="page-content">
+              <form class="usa-form crudForm">
+                <fieldset class="usa-fieldset">
+                  <legend class="usa-legend">
+                    <h2>Update Client {{ selectedCustomer.name }} Details:</h2>
+                  </legend>
+                  <div class="grid-row grid-gap">
+                    <div class="tablet:grid-col">
+                      <label>Full Name: </label>
+                      <input [(ngModel)] = "selectedCustomer.name" placeholder="name" [ngModelOptions]="{standalone: true}" />
+                    </div>
+                    <div class="tablet:grid-col">
+                      <label>ID: </label>
+                      <input [(ngModel)] = "selectedCustomer.id" placeholder="id" [ngModelOptions]="{standalone: true}" />
+                    </div>
+                  </div>
+                  <div class="grid-row grid-gap">
+                    <div class="tablet:grid-col">
+                      <label>Account: </label>
+                      <input [(ngModel)] = "selectedCustomer.account" placeholder="account" [ngModelOptions]="{standalone: true}" />
+                    </div>
+                    <div class="tablet:grid-col">
+                      <label>Type: </label>
+                      <input [(ngModel)] = "selectedCustomer.type" placeholder="type" [ngModelOptions]="{standalone: true}" />
+                    </div>
+                  </div>
+                  <div class="grid-row grid-gap">
+                    <div class="grid-col-4"></div>
+                    <div class="tablet:grid-col-2">
+                      <button class="usa-button" (click)="onSelect()">Update</button>
+                    </div>
+                    <div class="tablet:grid-col-2">
+                      <button class="usa-button" (click)="onSelect()">Cancel</button>
+                    </div>
+                    <div class="grid-col-4"></div>
+                  </div>
+                </fieldset>
+              </form>
+              <div class="grid-row grid-gap">
+                <div class="tablet:grid-col">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-2.png" alt="Second Card Decoration Image" />
+                    </div>
+                    <div class="card-content text-base-darkest">
+                      <h3>Card Title</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis ante eu turpis malesuada, eget posuere diam pretium.</p>
+                      <button class="usa-button ">Card Button</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="tablet:grid-col">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-3.png" alt="Third Card Decoration Image" />
+                    </div>
+                    <div class="card-content text-base-darkest">
+                      <h3>Card Title</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis ante eu turpis malesuada, eget posuere diam pretium.</p>
+                      <button class="usa-button ">Card Button</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
