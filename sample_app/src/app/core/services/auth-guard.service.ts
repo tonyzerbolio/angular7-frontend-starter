@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
       // Handle automatically refreshing auth token
       this.oauthService.setupAutomaticSilentRefresh();
       // Navigate to route that sent you here
-      this.router.navigate([state]);
+      this.router.navigate(['/login']);
     }
     return false;
   }
