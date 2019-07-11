@@ -23,10 +23,12 @@ export class Service1Component implements OnInit {
     public svcApi: Service1ApiService
   ) { }
   
+  // Opens/Closes record edit menu (CRUD)
   onSelect(customer: Customer): void {
     this.selectedCustomer = customer;
   }
 
+  // Toggles list/grid view by setting list variable to true or false
   toggleList(): void {
     if ( !this.list ) {
       this.list = true;
@@ -36,7 +38,7 @@ export class Service1Component implements OnInit {
   }
 
   ngOnInit() {
-    this.getData()
+    this.getData();
   }
  
   getData() {

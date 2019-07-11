@@ -48,8 +48,28 @@ a {
     text-align: right;
 }
 
+.usa-logo {
+    
+  
+    @include at-media($theme-navigation-width) {
+      margin-top: units(4);
+      margin-bottom: units(2);
+      font-size: font-size($theme-header-font-family, 'lg');
+      line-height: line-height($theme-header-font-family, 2);
+    }
+  
+    a {
+      color: color('ink');
+      text-decoration: none;
+    }
+  }
+
+
 // Logo Graphic (if used) and Logo Text
 .usa-logo {
+    @include at-media-max($theme-navigation-width) {
+        margin-left: 0
+    }
     background-image: url(/assets/uswds-2.0.2/img/gsa-logo.jpg);
     background-repeat: no-repeat;
     background-size: contain;

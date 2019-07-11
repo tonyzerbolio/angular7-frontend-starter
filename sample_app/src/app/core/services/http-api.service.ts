@@ -18,7 +18,7 @@ export class Service1ApiService {
   // svcstr: passed as arg from component
 
   constructor(
-    public oktaAuth: OAuthService,
+    public oauthService: OAuthService,
     private http: HttpClient,
     private messageService: MessageService
   ) { }
@@ -34,7 +34,10 @@ export class Service1ApiService {
   // HttpClient API get() method => Fetch results
   getService1(svcurl: string, svcstr: string): Observable<Svc1Result> {
 
-    const accessToken = this.oktaAuth.getAccessToken();
+    const accessToken = this.oauthService.getAccessToken();
+
+    // Handle automatically refreshing auth token
+    this.oauthService.setupAutomaticSilentRefresh();
 
     // Display API activity on home page
     // TODO: send the message _after_ fetching the data
