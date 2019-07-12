@@ -37,7 +37,7 @@ export class Service1ApiService {
     const accessToken = this.oauthService.getAccessToken();
 
     // Handle automatically refreshing auth token
-    this.oauthService.setupAutomaticSilentRefresh();
+    // this.oauthService.setupAutomaticSilentRefresh();
 
     // Display API activity on home page
     // TODO: send the message _after_ fetching the data

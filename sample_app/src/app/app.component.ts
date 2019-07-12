@@ -6,7 +6,7 @@ export const authConfig: AuthConfig = {
   clientId: '0oakau102ZE29iuuJ356',
   redirectUri: window.location.origin + '/login',
   responseType: 'token id_token code',
-  silentRefreshRedirectUri: window.location.origin + '/login',
+  // silentRefreshRedirectUri: window.location.origin + '/login',
   scope: 'openid profile email offline_access'
 };
 
@@ -21,9 +21,9 @@ export class AppComponent implements OnInit {
     this.oauthService.configure(authConfig);
 
     // Handle automatically refreshing auth token
-    this.oauthService.setupAutomaticSilentRefresh();
+    // this.oauthService.setupAutomaticSilentRefresh();
+    // this.oauthService.setStorage(sessionStorage);
 
-    this.oauthService.setStorage(sessionStorage);
     this.oauthService.tokenValidationHandler = new JwksValidationHandler();
 
     // Load Discovery Document and then try to login the user
@@ -34,7 +34,8 @@ export class AppComponent implements OnInit {
         })
         .then(() => {
           if (!this.oauthService.hasValidAccessToken()) {
-            this.oauthService.initImplicitFlow();
+            console.log('No token found. You need to log in.', doc);
+            //this.oauthService.initImplicitFlow();
           }
         });
     });
