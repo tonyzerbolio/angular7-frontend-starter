@@ -16,4 +16,3 @@ import { Service1Component } from './service1.component';
   ]
   })
   export class Service1Module {}
-  
