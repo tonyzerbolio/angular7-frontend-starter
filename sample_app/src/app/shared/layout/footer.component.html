@@ -1,20 +1,28 @@
-<footer class="usa-footer usa-footer--slim" role="contentinfo">
+<footer class="usa-footer usa-footer--slim  border-top-1 border-secondary-dark" role="contentinfo">
   <div class="usa-footer__primary-section">
     <div class="grid-row grid-row maxw-desktop margin-x-auto desktop:padding-x-4">
       <div class="mobile-lg:grid-col-8">
         <nav class="usa-footer__nav">
           <ul class="add-list-reset grid-row grid-gap">
             <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="javascript:void(0);">Primary link</a>
+              <a class="usa-footer__primary-link" href="javascript:void(0);" routerLink="/">
+                Home
+              </a>
             </li>
-            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="javascript:void(0);">Primary link</a>
+            <!-- <li>
+              <button class="usa-button" routerLink="/customers"> Events </button>
+            </li> -->
+            <li *ngIf="givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" routerLink="/service1"> Clients </a>
             </li>
-            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="javascript:void(0);">Primary link</a>
+            <!-- <li *ngIf="givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" routerLink="/people"> Client Update </a>
+            </li> -->
+            <li *ngIf="!givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" (click)="login()">Login</a>
             </li>
-            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="javascript:void(0);">Primary link</a>
+            <li *ngIf="givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" (click)="logout()">Logout</a>
             </li>
           </ul>
         </nav>
@@ -41,13 +49,10 @@
     <div class="grid-container">
       <div class="usa-footer__logo grid-row grid-gap-2">
         <div class="grid-col-auto">
-          <img class="usa-footer__logo-img" src="/assets/uswds-2.0.2/img/logo-img.png" alt="">
-        </div>
-        <div class="grid-col-auto">
-          <h3 class="usa-footer__logo-heading">Name of Agency</h3>
-          <span class="attribution">
+          <h3 class="footer-logo" title="GSA Logo">U.S. General Services Administration</h3>
+          <!-- <span class="attribution">
             &copy; {{ today | date: 'yyyy' }}.
-          </span>
+          </span> -->
         </div>
       </div>
     </div>

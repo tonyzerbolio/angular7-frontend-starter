@@ -1,7 +1,7 @@
 /**
  * Nav
  */
-.usa-nav__primary{
+.usa-nav__primary {
   margin-bottom: unset;
   >.usa-nav__primary-item {
     >a {
@@ -11,9 +11,100 @@
       }
     }
   }
-}
-.usa-nav {
-  &.is-visible {
-    background: $gsa-header-bg-color;
+  button {
+    padding: 1rem 0.5rem;
+    @include u-text('white');
+    &:focus,
+    &:active,
+    &:hover {
+        border-bottom: 0.25rem solid $gsa-header-button-bg-hover-color;
+        margin-bottom: -0.25rem;
+        outline: none;
+    }
   }
+}
+
+.usa-navbar {
+  border: none;
+  justify-content: space-between;
+}
+
+nav {
+  &.interior {
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      margin: 1rem 0;
+    }
+  }
+}
+
+.usa-nav__primary {
+  button {
+    @include u-text('base-dark');
+    &:focus {
+        outline: none;
+    }
+  }
+}
+
+// Overlay covers main page when mobile nav is visible
+.usa-overlay {
+  background: white;
+  &.is-visible {
+    opacity: 0.6;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  $header-height-at-mobile: 6rem;
+  .usa-overlay {
+    top: $header-height-at-mobile;
+  }
+  .usa-nav {
+    top: $header-height-at-mobile;
+    width: 100%;
+    &.is-visible {
+      @include u-shadow(2);
+      background: color('white');
+      border-top: 1px solid color('base-light');
+    }
+  }
+}
+
+// Tablet Portrait
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  $header-height-at-mobile: 4.35rem;
+  .usa-overlay {
+    top: $header-height-at-mobile;
+  }
+  .usa-nav {
+    padding: 1rem;
+    position: absolute;
+    top: $header-height-at-mobile;
+    width: 66%;
+    &.is-visible {
+      @include u-shadow(2);
+      background: color('white');
+      border-top: 1px solid color('base-light');
+    }
+  }
+  .usa-nav__primary {
+    button {
+      padding: 1rem 0.5rem;
+      text-transform: uppercase;
+      color: color('base-darkest');
+      &:focus,
+      &:active,
+      &:hover {
+        background-color: color('white');
+        border-bottom: 0.1rem solid color('base-darkest');
+        margin-bottom: -0.1rem;
+        outline: none;
+      }
+    }
+  } 
 }

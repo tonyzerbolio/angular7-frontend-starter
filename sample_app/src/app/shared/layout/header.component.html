@@ -44,40 +44,37 @@
 </div>
 
 <div class="usa-overlay"></div>
-<header class="usa-header usa-header--basic" role="banner">
+<header class="usa-header usa-header--basic border-bottom-1px" role="banner">
   <div class="usa-nav-container">
     <div class="usa-navbar">
       <div class="usa-logo" id="basic-logo">
-        <em class="usa-logo__text"><a routerLink="/" title="Home" aria-label="Home">Project title</a></em>
+        <a routerLink="/" title="Home" aria-label="Home">
+          <span class="usa-logo__text">Project</span>
+        </a>
       </div>
-      <button class="usa-menu-btn">Menu</button>
+      <button (click)="changeText()" class="usa-menu-btn">{{menuText}}</button>
     </div>
     <nav role="navigation" class="usa-nav">
       <!-- Show this for logged out users -->
-      <div *ngIf="!isAuthenticated">
-        <ul class="usa-nav__primary">
-          <li class="usa-nav__primary-item">
-            <button class="usa-button" routerLink="/">
-              Home
-            </button>
-          </li>
-          <li *ngIf="!production">
-            <button class="usa-button" routerLink="/customers"> Customers1 </button>
-          </li>
-          <li *ngIf="givenName">
-            <button class="usa-button" routerLink="/service1"> Customers2 </button>
-          </li>
-          <li *ngIf="!production">
-            <button class="usa-button" routerLink="/people"> People </button>
-          </li>
-          <li *ngIf="!givenName">
-            <button class="usa-button"  (click)="login()">Login</button>
-          </li>
-          <li *ngIf="givenName">
-            <button class="usa-button"  (click)="logout()">Logout</button>
-          </li>
-        </ul>
-      </div>
+      <ul class="usa-nav__primary">
+        <li class="usa-nav__primary-item">
+          <button class="usa-button" routerLink="/">
+            Home
+          </button>
+        </li>
+        <li *ngIf="givenName" class="usa-nav__primary-item">
+          <button class="usa-button" routerLink="/service1"> Clients </button>
+        </li>
+        <!-- <li *ngIf="givenName" class="usa-nav__primary-item">
+          <button class="usa-button" routerLink="/people"> Client Update </button>
+        </li> -->
+        <li *ngIf="!givenName" class="usa-nav__primary-item">
+          <button class="usa-button" (click)="login()">Login</button>
+        </li>
+        <li *ngIf="givenName" class="usa-nav__primary-item">
+          <button class="usa-button" (click)="logout()">Logout</button>
+        </li>
+      </ul>
       <form class="usa-search usa-search--small ">
         <div role="search">
           <label class="usa-sr-only" for="basic-search-field-small">Search small</label>

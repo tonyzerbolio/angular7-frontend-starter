@@ -2,48 +2,39 @@ import { Person } from './person.model';
 
 export const PEOPLE: Person[] = [
   {
-    email: 'Person1@fakemail.com',
+    type: 'Individual',
     id: 1,
-    firstName: 'Person',
-    lastName: 'One',
-    fullName: 'Person One',
-    jobTitle: 'Model Person',
+    firstName: 'Adam',
+    lastName: 'Kowalski',
+    fullName: 'Adam Kowalski',
+    account: '12345',
     phoneNumber: '123-555-1234'
   },
   {
-    email: 'Person2@fakemail.com',
+    type: 'Individual',
     id: 2,
-    firstName: 'Person',
-    lastName: 'Two',
-    fullName: 'Person Two',
-    jobTitle: 'Model Person',
+    firstName: 'Anna',
+    lastName: 'Malinowska',
+    fullName: 'Anna Malinowska',
+    account: '12346',
     phoneNumber: '123-555-2345'
   },
   {
-    email: 'Person3@fakemail.com',
+    type: 'Individual',
     id: 3,
-    firstName: 'Person',
-    lastName: 'Three',
-    fullName: 'Person Three',
-    jobTitle: 'Model Person',
+    firstName: 'Pawel',
+    lastName: 'Michalski',
+    fullName: 'Pawel Michalski',
+    account: '12347',
     phoneNumber: '123-555-3456'
   },
   {
-    email: 'Person4@fakemail.com',
+    type: 'Individual',
     id: 4,
-    firstName: 'Person',
-    lastName: 'Four',
-    fullName: 'Person Four',
-    jobTitle: 'Model Person',
+    firstName: 'Karolina',
+    lastName: 'Lewandowska',
+    fullName: 'Karolina Lewandowska',
+    account: '12348',
     phoneNumber: '123-555-4567'
-  },
-  {
-    email: 'Person5@fakemail.com',
-    id: 5,
-    firstName: 'Person',
-    lastName: 'Five',
-    fullName: 'Person Five',
-    jobTitle: 'Model Person',
-    phoneNumber: '123-555-5678'
   }
 ];

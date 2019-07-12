@@ -5,10 +5,16 @@
   @include border-box-sizing;
   @include typeset;
   @include u-padding-y($theme-site-margins-width);
-  background-image: url('#{$theme-image-path}/hero.png');
+  
   background-position: center;
   background-size: cover;
   color: color('white');
+  &.home-hero {
+    background-image: url('#{$theme-image-path}/GSAHQ1024x408.jpg');
+  }
+  &.home-sub-hero {
+    background-image: url('#{$theme-image-path}/GSACY1024x408.jpg');
+  }
 }
 
 .usa-hero__callout {

@@ -8,18 +8,34 @@ import { environment } from '../../../environments/environment';
 })
 export class HeaderComponent implements OnInit {
 
-  prodBuild = `${environment.production}`
+  // Variable set in environments/environment.prod.ts and environments/environment.js
+  prodBuild = `${environment.production}`;
 
-  constructor(private oauthService: OAuthService) { }
+  // Default mobile nav menu text
+  public menuText = 'MENU';
 
+  constructor(
+    private oauthService: OAuthService
+  ) { }
+
+  // Change mobile nav menu button text
+  changeText(): void {
+    if (this.menuText === 'MENU') {
+      this.menuText = 'CLOSE';
+    } else {
+      this.menuText = 'MENU';
+    }
+  }
+
+  // Initiates Okta login
   login() {
     this.oauthService.initImplicitFlow();
   }
-
+  // Initiates Okta logout
   logout() {
     this.oauthService.logOut();
   }
-  
+  // Gets full name of Okta authenticated user from claims
   get givenName() {
     const claims = this.oauthService.getIdentityClaims();
     if (!claims) {

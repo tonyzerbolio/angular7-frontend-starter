@@ -6,16 +6,21 @@ All color variables for GSA elements are defined in
 --> uswds-2.0.2/scss/theme/_uswds-theme-custom-styles
 ------------------------------------------------------
 */
+/*
+----------------------------------------
+Container Display Classes
+----------------------------------------
+*/
+.hide {
+    display: none;
+}
 
 /*
 ----------------------------------------
 Header Elements
 ----------------------------------------
 */
-// Primary Site Navigation
-.usa-header {
-    background: $gsa-header-bg-color;
-}
+
 // Feature displayed on the Home Page
 .banner {
     background-color: $gsa-header-banner-bg-color;
@@ -24,28 +29,101 @@ Header Elements
 
 /*
 ----------------------------------------
-Footer Elements
+Main Content Container Elements
 ----------------------------------------
 */
-footer {
-    padding-bottom: 0;
-}
-
 /*
 ----------------------------------------
 Containers
 ----------------------------------------
 */
 // Main page content container
-.container.page {
-    margin-top: 0;
-    margin-bottom: 6.5rem;
-    max-width: 64rem;
+main {
+    &.main-content {
+        background-color: color('base-lightest');
+    }
 }
-// Center a container
-main#main-content {
-    margin-bottom: 12rem;
+
+/**
+ * Defines attributes of CARDS and main content area 'PAGE' areas.
+ * Note that 'pages' in this context does not mean the entire
+ * main content area but rather a large section of the main
+ * content area shown with a white background over the main
+ * content area's gray background.
+ */
+
+.card,
+.page {
+    @include u-shadow(2);
+    margin-bottom: 1.6rem;
+    background-color: #fff;
+    &.aside {
+        border-top: 5px solid color('secondary-dark');
+        border-right: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        border-left: 1px solid #fff;
+    }
+    &:not(.aside) {
+        border: 1px solid #fff;
+    }
+    .card-image {
+        min-height: 3.2rem;
+    }
 }
+
+.page {
+    padding-bottom: 1.2rem;
+}
+
+// Card display in grid and list views
+.tablet\:grid-col-12 {
+    .card {
+        margin-bottom: 1px;
+    }
+}
+
+// Content in Cards
+.card-content,
+.page-content {
+    padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+}
+// Image containers in Cards
+.card-image {
+    line-height: 0;
+    margin: 0px;
+    padding: 0px;
+    img {
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+    }
+} 
+
+// Table for tabular data
+table {
+    width: 100%;
+    &.clients {
+        tbody {
+            tr {
+                th, td {
+                    background-color: transparent;
+                }
+                &:hover {
+                    cursor: pointer;
+                    @include u-bg('primary-lighter')
+                }
+            }
+        }
+        th, td {
+           text-align: left;
+        }
+        th:first-child, td:first-child {
+            text-align: center;
+            width: 10%;
+        }
+    }
+}
+
 .margin-auto {
     margin: auto;
 }
@@ -58,10 +136,49 @@ main#main-content {
     border: 1px solid #f0f0f0;
 }
 
+
+/*
+----------------------------------------
+Footer Elements
+----------------------------------------
+*/
+footer {
+    padding-bottom: 0;
+    .usa-footer__primary-section {
+        background-color: $gsa-footer-bg-primary;
+    }
+    .usa-footer__secondary-section {
+        background-color: $gsa-footer-bg-secondary;
+    }
+    h3 {
+        &.footer-logo {
+            color: #004f87;
+            padding: 68px 0 0 77px;
+            background: url('#{$theme-image-path}/footer-logo.png') no-repeat -1px 97%;
+            background-size: auto 70px;
+            font-size: 17px;
+            border: none;
+        }
+    }
+}
+
+
+
+// Mobile
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) { 
     footer {
         position: relative;
+    }
+}
+
+// Larger Screens
+@media (min-width: 64em) {
+    .usa-header--basic {
+        .usa-search {
+            top: unset;
+            bottom: -0.4rem;
+        }
     }
 }

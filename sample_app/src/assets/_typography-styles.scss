@@ -5,13 +5,17 @@ html, body {
     color: $gsa-body-text-color;
     font-size: $gsa-body-font-size;
 }
-.h1 {
-    .home-page & {
-        margin: 0;
-    }
+h1, h2, h3 {
+    font-family: $theme-font-type-serif;
+    font-weight: bold;
+    line-height: 1.625rem;
+}
+p {
+    line-height: 1.63432rem;
 }
 a {
     color: $gsa-link-color;
+    cursor: pointer;
     &:active {
         color: $gsa-link-active-color;
     }
@@ -23,6 +27,13 @@ a {
     }
     &:visited {
         color: $gsa-link-visited-color;
+    }
+    &.usa-footer__primary-link {
+        @include u-text('base-darkest');
+        font-family: $theme-font-type-serif;
+        &:active, &:hover, &:focus, &:visited {
+            @include u-text('base-darkest');
+        }
     }
 }
 .page-link {
@@ -37,9 +48,160 @@ a {
     text-align: right;
 }
 
-.usa-logo__text {
+.usa-logo {
+    
+  
+    @include at-media($theme-navigation-width) {
+      margin-top: units(4);
+      margin-bottom: units(2);
+      font-size: font-size($theme-header-font-family, 'lg');
+      line-height: line-height($theme-header-font-family, 2);
+    }
+  
     a {
-        color: $gsa-header-logo-color;
+      color: color('ink');
+      text-decoration: none;
+    }
+  }
+
+
+// Logo Graphic (if used) and Logo Text
+.usa-logo {
+    @include at-media-max($theme-navigation-width) {
+        margin-left: 0
+    }
+    background-image: url(/assets/uswds-2.0.2/img/gsa-logo.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    font-size: 1.5rem;
+    height: auto;
+    line-height: 2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    min-height: 3rem;
+    width: auto;
+    a {
+        align-items: flex-end;
+        color: color('base-darker');
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        justify-content: flex-end;
+        min-width: 7.6rem;
+        &:visited,
+        &:active,
+        &:hover,
+        &:focus {
+            outline: none;
+        }
+    }
+}
+.usa-logo__text {
+    display: inline-flex;
+    align-items: baseline;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.usa-banner__header-text, 
+.usa-accordion,
+.usa-banner__button-text {
+    color: color('base-lightest');
+}
+
+/** 
+ * Card Text Styles
+ */
+.card {
+    h1, h2, h3 {
+        margin: 0.47rem 0;
+    }
+    h1 {
+        @include u-text('secondary-darker');
+    }
+    h2 {
+        @include u-text('primary');
+        font-size: 1.2rem;
+    }
+    h3 {
+        @include u-text('primary');
+    }
+    .sub-title {
+        font-family: $theme-font-type-serif;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+} 
+.page {
+    h1, h2 {
+        margin: 0.47rem 0;
+    }
+    h2 {
+        @include u-text('primary');
+        font-size: 1.2rem;
     }
 }
 
+// Tablet Landscape
+@media (min-width: 64em) {
+    
+    .usa-nav-container {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+    }
+    .usa-navbar {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        height: auto;
+        min-height: 66.51px;
+        a {
+            min-width: 10.4rem;
+        }
+    }
+    
+
+    // Logo Graphic (if used) and Logo Text
+    .usa-logo {
+        font-size: 2rem;
+        height: auto;
+        line-height: 2.5rem;
+        max-width: 10.33rem;
+        min-height: 3rem;
+        width: auto;
+    }
+}
+
+// Tablet Portrait
+@media (max-width: 63.99em) {
+    .usa-logo {
+        max-width: 7.6rem;
+    }
+}
+
+// Large screens
+@media screen and (min-width: 1300px) {
+    .usa-logo {
+        display: flex;
+        min-height: 5rem;
+        a {
+            font-size: 2rem;
+            min-width: 11.23456rem;
+        }
+    }
+    .usa-logo__text {
+        line-height: 3rem;
+    }
+    footer {
+        h3 {
+            &.footer-logo {
+                font-size: 2.0rem;
+                font-weight: normal;
+            }            
+        }
+    } 
+}

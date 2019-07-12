@@ -9,6 +9,8 @@ import { By } from '@angular/platform-browser';
 
 import {Component, Directive} from '@angular/core';
 import {FooterComponent} from './footer.component';
+import { OAuthService, UrlHelperService, OAuthLogger } from 'angular-oauth2-oidc';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
@@ -19,8 +21,7 @@ describe('FooterComponent', () => {
       declarations: [
         FooterComponent
       ],
-      providers: [
-      ],
+      providers: [ OAuthService, HttpClient, HttpHandler, UrlHelperService, OAuthLogger ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
   });

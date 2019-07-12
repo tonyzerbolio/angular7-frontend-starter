@@ -1,14 +1,67 @@
-<div class="home-page">
-  <section class="grid-container usa-section">
+<div class="home-page bg-white">
+  <section class="usa-hero home-hero">
+    <div class="grid-container">
+      <div class="usa-hero__callout">
+        <h1 class="usa-hero__heading"><span class="usa-hero__heading--alt">GSA Project:</span>Your tool to browse and manage critical assets
+        </h1><p>This interface provides authenticated users the ability to browse and manage critial assets and information.</p>
+        <button class="usa-button" (click)="login()">Login</button>
+      </div>
+    </div>
+  </section>
+  <section class="grid-container">
     <div class="grid-row">
-      <div class="tablet:grid-col-12">
+      <h1>Welcome to the GSA Project</h1>
+      <div class="tablet:grid-col-12 bg-base-lightest padding-2">
         <div *ngIf="givenName">
           <h2>Welcome, {{givenName}}!</h2>
+          <p class="site-text-intro">As an authenticated user, you get content that is customized to your needs as well as access to content that non-authenticated users cannot see.</p>
         </div>
         <div *ngIf="!givenName">
-          <h2>Welcome</h2>
+          <h2>Content Title</h2>
+          <p class="site-text-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a augue vulputate, aliquet neque ut, placerat tellus. Nunc non augue ac quam sodales imperdiet sed nec nibh. Quisque iaculis lacus lacus. Donec semper egestas imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed vel dolor non augue pulvinar facilisis elementum id nisi. Nam a nisi non nibh maximus convallis id nec orci. Nulla nec enim et turpis scelerisque faucibus nec at arcu. Duis at lacinia felis, vel fermentum sapien. Morbi viverra quam quis dignissim laoreet. Curabitur ac porta ligula.</p>
         </div>
-        <p class="site-text-intro">This is your Front End starter kit. (Branded version on feature/add-mediabarn-conent)</p>
+      </div>
+    </div>
+  </section>
+  <section class="usa-hero home-sub-hero usa-section margin-top-4">
+    <div class="grid-container">
+      <div class="grid-row grid-gap-lg">
+        <div class="tablet:grid-col">
+          <div class="card">
+            <div class="card-image">
+              <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-1.png" alt="First Card Decoration Image" />
+            </div>
+            <div class="card-content text-base-darkest">
+              <h3>Card Title</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis ante eu turpis malesuada, eget posuere diam pretium.</p>
+              <button class="usa-button ">Card Button</button>
+            </div>
+          </div>
+        </div>
+        <div class="tablet:grid-col">
+          <div class="card">
+            <div class="card-image">
+              <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-2.png" alt="Second Card Decoration Image" />
+            </div>
+            <div class="card-content text-base-darkest">
+              <h3>Card Title</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis ante eu turpis malesuada, eget posuere diam pretium.</p>
+              <button class="usa-button ">Card Button</button>
+            </div>
+          </div>
+        </div>
+        <div class="tablet:grid-col">
+          <div class="card">
+            <div class="card-image">
+              <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-3.png" alt="Third Card Decoration Image" />
+            </div>
+            <div class="card-content text-base-darkest">
+              <h3>Card Title</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis ante eu turpis malesuada, eget posuere diam pretium.</p>
+              <button class="usa-button ">Card Button</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

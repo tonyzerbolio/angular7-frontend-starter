@@ -1,7 +1,7 @@
 .usa-banner {
   @include typeset($theme-banner-font-family);
   @include border-box-sizing;
-  background-color: color('base-lightest');
+  background-color: color('base-darker');
 
   @include at-media('tablet') {
     font-size: font-size($theme-banner-font-family, '3xs');
@@ -66,7 +66,7 @@
 
 .usa-banner__header-close-text {
   @include u-margin-y(0);
-  color: color('base-dark');
+  color: color('base-lightest');
   display: none;
   font-size: font-size($theme-banner-font-family, 1);
   line-height: line-height($theme-banner-font-family, 2);
@@ -89,7 +89,7 @@
 
 .usa-banner__header-action {
   @include add-icon('angle-arrow-down-primary', 'after', 1, 1, 0.5, 'hover');
-  color: color('primary');
+  color: color('base-lightest');
   line-height: line-height($theme-banner-font-family, 2);
   margin-bottom: units(0);
   margin-top: units(2px);
@@ -120,7 +120,7 @@
 
   @include at-media('tablet') {
     background-color: transparent;
-    color: color('ink');
+    color: color('base-lightest');
     display: block;
     font-size: font-size($theme-banner-font-family, 1);
     font-weight: font-weight('normal');
@@ -190,7 +190,7 @@
       &::after {
         @include u-pin('y');
         @include u-pin('right');
-        background-color: color('base-lighter');
+        background-color: color('base-darker');
         bottom: 0;
         height: auto;
       }

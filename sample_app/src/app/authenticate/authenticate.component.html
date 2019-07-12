@@ -1,18 +1,31 @@
-<div class="authenticate-page">
-
-  <section class="grid-container usa-section">
+<div class="authenticate-page padding-y-5">
+  <section class="grid-container">
     <div class="grid-row grid-gap">
-      <div class="tablet:grid-col-12">
+      <aside class="usa-layout-docs__sidenav desktop:grid-col-3">
+        <div class="tablet:grid-col">
+          <div class="card aside">
+            <div class="card-content">
+              <h1>Login</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur sem ta adipiscing elit. Fusce lel ullamcorper accumsan sem ut blandit.</p>
+              <p>Aliquam a vestibulum sa.</p>
+            </div>
+            <div class="card-image">
+              <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-2.png" alt="Login Card Decoration Image" />
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div class="usa-layout-docs__main tablet:grid-col-9 usa-prose page">
         
         <div *ngIf="givenName">
-          <h2>Welcome, {{givenName}}!</h2>
+          <h3>Welcome, {{givenName}}!</h3>
           <p>You have successfully logged in.</p>
-          <button (click)="logout()">Logout</button>
+          <button class="usa-button" (click)="logout()">Logout</button>
         </div>
         <div *ngIf="!givenName">
-          <h2>Please login</h2>
+          <h3>Please login</h3>
           <p>In order to see content that is protected by Okta, you must login.</p>
-          <button (click)="login()">Login</button>
+          <button class="usa-button" (click)="login()">Login</button>
         </div>
 
       </div>
