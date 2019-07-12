@@ -16,13 +16,6 @@ export class Service1ApiService {
 
   // service1_url: URL to service - defined in environments/environments.ts;
   // svcstr: passed as arg from component
-
-  constructor(
-    public oauthService: OAuthService,
-    private http: HttpClient,
-    private messageService: MessageService
-  ) { }
-
   // Http Options
   httpOptions = {
     headers: new HttpHeaders({
@@ -30,6 +23,11 @@ export class Service1ApiService {
     })
   }
 
+  constructor(
+    public oauthService: OAuthService,
+    private http: HttpClient,
+    private messageService: MessageService
+  ) { }
 
   // HttpClient API get() method => Fetch results
   getService1(svcurl: string, svcstr: string): Observable<Svc1Result> {

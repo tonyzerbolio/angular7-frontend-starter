@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   prodBuild = `${environment.production}`;
 
   // Default mobile nav menu text
-  public menuText: string = 'MENU';
+  public menuText = 'MENU';
 
   constructor(
     private oauthService: OAuthService
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
   // Change mobile nav menu button text
   changeText(): void {
-    if(this.menuText === 'MENU') { 
+    if (this.menuText === 'MENU') {
       this.menuText = 'CLOSE';
     } else {
       this.menuText = 'MENU';

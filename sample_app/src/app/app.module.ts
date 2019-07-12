@@ -25,7 +25,7 @@ import { CustomersModule } from './customers/customers.module';
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    //MessagesComponent
+    // MessagesComponent
   ],
   imports: [
     BrowserModule,

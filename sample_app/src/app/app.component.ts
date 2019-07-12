@@ -30,12 +30,12 @@ export class AppComponent implements OnInit {
     this.oauthService.loadDiscoveryDocument().then((doc) => {
       this.oauthService.tryLogin()
         .catch(err => {
-          console.debug('Authorization error - ',err);
+          console.log( 'Authorization error - ', err );
         })
         .then(() => {
           if (!this.oauthService.hasValidAccessToken()) {
             console.log('No token found. You need to log in.', doc);
-            //this.oauthService.initImplicitFlow();
+            // this.oauthService.initImplicitFlow();
           }
         });
     });
