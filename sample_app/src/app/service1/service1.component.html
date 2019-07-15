@@ -4,9 +4,14 @@
   <div class="grid-container">
     <div class="grid-row">
       <div class="tablet:grid-col-12 text-right padding-y-1">
-          <a href="javascript:void(0);"
-          class="font-sans-3xs"
+          <!-- Toggle grid/list view - If editing a record, hide List/Grid toggle and show cancel -->
+          <a *ngIf="!selectedCustomer" href="javascript:void(0);"
+          class="font-sans-3xs list-grid-toggle"
           (click)="toggleList()">List/Grid</a>
+          <!-- Cancel button removes edit view and reshows List/Grid toggle -->
+          <a *ngIf="selectedCustomer" href="javascript:void(0);"
+          class="font-sans-3xs list-grid-toggle"
+          (click)="onSelect()">Cancel</a>
       </div>
     </div>
     <div class="grid-row grid-gap">
