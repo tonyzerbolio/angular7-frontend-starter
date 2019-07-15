@@ -4,13 +4,13 @@ services:
     container_name: comet_angularjs_build
     build:
       context: ././
-      dockerfile: DockerfileMultiStage
+      dockerfile: Dockerfile
       target: BUILD_STAGE
   angularjs_deploy:
     container_name: comet_angularjs
     build:
       context: ././
-      dockerfile: DockerfileMultiStage
+      dockerfile: Dockerfile
     ports:
       - 8080:8080
     environment:
