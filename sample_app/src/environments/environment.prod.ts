@@ -4,6 +4,7 @@
 export const environment = {
   production: true,
   service1_url: 'http://service1.comet',
-  service1_port: ':8092',
-  service1_str: '/customers'
+  service_port: ':8081',
+  service1_str: '/service1/',
+  service2_str: '/service2/'
 };

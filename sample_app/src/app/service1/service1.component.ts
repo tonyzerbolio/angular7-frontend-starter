@@ -11,9 +11,11 @@ import { Customer } from '../core/models/customer.model';
 export class Service1Component implements OnInit {
 
   Customers: any = [];
-  ServiceURL = `${environment.service1_url}`;
-  ServicePORT = `${environment.service1_port}`;
+  ServiceURL = `${environment.service_url}`;
+  ServicePORT = `${environment.service_port}`;
   ServiceString = `${environment.service1_str}`;
+
+  svcToCall: string;
 
   selectedCustomer: Customer;
 
@@ -27,6 +29,9 @@ export class Service1Component implements OnInit {
   onSelect(customer: Customer): void {
     this.selectedCustomer = customer;
   }
+  getCustomer(customer: Customer): void {
+    this.getData('customer/' + customer.id);
+  }
 
   // Toggles list/grid view by setting list variable to true or false
   toggleList(): void {
@@ -37,12 +42,15 @@ export class Service1Component implements OnInit {
     }
   }
 
+  
+
   ngOnInit() {
-    this.getData();
+    this.getData('customers');
   }
 
-  getData() {
-    return this.svcApi.getService1(this.ServiceURL + this.ServicePORT, this.ServiceString).subscribe((data: {}) => {
+  getData(svcName: string) {
+    this.svcToCall = this.ServiceString + svcName;
+    return this.svcApi.getService1(this.ServiceURL + this.ServicePORT, this.svcToCall).subscribe((data: {}) => {
         this.Customers = data;
     })
   }

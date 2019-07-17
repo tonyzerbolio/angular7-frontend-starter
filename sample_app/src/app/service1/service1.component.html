@@ -19,8 +19,19 @@
         <div class="card aside">
           <div class="card-content">
             <h1>Clients</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur sem ta adipiscing elit. Fusce lel ullamcorper accumsan sem ut blandit.</p>
-            <p>Aliquam a vestibulum sa.</p>
+            <nav class="interior">
+              <ul>
+                <li>
+                  <a href="#">Interior Link</a>
+                </li>
+                <li>
+                  <a href="#">Interior Link</a>
+                </li>
+                <li>
+                  <a href="#">Interior Link</a>
+                </li>
+              </ul>
+            </nav>
           </div>
           <div class="card-image">
             <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-1.png" alt="Clients Card Decoration Image" />
@@ -43,10 +54,14 @@
                   (click)="onSelect(customer)"
                   class="font-sans-3xs"
                   [class.selected]="customer === selectedCustomer">edit</a>
+                  <a href="javascript:void(0);"
+                  (click)="getCustomer(customer)"
+                  class="font-sans-3xs"
+                  [class.selected]="customer === selectedCustomer">getCustomer</a>
                   <p>
                     <span class="sub-title">Client Info</span><br>
                     ID: {{customer.id}}<br>
-                    Account: {{customer.pesel}}<br>
+                    Pesel: {{customer.pesel}}<br>
                     Type: {{customer.type}}
                   </p>
                   <a href="https://www.gsa.gov/">View Website</a>
@@ -75,8 +90,8 @@
                   </div>
                   <div class="grid-row grid-gap">
                     <div class="tablet:grid-col">
-                      <label>Account: </label>
-                      <input [(ngModel)] = "selectedCustomer.account" placeholder="account" [ngModelOptions]="{standalone: true}" />
+                      <label>Pesel: </label>
+                      <input [(ngModel)] = "selectedCustomer.pesel" placeholder="pesel" [ngModelOptions]="{standalone: true}" />
                     </div>
                     <div class="tablet:grid-col">
                       <label>Type: </label>

@@ -10,8 +10,8 @@ import { environment } from '../../environments/environment';
 export class CustomersComponent implements OnInit {
 
   Customer: any = [];
-  ServiceURL = `${environment.service2_url}`;
-  ServicePORT = `${environment.service2_port}`;
+  ServiceURL = `${environment.service_url}`;
+  ServicePORT = `${environment.service_port}`;
   ServiceString = `${environment.service2_str}`;
 
   constructor(

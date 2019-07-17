@@ -4,7 +4,7 @@ import { OAuthService, JwksValidationHandler, AuthConfig } from 'angular-oauth2-
 export const authConfig: AuthConfig = {
   issuer: 'https://dev-486305.okta.com/oauth2/default',
   clientId: '0oakau102ZE29iuuJ356',
-  redirectUri: window.location.origin + '/login',
+  redirectUri: window.location.origin + '/',
   responseType: 'token id_token code',
   // silentRefreshRedirectUri: window.location.origin + '/login',
   scope: 'openid profile email offline_access'
@@ -19,10 +19,6 @@ export class AppComponent implements OnInit {
   constructor(private oauthService: OAuthService) {
 
     this.oauthService.configure(authConfig);
-
-    // Handle automatically refreshing auth token
-    // this.oauthService.setupAutomaticSilentRefresh();
-    // this.oauthService.setStorage(sessionStorage);
 
     this.oauthService.tokenValidationHandler = new JwksValidationHandler();
 
