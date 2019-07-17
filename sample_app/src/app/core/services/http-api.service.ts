@@ -5,14 +5,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service'
 import { Svc1Result } from '../models/service1.model';
 import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { filter, retry, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Service1ApiService {
 
-  // MessageService provide messages about API activities
+  // MessageService provides messages about API activities
 
   // service1_url: URL to service - defined in environments/environments.ts;
   // svcstr: passed as arg from component
@@ -37,9 +37,16 @@ export class Service1ApiService {
     // Handle automatically refreshing auth token
     // this.oauthService.setupAutomaticSilentRefresh();
 
-    // Display API activity on home page
-    // TODO: send the message _after_ fetching the data
-    this.messageService.add('Service 1: fetched data');
+    this.oauthService.events.subscribe(e => {
+      this.messageService.add('http-api.services: oauth/oidc event fired' + ' - type = ' + e.type);
+    });
+
+    this.oauthService.events
+      .pipe(filter(e => e.type === 'token_expires' ))
+      .subscribe(e => {
+        this.messageService.add('http-api.services: oauth/oidc event type "token_expires" fired');
+        this.oauthService.silentRefresh();
+    });
 
     // Call Service 1 endpoint - get results
     return this.http.get<Svc1Result>(svcurl + svcstr, {

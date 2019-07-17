@@ -15,11 +15,8 @@ export class AuthGuard implements CanActivate {
     if (this.oauthService.hasValidIdToken()) {
       return true;
     } else {
-      // Handle automatically refreshing auth token
-      this.oauthService.setupAutomaticSilentRefresh();
-      // Navigate to route that sent you here
-      this.router.navigate(['/login']);
+      this.router.navigate([state['url']]);
+      return false;
     }
-    return false;
   }
 }

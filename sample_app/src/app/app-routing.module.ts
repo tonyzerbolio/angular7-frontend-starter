@@ -10,13 +10,22 @@ import { AuthGuard } from './core/services/auth-guard.service';
 const routes: Routes = [
   { path: 'service1', component: Service1Component, canActivate: [AuthGuard] },
   { path: 'people', component: PeopleComponent },
-  { path: 'customers', component: CustomersComponent }
+  { path: 'customers', component: CustomersComponent },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
-    OAuthModule.forRoot()
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: [window.location.origin, window.location.origin + '/'],
+        sendAccessToken: true
+      }
+    })
   ],
   providers: [
     AuthGuard

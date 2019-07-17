@@ -20,6 +20,7 @@
         <div *ngIf="givenName">
           <h3>Welcome, {{givenName}}!</h3>
           <p>You have successfully logged in.</p>
+          <p>Token Exp: {{tokenExpiration}}</p>
           <button class="usa-button" (click)="logout()">Logout</button>
         </div>
         <div *ngIf="!givenName">
