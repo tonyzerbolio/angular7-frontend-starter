@@ -5,34 +5,31 @@ import { Customer } from '../core/models/customer.model';
 
 @Component({
   selector: 'app-service1',
-  templateUrl: './service1.component.html',
-  styleUrls: ['./service1.component.css']
+  templateUrl: './service2.component.html',
+  styleUrls: ['./service2.component.scss']
 })
-export class Service1Component implements OnInit {
+export class Service2Component implements OnInit {
 
-  Customers: any = [];
+  Accounts: any = [];
   ServiceURL = `${environment.service_url}`;
   ServicePORT = `${environment.service_port}`;
-  ServiceString = `${environment.service1_str}`;
+  ServiceString = `${environment.service2_str}`;
 
   svcToCall: string;
 
-  selectedCustomer: Customer;
+  selectedAccount: Account;
 
-  list = false;
+  list = true; // << Set to false to make default view grid, true for list
 
   constructor(
     public svcApi: Service1ApiService
   ) { }
 
   // Opens/Closes record edit menu (CRUD)
-  onSelect(customer: Customer): void {
-    this.selectedCustomer = customer;
+  onSelect(account: Account): void {
+    this.selectedAccount = account;
   }
-  getCustomer(customer: Customer): void {
-    this.getData('customer/' + customer.id);
-  }
-
+  
   // Toggles list/grid view by setting list variable to true or false
   toggleList(): void {
     if ( !this.list ) {
@@ -45,13 +42,13 @@ export class Service1Component implements OnInit {
   
 
   ngOnInit() {
-    this.getData('customers');
+    this.getData('accounts');
   }
 
   getData(svcName: string) {
     this.svcToCall = this.ServiceString + svcName;
     return this.svcApi.getService1(this.ServiceURL + this.ServicePORT, this.svcToCall).subscribe((data: {}) => {
-        this.Customers = data;
+        this.Accounts = data;
     })
   }
 

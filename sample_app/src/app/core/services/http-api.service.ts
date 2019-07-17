@@ -3,7 +3,7 @@ import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { MessageService } from './message.service'
-import { Svc1Result } from '../models/service1.model';
+import { SvcResult } from '../models/service1.model';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -14,7 +14,7 @@ export class Service1ApiService {
 
   // MessageService provide messages about API activities
 
-  // service1_url: URL to service - defined in environments/environments.ts;
+  // service_url: URL to service - defined in environments/environments.ts;
   // svcstr: passed as arg from component
   // Http Options
   httpOptions = {
@@ -30,7 +30,7 @@ export class Service1ApiService {
   ) { }
 
   // HttpClient API get() method => Fetch results
-  getService1(svcurl: string, svcstr: string): Observable<Svc1Result> {
+  getService1(svcurl: string, svcstr: string): Observable<SvcResult> {
 
     const accessToken = this.oauthService.getAccessToken();
 
@@ -42,7 +42,7 @@ export class Service1ApiService {
     this.messageService.add('Service 1: fetched data');
 
     // Call Service 1 endpoint - get results
-    return this.http.get<Svc1Result>(svcurl + svcstr, {
+    return this.http.get<SvcResult>(svcurl + svcstr, {
       headers: {
         Authorization: 'Bearer ' + accessToken,
       }

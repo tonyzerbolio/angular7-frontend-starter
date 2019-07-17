@@ -1,6 +1,7 @@
-export class Svc1Result {
-    id: string;
-    name: string;
-    age: number;
-    type: string;
+export class SvcResult {
+    id?: number;
+    name?: string;
+    pesel?: string;
+    type?: string;
+    number?: string;
 }
