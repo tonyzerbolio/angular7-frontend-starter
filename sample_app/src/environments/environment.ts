@@ -16,13 +16,9 @@
 
 export const environment = {
   production: false,
-  service2_url: window.location.protocol + '//' + window.location.hostname,
-  service2_port: ':8090',
-  service2_str: '/customers',
-
-  // Configured to hit Zuul in local K8s cluster using port-forwarding
+  // Dev Note: Configured to hit Zuul in local K8s cluster using port-forwarding
   service1_url: window.location.protocol + '//' + window.location.hostname,
   service1_port: ':8081',
-  service1_str: '/service1/customers'
-
+  service1_str: '/service1/customers',
+  service2_str: '/service2'
 };
