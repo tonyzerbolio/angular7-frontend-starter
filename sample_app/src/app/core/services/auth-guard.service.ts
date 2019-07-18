@@ -26,8 +26,7 @@ export class AuthGuard implements CanActivate {
       .subscribe(e => {
         // Send user on to selected nav route
         this.router.navigate([state['url']]);
-    });
-
+      });
     }
     return false;
   }
