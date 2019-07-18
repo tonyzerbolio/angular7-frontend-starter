@@ -14,7 +14,12 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
-    OAuthModule.forRoot()
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: [window.location.origin, window.location.origin + '/'],
+        sendAccessToken: true
+      }
+    })
   ],
   providers: [
     AuthGuard

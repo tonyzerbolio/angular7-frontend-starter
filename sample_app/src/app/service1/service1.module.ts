@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Service1Component } from './service1.component';
+import { MessagesComponent } from '../messages/messages.component';
 
 @NgModule({
     imports: [
@@ -9,7 +10,8 @@ import { Service1Component } from './service1.component';
       FormsModule
     ],
     declarations: [
-        Service1Component
+        Service1Component,
+        MessagesComponent
     ],
     exports: [
         Service1Component
