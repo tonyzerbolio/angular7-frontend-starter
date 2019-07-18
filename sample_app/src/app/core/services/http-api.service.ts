@@ -45,7 +45,9 @@ export class Service1ApiService {
       .pipe(filter(e => e.type === 'token_expires' ))
       .subscribe(e => {
         this.messageService.add('http-api.services: oauth/oidc event type "token_expires" fired');
-        this.oauthService.silentRefresh();
+        this.oauthService.silentRefresh()
+        .then(info => console.log('refresh ok', info))
+        .catch(err => console.log('refresh error', err));
     });
 
     // Call Service 1 endpoint - get results

@@ -10,9 +10,9 @@ export const authConfig: AuthConfig = {
   responseType: 'token id_token code',
   silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
   scope: 'openid profile email',
-  silentRefreshTimeout: 5000, // For faster testing
-  timeoutFactor: 0.25, // For faster testing
-  sessionChecksEnabled: true,
+  silentRefreshTimeout: 20000, // For faster testing
+  timeoutFactor: 0.5, // For faster testing
+  sessionChecksEnabled: false,
   showDebugInformation: true, // Also requires enabling "Verbose" level in devtools
   clearHashAfterLogin: false
 };
@@ -36,7 +36,9 @@ export class AppComponent implements OnInit {
       .subscribe(e => {
         // tslint:disable-next-line:no-console
         console.log('In app.component', e);
-        this.oauthService.silentRefresh();
+        this.oauthService.silentRefresh()
+        .then(info => console.log('refresh ok', info))
+        .catch(err => console.log('refresh error', err));
     });
 
     // Load Discovery Document and then try to login the user

@@ -17,7 +17,9 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       // Token has expired - do silent refresh
-      this.oauthService.silentRefresh();
+      this.oauthService.silentRefresh()
+      .then(info => console.log('refresh ok', info))
+      .catch(err => console.log('refresh error', err));
 
       // After silent refresh, make sure user is sent
       // to the nav route they selected
