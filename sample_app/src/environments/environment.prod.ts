@@ -3,7 +3,7 @@
 // http://service1.comet:8092 // << For Prod build
 export const environment = {
   production: true,
-  service1_url: 'http://service1.comet',
+  service1_url: 'http://zuul.comet.svc.cluster.local',
   service_port: ':8081',
   service1_str: '/service1/',
   service2_str: '/service2/'
