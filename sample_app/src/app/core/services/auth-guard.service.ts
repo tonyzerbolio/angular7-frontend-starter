@@ -26,8 +26,7 @@ export class AuthGuard implements CanActivate {
       this.oauthService.events
       .pipe(filter(e => e.type === 'silently_refreshed' ))
       .subscribe(e => {
-        // Send user on to selected nav route
-        this.router.navigate([state['url']]);
+        this.router.navigate([state['url']]); // Send user on to selected nav route
       });
     }
     return false;

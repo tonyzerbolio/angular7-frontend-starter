@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Service1ApiService } from '../core/services/http-api.service';
+
+import { ApiService } from '../core/services/http-api.service';
 import { environment } from '../../environments/environment';
-import { Customer } from '../core/models/customer.model';
+import { Account } from '../core/models/account.model';
 
 @Component({
-  selector: 'app-service1',
+  selector: 'app-service2',
   templateUrl: './service2.component.html',
   styleUrls: ['./service2.component.scss']
 })
@@ -22,7 +23,7 @@ export class Service2Component implements OnInit {
   list = true; // << Set to false to make default view grid, true for list
 
   constructor(
-    public svcApi: Service1ApiService
+    public svcApi: ApiService
   ) { }
 
   // Opens/Closes record edit menu (CRUD)
@@ -39,8 +40,6 @@ export class Service2Component implements OnInit {
     }
   }
 
-  
-
   ngOnInit() {
     this.getData('accounts');
   }
@@ -51,5 +50,4 @@ export class Service2Component implements OnInit {
         this.Accounts = data;
     })
   }
-
 }

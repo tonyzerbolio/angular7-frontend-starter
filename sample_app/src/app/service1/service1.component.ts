@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Service1ApiService } from '../core/services/http-api.service';
+import { ApiService } from '../core/services/http-api.service';
 import { environment } from '../../environments/environment';
 import { Customer } from '../core/models/customer.model';
 
@@ -19,18 +19,15 @@ export class Service1Component implements OnInit {
 
   selectedCustomer: Customer;
 
-  list = false;
+  list = false; // << Set to false to make default view grid, true for list
 
   constructor(
-    public svcApi: Service1ApiService
+    public svcApi: ApiService
   ) { }
 
   // Opens/Closes record edit menu (CRUD)
   onSelect(customer: Customer): void {
     this.selectedCustomer = customer;
-  }
-  getCustomer(customer: Customer): void {
-    this.getData('customer/' + customer.id);
   }
 
   // Toggles list/grid view by setting list variable to true or false
@@ -42,8 +39,6 @@ export class Service1Component implements OnInit {
     }
   }
 
-  
-
   ngOnInit() {
     this.getData('customers');
   }
@@ -54,5 +49,4 @@ export class Service1Component implements OnInit {
         this.Customers = data;
     })
   }
-
 }

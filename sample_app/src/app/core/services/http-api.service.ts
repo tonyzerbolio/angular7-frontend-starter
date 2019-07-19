@@ -1,21 +1,20 @@
+/**
+ * HTTP Request Service
+ */
 import { Injectable, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { MessageService } from './message.service'
-import { SvcResult } from '../models/service1.model';
 import { Observable, throwError } from 'rxjs';
 import { filter, retry, catchError } from 'rxjs/operators';
+
+import { MessageService } from './message.service'
+import { SvcResult } from '../models/http-api-service.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class Service1ApiService {
+export class ApiService {
 
-  // MessageService provides messages about API activities
-
-  // service_url: URL to service - defined in environments/environments.ts;
-  // svcstr: passed as arg from component
   // Http Options
   httpOptions = {
     headers: new HttpHeaders({
@@ -29,18 +28,25 @@ export class Service1ApiService {
     private messageService: MessageService
   ) { }
 
-  // HttpClient API get() method => Fetch results
+  /**
+   * svcurl and svcstr are defined in src/environments/environment.prod.ts
+   * and src/environments/environment.ts
+   * 
+   * @param {string} svcurl Primary URL for service endpoint
+   * @param {string} svcstr Service name appended to service endpoint url
+   * 
+   * @returns JSON Object with data from the service endpoint
+   */
   getService1(svcurl: string, svcstr: string): Observable<SvcResult> {
 
-    const accessToken = this.oauthService.getAccessToken();
+    const accessToken = this.oauthService.getAccessToken(); // Get access token from Okta service
 
-    // Handle automatically refreshing auth token
-    // this.oauthService.setupAutomaticSilentRefresh();
-
+    // If using the message component, this adds a useful message that can be displayed to the user
     this.oauthService.events.subscribe(e => {
       this.messageService.add('http-api.services: oauth/oidc event fired' + ' - type = ' + e.type);
     });
 
+    // Token Expires event
     this.oauthService.events
       .pipe(filter(e => e.type === 'token_expires' ))
       .subscribe(e => {
@@ -50,7 +56,7 @@ export class Service1ApiService {
         .catch(err => console.log('refresh error', err));
     });
 
-    // Call Service 1 endpoint - get results
+    // Add bearer token to service request header
     return this.http.get<SvcResult>(svcurl + svcstr, {
       headers: {
         Authorization: 'Bearer ' + accessToken,
