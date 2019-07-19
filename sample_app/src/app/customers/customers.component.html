@@ -1,4 +1,4 @@
-<div class="service1-page padding-top-2 padding-bottom-5">
+<div class="customers-page padding-top-2 padding-bottom-5">
 
   <!-- Results table - it hides when there are no results -->
   <div class="grid-container">
@@ -18,7 +18,7 @@
       <div class="tablet:grid-col-3">
         <div class="card aside">
           <div class="card-content">
-            <h1>Clients</h1>
+            <h1>Customers</h1>
             <nav class="interior">
               <ul>
                 <li>
@@ -34,7 +34,7 @@
             </nav>
           </div>
           <div class="card-image">
-            <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-1.png" alt="Clients Card Decoration Image" />
+            <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-1.png" alt="Customers Card Decoration Image" />
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
                   class="font-sans-3xs"
                   [class.selected]="customer === selectedCustomer">edit</a>
                   <p>
-                    <span class="sub-title">Client Info</span><br>
+                    <span class="sub-title">Customer Info</span><br>
                     ID: {{customer.id}}<br>
                     Pesel: {{customer.pesel}}<br>
                     Type: {{customer.type}}
@@ -72,7 +72,7 @@
               <form class="usa-form crudForm">
                 <fieldset class="usa-fieldset">
                   <legend class="usa-legend">
-                    <h2>Update Client {{ selectedCustomer.name }} Details:</h2>
+                    <h2>Update Customer {{ selectedCustomer.name }} Details:</h2>
                   </legend>
                   <div class="grid-row grid-gap">
                     <div class="tablet:grid-col">

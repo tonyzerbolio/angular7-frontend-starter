@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Service2Component } from './service2.component';
+
+import { AccountsComponent } from './accounts.component';
 
 @NgModule({
     imports: [
@@ -9,10 +10,10 @@ import { Service2Component } from './service2.component';
       FormsModule
     ],
     declarations: [
-      Service2Component
+      AccountsComponent
     ],
     exports: [
-      Service2Component
+      AccountsComponent
     ]
   })
-  export class Service2Module {}
+  export class AccountsModule {}

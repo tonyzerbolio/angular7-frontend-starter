@@ -4,11 +4,11 @@ import { environment } from '../../environments/environment';
 import { Customer } from '../core/models/customer.model';
 
 @Component({
-  selector: 'app-service1',
-  templateUrl: './service1.component.html',
-  styleUrls: ['./service1.component.css']
+  selector: 'app-customers',
+  templateUrl: './customers.component.html',
+  styleUrls: ['./customers.component.scss']
 })
-export class Service1Component implements OnInit {
+export class CustomersComponent implements OnInit {
 
   Customers: any = [];
   ServiceURL = `${environment.service_url}`;
