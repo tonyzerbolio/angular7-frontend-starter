@@ -1,3 +1,6 @@
+/**
+ * Footer Component
+ */
 import { Component } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { environment } from '../../../environments/environment';
@@ -6,10 +9,35 @@ import { environment } from '../../../environments/environment';
   templateUrl: './footer.component.html'
 })
 export class FooterComponent {
+  /**
+   * Provide current date information in the footer
+   * 
+   * @param {number} today Gets current date infomation
+   * @returns Date object
+   * 
+   * @example
+   * <span class="attribution">
+   *              &copy; {{ today | date: 'yyyy' }}
+   * </span>
+   */
   today: number = Date.now();
 
   constructor(private oauthService: OAuthService) { }
-
+  /**
+   * Gets claims object from Okta that provides information
+   * about the authenticated user that can be used to show/hide
+   * elements (see example) or display returned data like user's 
+   * full name or email address.
+   * 
+   * @example
+   * 
+   * <li *ngIf="!givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+   *              <a class="usa-footer__primary-link" href="javascript:void(0);" (click)="login()">Login</a>
+   * </li>
+   * <li *ngIf="givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+   *              <a class="usa-footer__primary-link" href="javascript:void(0);" (click)="logout()">Logout</a>
+   * </li>
+   */
   get givenName() {
     const claims = this.oauthService.getIdentityClaims();
     if (!claims) {

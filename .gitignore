@@ -1,6 +1,7 @@
 dist/
 docs/
 e2e/
+documentation/
 reports/
 /build/
 /deploy/

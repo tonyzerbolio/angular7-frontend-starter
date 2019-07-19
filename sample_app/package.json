@@ -11,7 +11,8 @@
     "test:coverage": "jest --coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "sonar-scanner": "./node_modules/sonar-scanner/bin/sonar-scanner"
+    "sonar-scanner": "./node_modules/sonar-scanner/bin/sonar-scanner",
+    "compodoc": "npx compodoc -p src/tsconfig.app.json"
   },
   "jest": {
     "testResultsProcessor": "jest-sonar-reporter"
@@ -56,6 +57,7 @@
     "@angular/cli": "^7.3.9",
     "@angular/compiler-cli": "^7.2.15",
     "@angular/language-service": "^7.2.15",
+    "@compodoc/compodoc": "^1.1.10",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
