@@ -26,12 +26,10 @@ export class AccountsComponent implements OnInit {
     public svcApi: ApiService
   ) { }
 
-  // Opens/Closes record edit menu (CRUD)
   onSelect(account: Account): void {
     this.selectedAccount = account;
   }
   
-  // Toggles list/grid view by setting list variable to true or false
   toggleList(): void {
     if ( !this.list ) {
       this.list = true;

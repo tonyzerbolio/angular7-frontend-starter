@@ -1,3 +1,6 @@
+/**
+ * Header Component
+ */
 import { Component, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { environment } from '../../../environments/environment';
@@ -18,8 +21,7 @@ export class HeaderComponent implements OnInit {
     private oauthService: OAuthService
   ) { }
 
-  // Change mobile nav menu button text
-  changeText(): void {
+  changeNavButtonText(): void {
     if (this.menuText === 'MENU') {
       this.menuText = 'CLOSE';
     } else {
@@ -35,7 +37,23 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.oauthService.logOut();
   }
-  // Gets full name of Okta authenticated user from claims
+  /**
+   * get givenName() function
+   * 
+   * Gets claims object from Okta that provides information
+   * about the authenticated user that can be used to show/hide
+   * elements (see example) or display returned data like user's 
+   * full name or email address.
+   * 
+   * @example
+   * 
+   * <li *ngIf="!givenName" class="usa-nav__primary-item">
+   *              <button class="usa-button" (click)="login()">Login</button>
+   * </li>
+   * <li *ngIf="givenName" class="usa-nav__primary-item">
+   *              <button class="usa-button" (click)="logout()">Logout</button>
+   * </li>
+   */
   get givenName() {
     const claims = this.oauthService.getIdentityClaims();
     if (!claims) {

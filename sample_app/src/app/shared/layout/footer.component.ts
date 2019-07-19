@@ -9,21 +9,12 @@ import { environment } from '../../../environments/environment';
   templateUrl: './footer.component.html'
 })
 export class FooterComponent {
-  /**
-   * Provide current date information in the footer
-   * 
-   * @param {number} today Gets current date infomation
-   * @returns Date object
-   * 
-   * @example
-   * <span class="attribution">
-   *              &copy; {{ today | date: 'yyyy' }}
-   * </span>
-   */
   today: number = Date.now();
 
   constructor(private oauthService: OAuthService) { }
   /**
+   * get givenName() function
+   * 
    * Gets claims object from Okta that provides information
    * about the authenticated user that can be used to show/hide
    * elements (see example) or display returned data like user's 

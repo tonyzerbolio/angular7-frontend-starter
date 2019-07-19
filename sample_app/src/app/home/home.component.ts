@@ -1,7 +1,8 @@
+/**
+ * Home Component
+ */
 import { Component, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
-
-
 
 @Component({
   selector: 'app-home-page',
@@ -11,14 +12,15 @@ export class HomeComponent implements OnInit {
 
   constructor(private oauthService: OAuthService) { }
 
+  // Initiates Okta Login
   login() {
     this.oauthService.initImplicitFlow();
   }
-
+  // Initiates Okta Logout
   logout() {
     this.oauthService.logOut();
   }
-
+  // Gets information from claims object returned by Okta after successful login
   get givenName() {
     const claims = this.oauthService.getIdentityClaims();
     if (!claims) {

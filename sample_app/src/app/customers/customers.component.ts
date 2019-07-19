@@ -1,4 +1,8 @@
+/**
+ * Customers Component
+ */
 import { Component, OnInit } from '@angular/core';
+
 import { ApiService } from '../core/services/http-api.service';
 import { environment } from '../../environments/environment';
 import { Customer } from '../core/models/customer.model';
@@ -25,12 +29,10 @@ export class CustomersComponent implements OnInit {
     public svcApi: ApiService
   ) { }
 
-  // Opens/Closes record edit menu (CRUD)
   onSelect(customer: Customer): void {
     this.selectedCustomer = customer;
   }
 
-  // Toggles list/grid view by setting list variable to true or false
   toggleList(): void {
     if ( !this.list ) {
       this.list = true;

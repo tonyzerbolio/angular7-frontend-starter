@@ -1,4 +1,8 @@
+/**
+ * Messages Component
+ */
 import { Component, OnInit } from '@angular/core';
+
 import { MessageService } from '../core/services/message.service';
 
 @Component({
