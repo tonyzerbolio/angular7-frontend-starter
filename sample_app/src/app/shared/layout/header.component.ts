@@ -39,14 +39,14 @@ export class HeaderComponent implements OnInit {
   }
   /**
    * get givenName() function
-   * 
+   *
    * Gets claims object from Okta that provides information
    * about the authenticated user that can be used to show/hide
-   * elements (see example) or display returned data like user's 
+   * elements (see example) or display returned data like user's
    * full name or email address.
-   * 
+   *
    * @example
-   * 
+   *
    * <li *ngIf="!givenName" class="usa-nav__primary-item">
    *              <button class="usa-button" (click)="login()">Login</button>
    * </li>

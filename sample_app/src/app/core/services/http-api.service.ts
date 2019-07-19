@@ -31,10 +31,10 @@ export class ApiService {
   /**
    * svcurl and svcstr are defined in src/environments/environment.prod.ts
    * and src/environments/environment.ts
-   * 
+   *
    * @param {string} svcurl Primary URL for service endpoint
    * @param {string} svcstr Service name appended to service endpoint url
-   * 
+   *
    * @returns JSON Object with data from the service endpoint
    */
   getService1(svcurl: string, svcstr: string): Observable<SvcResult> {

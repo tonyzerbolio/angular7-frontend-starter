@@ -8,7 +8,7 @@ import { filter } from 'rxjs/operators';
 
 /**
  * Okta Configuration
- * 
+ *
  * @param {string} issuer The URL to the Okta service
  * @param {string} clientId The client ID for the Okta service
  * @param {string} redirectUri  Where you are returned after authenticating
@@ -47,11 +47,6 @@ export class AppComponent implements OnInit {
     this.oauthService.tokenValidationHandler = new JwksValidationHandler(); // Set token validation handler
     this.oauthService.setupAutomaticSilentRefresh();  // Initialize Automatic Silent Refresh
 
-    /**
-     * Token Expires Event - Informs about events, like token_received or token_expires. See the string enum EventType for a full list of event types.
-     * Fires when token expires
-     * Attempts silent refresh
-     */
     this.oauthService.events
       .pipe(filter(e => e.type === 'token_expires' ))
       .subscribe(e => {
@@ -62,14 +57,16 @@ export class AppComponent implements OnInit {
         .catch(err => console.log('refresh error', err));
     });
     /**
-     * Loads the discovery document to configure most properties of this service. The url of the discovery document is infered from the issuer's url according to the OpenId Connect spec. To use another url you can pass it to to optional parameter fullUrl.
-     * 
+     * Loads the discovery document to configure most properties of this service.
+     * The url of the discovery document is infered from the issuer's url according
+     * to the OpenId Connect spec. To use another url you can pass it to to optional parameter fullUrl.
+     *
      * @param fullUrl
-     * 
+     *
      * @param onTokenReceived
      * Is called, after a token has been received and successfully validated.
      * Deprecated: Use property events on OAuthService instead.
-     * 
+     *
      */
     this.oauthService.loadDiscoveryDocument().then(doc => {
       this.oauthService.tryLogin({

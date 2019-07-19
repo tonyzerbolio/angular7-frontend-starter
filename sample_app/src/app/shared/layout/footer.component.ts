@@ -14,14 +14,14 @@ export class FooterComponent {
   constructor(private oauthService: OAuthService) { }
   /**
    * get givenName() function
-   * 
+   *
    * Gets claims object from Okta that provides information
    * about the authenticated user that can be used to show/hide
-   * elements (see example) or display returned data like user's 
+   * elements (see example) or display returned data like user's
    * full name or email address.
-   * 
+   *
    * @example
-   * 
+   *
    * <li *ngIf="!givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
    *              <a class="usa-footer__primary-link" href="javascript:void(0);" (click)="login()">Login</a>
    * </li>

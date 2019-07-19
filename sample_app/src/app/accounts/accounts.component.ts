@@ -29,7 +29,7 @@ export class AccountsComponent implements OnInit {
   onSelect(account: Account): void {
     this.selectedAccount = account;
   }
-  
+
   toggleList(): void {
     if ( !this.list ) {
       this.list = true;
