@@ -17,8 +17,8 @@ export class FooterComponent {
    *
    * Gets claims object from Okta that provides information
    * about the authenticated user that can be used to show/hide
-   * elements (see example) or display returned data like user's
-   * full name or email address.
+   * protected elements (see example) and routes (Auth Guard) or
+   * display returned data like user's full name or email address.
    *
    * @example
    *
