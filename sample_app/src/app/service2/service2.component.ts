@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { Service1ApiService } from '../core/services/http-api.service';
@@ -10,7 +10,7 @@ import { SvcResult } from '../core/models/serviceData.model';
   templateUrl: './service2.component.html',
   styleUrls: ['./service2.component.scss']
 })
-export class Service2Component implements OnInit {
+export class Service2Component implements OnInit, OnDestroy {
 
   Accounts: any = [];
   ServiceURL = `${environment.service_url}`;
@@ -42,7 +42,7 @@ export class Service2Component implements OnInit {
   onSelect(account: SvcResult): void {
     this.selectedAccount = account;
   }
-  
+
   // Toggles list/grid view by setting list variable to true or false
   toggleList(): void {
     if ( !this.list ) {
@@ -73,10 +73,10 @@ export class Service2Component implements OnInit {
   }
 
   ngOnDestroy() {
-    // avoid memory leaks here by cleaning up after ourselves. If we  
-    // don't then we will continue to run our initialiseInvites()   
+    // avoid memory leaks here by cleaning up after ourselves. If we
+    // don't then we will continue to run our initialiseInvites()
     // method on every navigationEnd event.
-    if (this.navigationSubscription) {  
+    if (this.navigationSubscription) {
        this.navigationSubscription.unsubscribe();
     }
   }
