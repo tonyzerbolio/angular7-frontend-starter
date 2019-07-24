@@ -4,7 +4,9 @@
     <div class="grid-row">
       <div class="tablet:grid-col">
         <strong>Messages:</strong>
-        <span *ngFor='let message of messageService.messages'> {{message}} </span>
+        <ul>
+          <li *ngFor='let message of messageService.messages'> {{message}} </li>
+        </ul>
       </div>
       <div class="tablet:gird-col">
         <a class="clear text-right" (click)="messageService.clear()">[ X ]</a>

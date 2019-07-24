@@ -7,7 +7,9 @@ import { OAuthService } from 'angular-oauth2-oidc';
 })
 export class AuthenticateComponent implements OnInit {
 
-  constructor(private oauthService: OAuthService) { }
+  claims = this.oauthService.getIdentityClaims();
+
+  constructor(private oauthService: OAuthService) { };
 
   login() {
     this.oauthService.initImplicitFlow();
@@ -18,11 +20,11 @@ export class AuthenticateComponent implements OnInit {
   }
 
   get givenName() {
-    const claims = this.oauthService.getIdentityClaims();
-    if (!claims) {
+    if (!this.claims) {
+      console.log('claims did not return a given name');
       return null;
     }
-    return claims['name'];
+    return this.claims['name'];
   }
 
   ngOnInit() { }

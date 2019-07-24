@@ -7,22 +7,22 @@
         <!-- If only showing a single customer, show the 'Show All' option -->
         <a *ngIf="showAll" href="javascript:void(0);"
         class="font-sans-3xs margin-right-1"
-        routerLink="/service1">Show All</a>
+        routerLink="/service2">Show All</a>
         <!-- Toggle grid/list view - If editing a record, hide List/Grid toggle and show cancel -->
-        <a *ngIf="!selectedCustomer" href="javascript:void(0);"
-        class="font-sans-3xs"
+        <a *ngIf="!selectedAccount" href="javascript:void(0);"
+        class="font-sans-3xs list-grid-toggle"
         (click)="toggleList()">List/Grid</a>
         <!-- Cancel button removes edit view and reshows List/Grid toggle -->
-        <a *ngIf="selectedCustomer" href="javascript:void(0);"
-        class="font-sans-3xs"
-        (click)="onSelect()">Cancel Editing</a>
+        <a *ngIf="selectedAccount" href="javascript:void(0);"
+        class="font-sans-3xs list-grid-toggle"
+        (click)="onSelect()">Cancel</a>
       </div>
     </div>
     <div class="grid-row grid-gap">
       <div class="tablet:grid-col-3">
         <div class="card aside">
           <div class="card-content">
-            <h1>Customers</h1>
+            <h1>Accounts</h1>
             <nav class="interior">
               <ul>
                 <li>
@@ -38,64 +38,58 @@
             </nav>
           </div>
           <div class="card-image">
-            <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-1.png" alt="Clients Card Decoration Image" />
+            <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-2.png" alt="Accounts Card Decoration Image" />
           </div>
         </div>
       </div>
 
-      <div *ngIf="Customers.length !== 0" class="tablet:grid-col-9 usa-prose position-relative">
+      <div *ngIf="Accounts.length !== 0" class="tablet:grid-col-9 usa-prose position-relative">
         <div class="grid-container padding-x-0">
           <div class="grid-row grid-gap">
-            <div *ngFor="let customer of Customers"
+            <div *ngFor="let account of Accounts"
                     [ngClass]="{
                       'tablet:grid-col-12': list,
                       'tablet:grid-col-4': !list
                     }">
               <div class="card">
                 <div class="card-content text-base-darkest">
-                  <h3 (click)="getCustomer(customer)">{{customer.name}}</h3>
+                  <h3 (click)="getAccount(account)">Account #{{account.id}}</h3>
                   <a href="javascript:void(0);"
-                  (click)="onSelect(customer)"
+                  (click)="onSelect(account)"
                   class="font-sans-3xs"
-                  [class.selected]="customer === selectedCustomer">edit</a>
+                  [class.selected]="account === selectedAccount">edit</a>
                   <p>
-                    <span class="sub-title">Client Info</span><br>
-                    ID: {{customer.id}}<br>
-                    Pesel: {{customer.pesel}}<br>
-                    Type: {{customer.type}}
-                  </p>
-                  <a href="https://www.gsa.gov/">View Website</a>
+                    <span class="sub-title">Account Info</span><br>
+                    Pesel: {{account.pesel}}<br>
+                    Number: {{account.number}}
+                  </p>                  
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div *ngIf="selectedCustomer" class="crudInterface z-top">
+        <div *ngIf="selectedAccount" class="crudInterface z-top">
           <div class="page">
             <div class="page-content">
               <form class="usa-form crudForm">
                 <fieldset class="usa-fieldset">
                   <legend class="usa-legend">
-                    <h2>Update Client {{ selectedCustomer.name }} Details:</h2>
+                    <h2>Update Client {{ selectedAccount.name }} Details:</h2>
                   </legend>
                   <div class="grid-row grid-gap">
                     <div class="tablet:grid-col">
-                      <label>Full Name: </label>
-                      <input [(ngModel)] = "selectedCustomer.name" placeholder="name" [ngModelOptions]="{standalone: true}" />
+                      <label>ID: </label>
+                      <input [(ngModel)] = "selectedAccount.id" placeholder="id" [ngModelOptions]="{standalone: true}" />
                     </div>
                     <div class="tablet:grid-col">
-                      <label>ID: </label>
-                      <input [(ngModel)] = "selectedCustomer.id" placeholder="id" [ngModelOptions]="{standalone: true}" />
+                      <label>Pesel: </label>
+                      <input [(ngModel)] = "selectedAccount.pesel" placeholder="pesel" [ngModelOptions]="{standalone: true}" />
                     </div>
                   </div>
                   <div class="grid-row grid-gap">
                     <div class="tablet:grid-col">
-                      <label>Pesel: </label>
-                      <input [(ngModel)] = "selectedCustomer.pesel" placeholder="pesel" [ngModelOptions]="{standalone: true}" />
-                    </div>
-                    <div class="tablet:grid-col">
-                      <label>Type: </label>
-                      <input [(ngModel)] = "selectedCustomer.type" placeholder="type" [ngModelOptions]="{standalone: true}" />
+                      <label>Number: </label>
+                      <input [(ngModel)] = "selectedAccount.number" placeholder="number" [ngModelOptions]="{standalone: true}" />
                     </div>
                   </div>
                   <div class="grid-row grid-gap">
@@ -110,16 +104,11 @@
                   </div>
                 </fieldset>
               </form>
-              <!-- app-messages displays messages on the page in this location.
-                    Currently not in use as of 07/24/2019.
-                    Can be used to output useful information, alerts or other.
-              -->
-              <!-- <app-messages></app-messages> -->
               <div class="grid-row grid-gap">
                 <div class="tablet:grid-col">
                   <div class="card">
                     <div class="card-image">
-                      <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-2.png" alt="Second Card Decoration Image" />
+                      <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-1.png" alt="First Card Decoration Image" />
                     </div>
                     <div class="card-content text-base-darkest">
                       <h3>Card Title</h3>

@@ -6,25 +6,25 @@ import { environment } from '../../environments/environment';
 import { SvcResult } from '../core/models/serviceData.model';
 
 @Component({
-  selector: 'app-service1',
-  templateUrl: './service1.component.html',
-  styleUrls: ['./service1.component.css']
+  selector: 'app-service2',
+  templateUrl: './service2.component.html',
+  styleUrls: ['./service2.component.scss']
 })
-export class Service1Component implements OnInit, OnDestroy {
+export class Service2Component implements OnInit, OnDestroy {
 
-  Customers: any = [];
+  Accounts: any = [];
   ServiceURL = `${environment.service_url}`;
   ServicePORT = `${environment.service_port}`;
-  ServiceString = `${environment.service1_str}`;
+  ServiceString = `${environment.service2_str}`;
 
   svcToCall: string;
 
-  selectedCustomer: SvcResult;
+  selectedAccount: SvcResult;
 
   navigationSubscription;
 
   list = false; // Sets list/grid view
-  showAll = false; // showing all or showing single customer
+  showAll = false; // showing all or showing single account
 
   constructor(
     public svcApi: Service1ApiService,
@@ -33,26 +33,14 @@ export class Service1Component implements OnInit, OnDestroy {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       // If it is a NavigationEnd event re-initalise the component
       if (e instanceof NavigationEnd) {
-        this.getCustomers();
+        this.getAccounts();
       }
     });
   }
 
   // Opens/Closes record edit menu (CRUD)
-  onSelect(customer: SvcResult): void {
-    this.selectedCustomer = customer;
-  }
-
-  // Returns data on single customer by name
-  getCustomer(customer: SvcResult): void {
-    this.showAll = true;
-    this.getData('customer/' + customer.name);
-  }
-
-  // Resets/Reloads all customers
-  getCustomers(): void {
-    this.showAll = false;
-    this.getData('customers');
+  onSelect(account: SvcResult): void {
+    this.selectedAccount = account;
   }
 
   // Toggles list/grid view by setting list variable to true or false
@@ -62,6 +50,18 @@ export class Service1Component implements OnInit, OnDestroy {
     } else {
       this.list = false;
     }
+  }
+
+  // Returns data on single account by pesel
+  getAccount(account: SvcResult): void {
+    this.showAll = true;
+    this.getData('pesel/' + account.pesel);
+  }
+
+  // Resets/Reloads all accounts
+  getAccounts(): void {
+    this.showAll = false;
+    this.getData('accounts');
   }
 
   toggleShowAll(): void {
@@ -84,12 +84,12 @@ export class Service1Component implements OnInit, OnDestroy {
   getData(svcName: string) {
     this.svcToCall = this.ServiceString + svcName;
     return this.svcApi.getService1(this.ServiceURL + this.ServicePORT, this.svcToCall).subscribe((data: {}) => {
-        this.Customers = data;
+        this.Accounts = data;
     })
   }
 
   ngOnInit() {
-    this.getData('customers');
+    this.getData('accounts');
   }
 
 }

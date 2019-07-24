@@ -17,7 +17,7 @@ input, textarea {
 .crudInterface {
     position: absolute;
     top: 0;
-    width: calc(100% - 1rem);
+    width: calc(100% - 2rem);
     .crudForm {
         border: 1px solid color('base-light');
         margin-bottom: 1em;
@@ -29,12 +29,5 @@ input, textarea {
     label {
         display: inline-flex;
         min-width: 5.675rem;
-    }
-}
-@media (min-width: 64em) {
-    .crudInterface {
-        position: absolute;
-        top: 0;
-        @include u-width(full);
     }
 }
