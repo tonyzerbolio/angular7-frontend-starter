@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+
 import { Service1ApiService } from '../core/services/http-api.service';
 import { environment } from '../../environments/environment';
-import { Customer } from '../core/models/customer.model';
+import { SvcResult } from '../core/models/serviceData.model';
 
 @Component({
-  selector: 'app-service1',
+  selector: 'app-service2',
   templateUrl: './service2.component.html',
   styleUrls: ['./service2.component.scss']
 })
@@ -17,16 +19,27 @@ export class Service2Component implements OnInit {
 
   svcToCall: string;
 
-  selectedAccount: Account;
+  selectedAccount: SvcResult;
 
-  list = true; // << Set to false to make default view grid, true for list
+  navigationSubscription;
+
+  list = false; // Sets list/grid view
+  showAll = false; // showing all or showing single account
 
   constructor(
-    public svcApi: Service1ApiService
-  ) { }
+    public svcApi: Service1ApiService,
+    private router: Router
+  ) {
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      // If it is a NavigationEnd event re-initalise the component
+      if (e instanceof NavigationEnd) {
+        this.getAccounts();
+      }
+    });
+  }
 
   // Opens/Closes record edit menu (CRUD)
-  onSelect(account: Account): void {
+  onSelect(account: SvcResult): void {
     this.selectedAccount = account;
   }
   
@@ -39,10 +52,33 @@ export class Service2Component implements OnInit {
     }
   }
 
-  
+  // Returns data on single account by pesel
+  getAccount(account: SvcResult): void {
+    this.showAll = true;
+    this.getData('pesel/' + account.pesel);
+  }
 
-  ngOnInit() {
+  // Resets/Reloads all accounts
+  getAccounts(): void {
+    this.showAll = false;
     this.getData('accounts');
+  }
+
+  toggleShowAll(): void {
+    if ( !this.showAll ) {
+      this.showAll = true;
+    } else {
+      this.showAll = false;
+    }
+  }
+
+  ngOnDestroy() {
+    // avoid memory leaks here by cleaning up after ourselves. If we  
+    // don't then we will continue to run our initialiseInvites()   
+    // method on every navigationEnd event.
+    if (this.navigationSubscription) {  
+       this.navigationSubscription.unsubscribe();
+    }
   }
 
   getData(svcName: string) {
@@ -50,6 +86,10 @@ export class Service2Component implements OnInit {
     return this.svcApi.getService1(this.ServiceURL + this.ServicePORT, this.svcToCall).subscribe((data: {}) => {
         this.Accounts = data;
     })
+  }
+
+  ngOnInit() {
+    this.getData('accounts');
   }
 
 }

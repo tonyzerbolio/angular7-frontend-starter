@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+
 import { Service1ApiService } from '../core/services/http-api.service';
 import { environment } from '../../environments/environment';
-import { Customer } from '../core/models/customer.model';
+import { SvcResult } from '../core/models/serviceData.model';
 
 @Component({
   selector: 'app-service1',
   templateUrl: './service1.component.html',
   styleUrls: ['./service1.component.css']
 })
-export class Service1Component implements OnInit {
+export class Service1Component implements OnInit, OnDestroy {
 
   Customers: any = [];
   ServiceURL = `${environment.service_url}`;
@@ -17,20 +19,40 @@ export class Service1Component implements OnInit {
 
   svcToCall: string;
 
-  selectedCustomer: Customer;
+  selectedCustomer: SvcResult;
 
-  list = false;
+  navigationSubscription;
+
+  list = false; // Sets list/grid view
+  showAll = false; // showing all or showing single customer
 
   constructor(
-    public svcApi: Service1ApiService
-  ) { }
+    public svcApi: Service1ApiService,
+    private router: Router
+  ) {
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      // If it is a NavigationEnd event re-initalise the component
+      if (e instanceof NavigationEnd) {
+        this.getCustomers();
+      }
+    });
+  }
 
   // Opens/Closes record edit menu (CRUD)
-  onSelect(customer: Customer): void {
+  onSelect(customer: SvcResult): void {
     this.selectedCustomer = customer;
   }
-  getCustomer(customer: Customer): void {
-    this.getData('customer/' + customer.id);
+
+  // Returns data on single customer by name
+  getCustomer(customer: SvcResult): void {
+    this.showAll = true;
+    this.getData('customer/' + customer.name);
+  }
+
+  // Resets/Reloads all customers
+  getCustomers(): void {
+    this.showAll = false;
+    this.getData('customers');
   }
 
   // Toggles list/grid view by setting list variable to true or false
@@ -42,10 +64,21 @@ export class Service1Component implements OnInit {
     }
   }
 
-  
+  toggleShowAll(): void {
+    if ( !this.showAll ) {
+      this.showAll = true;
+    } else {
+      this.showAll = false;
+    }
+  }
 
-  ngOnInit() {
-    this.getData('customers');
+  ngOnDestroy() {
+    // avoid memory leaks here by cleaning up after ourselves. If we  
+    // don't then we will continue to run our initialiseInvites()   
+    // method on every navigationEnd event.
+    if (this.navigationSubscription) {  
+       this.navigationSubscription.unsubscribe();
+    }
   }
 
   getData(svcName: string) {
@@ -53,6 +86,10 @@ export class Service1Component implements OnInit {
     return this.svcApi.getService1(this.ServiceURL + this.ServicePORT, this.svcToCall).subscribe((data: {}) => {
         this.Customers = data;
     })
+  }
+
+  ngOnInit() {
+    this.getData('customers');
   }
 
 }

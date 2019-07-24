@@ -1,24 +1,28 @@
-<div class="service1-page padding-top-2 padding-bottom-5">
+<div class="service-results-page padding-top-2 padding-bottom-5">
 
   <!-- Results table - it hides when there are no results -->
   <div class="grid-container">
     <div class="grid-row">
       <div class="tablet:grid-col-12 text-right padding-y-1">
-          <!-- Toggle grid/list view - If editing a record, hide List/Grid toggle and show cancel -->
-          <a *ngIf="!selectedCustomer" href="javascript:void(0);"
-          class="font-sans-3xs list-grid-toggle"
-          (click)="toggleList()">List/Grid</a>
-          <!-- Cancel button removes edit view and reshows List/Grid toggle -->
-          <a *ngIf="selectedCustomer" href="javascript:void(0);"
-          class="font-sans-3xs list-grid-toggle"
-          (click)="onSelect()">Cancel</a>
+        <!-- If only showing a single customer, show the 'Show All' option -->
+        <a *ngIf="showAll" href="javascript:void(0);"
+        class="font-sans-3xs margin-right-1"
+        routerLink="/service1">Show All</a>
+        <!-- Toggle grid/list view - If editing a record, hide List/Grid toggle and show cancel -->
+        <a *ngIf="!selectedCustomer" href="javascript:void(0);"
+        class="font-sans-3xs"
+        (click)="toggleList()">List/Grid</a>
+        <!-- Cancel button removes edit view and reshows List/Grid toggle -->
+        <a *ngIf="selectedCustomer" href="javascript:void(0);"
+        class="font-sans-3xs"
+        (click)="onSelect()">Cancel Editing</a>
       </div>
     </div>
     <div class="grid-row grid-gap">
       <div class="tablet:grid-col-3">
         <div class="card aside">
           <div class="card-content">
-            <h1>Clients</h1>
+            <h1>Customers</h1>
             <nav class="interior">
               <ul>
                 <li>
@@ -49,7 +53,7 @@
                     }">
               <div class="card">
                 <div class="card-content text-base-darkest">
-                  <h3>{{customer.name}}</h3>
+                  <h3 (click)="getCustomer(customer)">{{customer.name}}</h3>
                   <a href="javascript:void(0);"
                   (click)="onSelect(customer)"
                   class="font-sans-3xs"
@@ -106,7 +110,11 @@
                   </div>
                 </fieldset>
               </form>
-              <app-messages></app-messages>
+              <!-- app-messages displays messages on the page in this location.
+                    Currently not in use as of 07/24/2019.
+                    Can be used to output useful information, alerts or other.
+              -->
+              <!-- <app-messages></app-messages> -->
               <div class="grid-row grid-gap">
                 <div class="tablet:grid-col">
                   <div class="card">

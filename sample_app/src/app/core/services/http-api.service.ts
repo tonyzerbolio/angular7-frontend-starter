@@ -3,7 +3,7 @@ import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { MessageService } from './message.service'
-import { SvcResult } from '../models/service1.model';
+import { SvcResult } from '../models/serviceData.model';
 import { Observable, throwError } from 'rxjs';
 import { filter, retry, catchError } from 'rxjs/operators';
 

@@ -7,13 +7,24 @@ import { Service2Component } from './service2/service2.component';
 import { AuthGuard } from './core/services/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'service1', component: Service1Component, canActivate: [AuthGuard] },
-  { path: 'service2', component: Service2Component, canActivate: [AuthGuard] }
+  { path: 'service1',
+    component: Service1Component,
+    canActivate: [AuthGuard],
+    runGuardsAndResolvers: 'always'
+  },
+  { path: 'service2',
+    component: Service2Component,
+    canActivate: [AuthGuard],
+    runGuardsAndResolvers: 'always'
+  }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+      onSameUrlNavigation: 'reload'
+    }),
     OAuthModule.forRoot({
       resourceServer: {
         allowedUrls: [window.location.origin, window.location.origin + '/'],
