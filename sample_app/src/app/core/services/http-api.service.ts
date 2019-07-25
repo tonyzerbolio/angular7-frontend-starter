@@ -10,7 +10,7 @@ import { filter, retry, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class Service1ApiService {
+export class ApiService {
 
   // MessageService provides messages about API activities
 
@@ -30,7 +30,7 @@ export class Service1ApiService {
   ) { }
 
   // HttpClient API get() method => Fetch results
-  getService1(svcurl: string, svcstr: string): Observable<SvcResult> {
+  getService(svcurl: string, svcstr: string): Observable<SvcResult> {
 
     const accessToken = this.oauthService.getAccessToken();
 

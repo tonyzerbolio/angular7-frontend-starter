@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
-import { Service1ApiService } from '../core/services/http-api.service';
+import { ApiService } from '../core/services/http-api.service';
 import { environment } from '../../environments/environment';
 import { SvcResult } from '../core/models/serviceData.model';
 
@@ -27,7 +27,7 @@ export class Service2Component implements OnInit, OnDestroy {
   showAll = false; // showing all or showing single account
 
   constructor(
-    public svcApi: Service1ApiService,
+    public svcApi: ApiService,
     private router: Router
   ) {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
@@ -83,7 +83,7 @@ export class Service2Component implements OnInit, OnDestroy {
 
   getData(svcName: string) {
     this.svcToCall = this.ServiceString + svcName;
-    return this.svcApi.getService1(this.ServiceURL + this.ServicePORT, this.svcToCall).subscribe((data: {}) => {
+    return this.svcApi.getService(this.ServiceURL + this.ServicePORT, this.svcToCall).subscribe((data: {}) => {
         this.Accounts = data;
     })
   }

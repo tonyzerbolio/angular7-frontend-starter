@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
-import { Service1ApiService } from '../core/services/http-api.service';
+import { ApiService } from '../core/services/http-api.service';
 import { environment } from '../../environments/environment';
 import { SvcResult } from '../core/models/serviceData.model';
 
@@ -25,9 +25,10 @@ export class Service1Component implements OnInit, OnDestroy {
 
   list = false; // Sets list/grid view
   showAll = false; // showing all or showing single customer
+  showAccount = false; // if user clicks Pesel number, show account info
 
   constructor(
-    public svcApi: Service1ApiService,
+    public svcApi: ApiService,
     private router: Router
   ) {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
@@ -49,6 +50,12 @@ export class Service1Component implements OnInit, OnDestroy {
     this.getData('customer/' + customer.name);
   }
 
+  // Returns data for an customer's account
+  getAccount(customer: SvcResult): void {
+    this.showAll = true;
+    this.getData('account/' + customer.pesel);
+  }
+
   // Resets/Reloads all customers
   getCustomers(): void {
     this.showAll = false;
@@ -64,11 +71,21 @@ export class Service1Component implements OnInit, OnDestroy {
     }
   }
 
+  // Toggle to show all after user selects a single customer
   toggleShowAll(): void {
     if ( !this.showAll ) {
       this.showAll = true;
     } else {
       this.showAll = false;
+    }
+  }
+
+  // Toggle to show account info if user clicks Pesel
+  toggleShowAccount(): void {
+    if ( !this.showAll ) {
+      this.showAccount = true;
+    } else {
+      this.showAccount = false;
     }
   }
 
@@ -83,7 +100,7 @@ export class Service1Component implements OnInit, OnDestroy {
 
   getData(svcName: string) {
     this.svcToCall = this.ServiceString + svcName;
-    return this.svcApi.getService1(this.ServiceURL + this.ServicePORT, this.svcToCall).subscribe((data: {}) => {
+    return this.svcApi.getService(this.ServiceURL + this.ServicePORT, this.svcToCall).subscribe((data: {}) => {
         this.Customers = data;
     })
   }

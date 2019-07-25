@@ -4,7 +4,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {
   AuthGuard,
-  Service1ApiService,
+  ApiService,
   MessageService
 } from './services';
 
@@ -14,7 +14,7 @@ import {
   ],
   providers: [
     AuthGuard,
-    Service1ApiService,
+    ApiService,
     MessageService
   ],
   declarations: []

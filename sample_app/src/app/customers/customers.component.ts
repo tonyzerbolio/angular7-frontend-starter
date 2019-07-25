@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Service1ApiService } from '../core/services/http-api.service';
+import { ApiService } from '../core/services/http-api.service';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -15,7 +15,7 @@ export class CustomersComponent implements OnInit {
   ServiceString = `${environment.service2_str}`;
 
   constructor(
-    public svcApi: Service1ApiService
+    public svcApi: ApiService
   ) { }
 
   ngOnInit() {
@@ -23,7 +23,7 @@ export class CustomersComponent implements OnInit {
   }
 
   getData() {
-    return this.svcApi.getService1(this.ServiceURL + this.ServicePORT, this.ServiceString).subscribe((data: {}) => {
+    return this.svcApi.getService(this.ServiceURL + this.ServicePORT, this.ServiceString).subscribe((data: {}) => {
         this.Customer = data;
     })
   }

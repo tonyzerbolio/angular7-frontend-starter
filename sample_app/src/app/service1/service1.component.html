@@ -61,7 +61,7 @@
                   <p>
                     <span class="sub-title">Client Info</span><br>
                     ID: {{customer.id}}<br>
-                    Pesel: {{customer.pesel}}<br>
+                    <a (click)="getAccount(customer)" href="javascript:void(0);">Pesel: {{customer.pesel}}</a><br>
                     Type: {{customer.type}}
                   </p>
                   <a href="https://www.gsa.gov/">View Website</a>
