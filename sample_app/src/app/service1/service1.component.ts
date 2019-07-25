@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, UrlTree } from '@angular/router';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 import { ApiService } from '../core/services/http-api.service';
 import { environment } from '../../environments/environment';
@@ -24,9 +26,12 @@ export class Service1Component implements OnInit, OnDestroy {
 
   navigationSubscription;
 
+  currentPage = this.router.url;
+
   list = false; // Sets list/grid view
   showAll = false; // showing all or showing single customer
-  showAccount = false; // if user clicks Pesel number, show account info
+  showAccount = false; // if user clicks an account-related, show account info
+  showAccountTitle = false;
 
   constructor(
     public svcApi: ApiService,
@@ -35,7 +40,11 @@ export class Service1Component implements OnInit, OnDestroy {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       // If it is a NavigationEnd event re-initalise the component
       if (e instanceof NavigationEnd) {
-        this.getCustomers();
+        if ( !this.showAccount ) {
+          this.getCustomers();
+        } else {
+          this.getAccounts();
+        }
       }
     });
   }
@@ -56,6 +65,14 @@ export class Service1Component implements OnInit, OnDestroy {
     this.showAccount = false;
     this.showAll = false;
     this.getData(this.Service1String + 'customers');
+  }
+
+  // Returns data for an customer's account
+  getAccounts(): void {
+    this.showAccountTitle = true;
+    this.showAccount = true;
+    this.showAll = false;
+    this.getData(this.Service2String + 'accounts');
   }
 
   // Returns data for an customer's account
@@ -86,9 +103,22 @@ export class Service1Component implements OnInit, OnDestroy {
   // Toggle to show account info if user clicks Pesel
   toggleShowAccount(): void {
     if ( !this.showAll ) {
+      if ( this.currentPage === '/customers' ) {
+        this.showAccountTitle = false;
+      } else {
+        this.showAccountTitle = true;
+      }
       this.showAccount = true;
     } else {
       this.showAccount = false;
+    }
+  }
+
+  showAllResults(): void {
+    if ( this.currentPage === '/customers' ) {
+      this.getCustomers();
+    } else {
+      this.getAccounts();
     }
   }
 
@@ -108,7 +138,7 @@ export class Service1Component implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.getCustomers();
+    this.showAllResults();
   }
 
 }

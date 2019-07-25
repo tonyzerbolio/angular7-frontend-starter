@@ -7,7 +7,7 @@
         <!-- If only showing a single customer, show the 'Show All' option -->
         <a *ngIf="showAll" href="javascript:void(0);"
         class="font-sans-3xs margin-right-1"
-        routerLink="/service1">Show All</a>
+        (click)="showAllResults()">Show All</a>
         <!-- Toggle grid/list view - If editing a record, hide List/Grid toggle and show cancel -->
         <a *ngIf="!selectedItem" href="javascript:void(0);"
         class="font-sans-3xs"
@@ -22,17 +22,20 @@
       <div class="tablet:grid-col-3">
         <div class="card aside">
           <div class="card-content">
-            <h1>Customers</h1>
+            <h1 *ngIf="!showAccountTitle">Customers</h1>
+            <h1 *ngIf="showAccountTitle">Accounts</h1>
             <nav class="interior">
               <ul>
-                <li>
-                  <a href="#">Interior Link</a>
+                <li *ngIf="!showAccount">
+                  <a routerLink="/accounts" href="javascript:void(0);">Show Accounts</a>
                 </li>
-                <li>
-                  <a href="#">Interior Link</a>
-                </li>
-                <li>
-                  <a href="#">Interior Link</a>
+                <li *ngIf="showAccount">
+                  <span *ngIf="!showAccountTitle">
+                    <a (click)="showAllResults()" href="javascript:void(0);">Clear Filter</a>
+                  </span>
+                  <span *ngIf="showAccountTitle">
+                    <a routerLink="/customers" href="javascript:void(0);">Show Customers</a>
+                  </span>
                 </li>
               </ul>
             </nav>
@@ -68,7 +71,7 @@
                     <a href="https://www.gsa.gov/">View Website</a>
                   </div>
                   <div *ngIf="showAccount">
-                    <h3>Account Info</h3>
+                    <h3 (click)="getAccount(result)">Account #{{result.id}}</h3>
                     <a href="javascript:void(0);"
                     (click)="onSelect(result)"
                     class="font-sans-3xs"
@@ -89,10 +92,11 @@
               <form class="usa-form crudForm">
                 <fieldset class="usa-fieldset">
                   <legend class="usa-legend">
-                    <h2>Update Customer {{ selectedItem.name }} <span *ngIf="showAccount">Account</span> Details:</h2>
+                    <h2 *ngIf="!showAccount">Update Customer {{ selectedItem.name }} Details:</h2>
+                    <h2 *ngIf="showAccount">Update Account #{{selectedItem.id}} Details:</h2>
                   </legend>
                   <div class="grid-row grid-gap">
-                    <div class="tablet:grid-col">
+                    <div *ngIf="!showAccount" class="tablet:grid-col">
                       <label>Full Name: </label>
                       <input [(ngModel)] = "selectedItem.name" placeholder="name" [ngModelOptions]="{standalone: true}" />
                     </div>
