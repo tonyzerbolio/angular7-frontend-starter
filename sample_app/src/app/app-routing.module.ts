@@ -3,17 +3,16 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { OAuthModule } from 'angular-oauth2-oidc';
 
 import { Service1Component } from './service1/service1.component';
-import { Service2Component } from './service2/service2.component';
 import { AuthGuard } from './core/services/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'service1',
+  { path: 'customers',
     component: Service1Component,
     canActivate: [AuthGuard],
     runGuardsAndResolvers: 'always'
   },
-  { path: 'service2',
-    component: Service2Component,
+  { path: 'accounts',
+    component: Service1Component,
     canActivate: [AuthGuard],
     runGuardsAndResolvers: 'always'
   }
