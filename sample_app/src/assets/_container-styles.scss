@@ -45,6 +45,15 @@ main {
 }
 
 /**
+ * Ensures the pages that are displaying results from a service
+ * are always 'tall enought' to prevent the 'edit' screen from
+ * overlapping the footer.
+ */
+.service-results-page {
+    min-height: 56rem;
+}
+
+/**
  * Defines attributes of CARDS and main content area 'PAGE' areas.
  * Note that 'pages' in this context does not mean the entire
  * main content area but rather a large section of the main

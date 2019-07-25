@@ -23,7 +23,7 @@ export class Service2Component implements OnInit, OnDestroy {
 
   navigationSubscription;
 
-  list = false; // Sets list/grid view
+  list = true; // Sets list/grid view
   showAll = false; // showing all or showing single account
 
   constructor(

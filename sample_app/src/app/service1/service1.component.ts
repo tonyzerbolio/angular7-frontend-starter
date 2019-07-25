@@ -12,14 +12,15 @@ import { SvcResult } from '../core/models/serviceData.model';
 })
 export class Service1Component implements OnInit, OnDestroy {
 
-  Customers: any = [];
+  Results: any = [];
   ServiceURL = `${environment.service_url}`;
   ServicePORT = `${environment.service_port}`;
-  ServiceString = `${environment.service1_str}`;
+  Service1String = `${environment.service1_str}`;
+  Service2String = `${environment.service2_str}`;
 
   svcToCall: string;
 
-  selectedCustomer: SvcResult;
+  selectedItem: SvcResult;
 
   navigationSubscription;
 
@@ -40,26 +41,28 @@ export class Service1Component implements OnInit, OnDestroy {
   }
 
   // Opens/Closes record edit menu (CRUD)
-  onSelect(customer: SvcResult): void {
-    this.selectedCustomer = customer;
+  onSelect(result: SvcResult): void {
+    this.selectedItem = result;
   }
 
   // Returns data on single customer by name
-  getCustomer(customer: SvcResult): void {
+  getCustomer(result: SvcResult): void {
     this.showAll = true;
-    this.getData('customer/' + customer.name);
+    this.getData(this.Service1String + 'customer/' + result.name);
+  }
+
+  // Gets all customers and Resets/Reloads all customers
+  getCustomers(): void {
+    this.showAccount = false;
+    this.showAll = false;
+    this.getData(this.Service1String + 'customers');
   }
 
   // Returns data for an customer's account
-  getAccount(customer: SvcResult): void {
+  getAccount(result: SvcResult): void {
+    this.showAccount = true;
     this.showAll = true;
-    this.getData('account/' + customer.pesel);
-  }
-
-  // Resets/Reloads all customers
-  getCustomers(): void {
-    this.showAll = false;
-    this.getData('customers');
+    this.getData(this.Service2String + 'pesel/' + result.pesel);
   }
 
   // Toggles list/grid view by setting list variable to true or false
@@ -99,14 +102,13 @@ export class Service1Component implements OnInit, OnDestroy {
   }
 
   getData(svcName: string) {
-    this.svcToCall = this.ServiceString + svcName;
-    return this.svcApi.getService(this.ServiceURL + this.ServicePORT, this.svcToCall).subscribe((data: {}) => {
-        this.Customers = data;
+    return this.svcApi.getService(this.ServiceURL + this.ServicePORT, svcName).subscribe((data: {}) => {
+        this.Results = data;
     })
   }
 
   ngOnInit() {
-    this.getData('customers');
+    this.getCustomers();
   }
 
 }
