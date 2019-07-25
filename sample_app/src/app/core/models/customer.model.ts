@@ -1,3 +1,4 @@
+// NOT IN USE
 export class Customer {
     id: string;
     name: string;
