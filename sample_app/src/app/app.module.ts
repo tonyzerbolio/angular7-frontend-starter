@@ -7,7 +7,6 @@ import { AuthGuard } from './core/services/auth-guard.service';
 
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
-import { AuthenticateModule } from './authenticate/authenticate.module';
 import {
   FooterComponent,
   HeaderComponent,
@@ -16,7 +15,6 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { Service1Module } from './service1/service1.module';
-import { Service2Module } from './service2/service2.module';
 // import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
@@ -32,9 +30,7 @@ import { Service2Module } from './service2/service2.module';
     CoreModule,
     SharedModule,
     HomeModule,
-    AuthenticateModule,
     Service1Module,
-    Service2Module,
     AppRoutingModule,
     HttpClientModule,
     OAuthModule.forRoot()
