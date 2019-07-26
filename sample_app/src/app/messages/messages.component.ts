@@ -2,7 +2,7 @@
  * messages.component.ts will output messages to any component
  * that imports this service and has the <app-messages></app-messages>
  * selector in it's HTML template.
- * 
+ *
  * @example
  * <div class="container">
  *              <p>Here is some static text</p>

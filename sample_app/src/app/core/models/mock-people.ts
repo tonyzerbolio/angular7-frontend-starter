@@ -3,7 +3,7 @@
  * prior to integration of a database to provide your
  * components with what you need to develop your front end
  * elements.
- * 
+ *
  * Note that it imports a model class called Person. Use this
  * and the Person class to understand how this can work for
  * your project.

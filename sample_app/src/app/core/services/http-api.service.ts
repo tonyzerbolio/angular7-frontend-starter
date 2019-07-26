@@ -1,6 +1,6 @@
 /**
  * http-api.service.ts is used to consume RESTful services
- * 
+ *
  * It passes a bearer token to the back end so that protected
  * back end services can be authorized to allow the front end
  * to use them.
@@ -39,12 +39,12 @@ export class ApiService {
    * They are the constants used to build the endpoint urls used by components.
    * The components themselves will append the final parameters to claify the
    * specific service being used.
-   * 
+   *
    * @param {string} svcurl defines the http protocol and initial service URL
    * @param {string} svcstr completes the service url
-   * 
+   *
    * @returns {JSON} results from RESTful endpoint
-   * 
+   *
    */
   getService(svcurl: string, svcstr: string): Observable<SvcResult> {
 

@@ -1,7 +1,7 @@
 /**
  * service1.component.ts is a catch-all component used to display
  * data returned by the http-api.services.ts service.
- * 
+ *
  * It handles output for both the "Accounts" and "Customers" services.
  */
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -60,20 +60,20 @@ export class Service1Component implements OnInit, OnDestroy {
   /**
    * onSelect() is used to open an editing interface when the user
    * clicks on the 'edit' link or the account/customer name.
-   * 
+   *
    * It passes the selected customer or account object to the editing
    * interface to populate the form fields. The user can edit those
    * items and they will be reflected immeditely when the user closes
    * the editing screen.
-   * 
+   *
    * IMPORTANT - The editing screen DOES NOT PROVIDE ACTUAL EDITING
    * of the underlying data. While the changes you make are reflected
    * when you return to the normal view, if you navigate away from the
    * page and return, the data will return to it's original state.
-   * 
+   *
    * @todo Create actual CRUD functions that will update the actual
    * database entries.
-   * 
+   *
    * @param {object} result the selected item (customer or account)
    */
   onSelect(result: SvcResult): void {
@@ -82,14 +82,14 @@ export class Service1Component implements OnInit, OnDestroy {
 
   /**
    * getCustomer(result: SvcResult) {}
-   * 
+   *
    * Sets showAll to true so the "Show All" link is shown and the user
    * can click it to return the screen to showing all customers after
    * being in a single customer's view or edit mode.
-   * 
+   *
    * @param {object} result Takes currently selected customer and submits
    * it to the http-api.service to retrieve a single customer's details.
-   * 
+   *
    * It this instance, it is using the customer's name.
    */
   getCustomer(result: SvcResult): void {
@@ -99,7 +99,7 @@ export class Service1Component implements OnInit, OnDestroy {
 
   /**
    * getCustomers() {}
-   * 
+   *
    * Sets 'showAccount' to false to indicate we are viewing customers
    * Sets 'showAll' to false to reset hide the "Show All" option
    * Calls the getData() function passing the proper service endpoint
@@ -113,7 +113,7 @@ export class Service1Component implements OnInit, OnDestroy {
 
   /**
    * getAccounts() {}
-   * 
+   *
    * Sets 'showAccountTitle' to true to allow the component title to change
    * Sets 'showAccount' to true to indicate we are viewing accounts
    * Sets 'showAll' to false to reset hide the "Show All" option
@@ -129,15 +129,15 @@ export class Service1Component implements OnInit, OnDestroy {
 
   /**
    * getAccount(result: SvcResult) {}
-   * 
+   *
    * Sets showAccount to true to indicate we are viewing accounts.
    * Sets showAll to true so the "Show All" link is shown and the user
    * can click it to return the screen to showing all accounts after
    * being in a single account's view or edit mode.
-   * 
+   *
    * @param {object} result Takes currently selected account and submits
    * it to the http-api.service to retrieve a single account's details.
-   * 
+   *
    * In this case, it is using the 'pesel' data column to return all accounts
    * that share a common pesel value.
    */
@@ -181,7 +181,7 @@ export class Service1Component implements OnInit, OnDestroy {
 
   /**
    * showAllResults() {}
-   * 
+   *
    * Initializes the page to showing all results qualified by either
    * 'customers' or 'accounts' depending on what the current view
    * state is.
@@ -205,9 +205,9 @@ export class Service1Component implements OnInit, OnDestroy {
 
   /**
    * getData(svcName: string) {}
-   * 
+   *
    * @param {string} svcName uses the http-api.service to retrieve data
-   * 
+   *
    * @returns {JSON} A JSON object with customer or account data
    */
   getData(svcName: string) {

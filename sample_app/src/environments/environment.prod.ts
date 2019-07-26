@@ -9,7 +9,7 @@
  * `ng build --prod` then `environment.prod.ts` will be used instead.
  *
  * The list of which env maps to which file can be found in `.angular.json`.
- * 
+ *
  * @todo Build all parameters of service URLs from external 'environmet variables'
  * @todo IMPORTANT - The values below may need to be updated to properly reflect the
  * K8s environment after DNS has been properly configured. (07/25/2019)

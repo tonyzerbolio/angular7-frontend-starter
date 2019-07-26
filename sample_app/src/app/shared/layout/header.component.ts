@@ -28,11 +28,11 @@ export class HeaderComponent implements OnInit {
 
   /**
    * changeText() {}
-   * 
+   *
    * Switches the MENU button text to CLOSE for when the user is
    * viewing the application in at a mobile breakpoint. It is used
    * to prompt the user to close the navigation menu.
-   * 
+   *
    * @todo Make menu automatically close after user selects a nav
    * item.
    */
