@@ -9,10 +9,9 @@
  * `ng build --prod` then `environment.prod.ts` will be used instead.
  *
  * The list of which env maps to which file can be found in `.angular.json`.
+ * 
+ * @todo Build all parameters of service URLs from external 'environmet variables'
  */
-
-// TO DO: Build all parameters of service URLs from 'environmet variables'
-// that can be set in an easily updated, external source file or interface.
 
 export const environment = {
   production: false,

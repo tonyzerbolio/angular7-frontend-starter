@@ -1,4 +1,13 @@
-// NOT IN USE
+/**
+ * This model represents a mock-database that you can use
+ * prior to integration of a database to provide your
+ * components with what you need to develop your front end
+ * elements.
+ * 
+ * Note that it imports a model class called Person. Use this
+ * and the Person class to understand how this can work for
+ * your project.
+ */
 import { Person } from './person.model';
 
 export const PEOPLE: Person[] = [
