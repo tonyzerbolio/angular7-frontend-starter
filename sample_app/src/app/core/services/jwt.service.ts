@@ -1,3 +1,7 @@
+/**
+ * NOT CURRENTLY IN USE - BUT PROBABLY SHOULD BE (07/25/2019)
+ * This handles storage, creation and destruction of an access_token
+ */
 import { Injectable } from '@angular/core';
 
 

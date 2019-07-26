@@ -1,3 +1,10 @@
+/**
+ * http-api.service.ts is used to consume RESTful services
+ *
+ * It passes a bearer token to the back end so that protected
+ * back end services can be authorized to allow the front end
+ * to use them.
+ */
 import { Injectable, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -12,11 +19,9 @@ import { filter, retry, catchError } from 'rxjs/operators';
 })
 export class ApiService {
 
-  // MessageService provides messages about API activities
-
-  // service_url: URL to service - defined in environments/environments.ts;
-  // svcstr: passed as arg from component
-  // Http Options
+  /**
+   * Initial httpOptions configuration
+   */
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -29,18 +34,36 @@ export class ApiService {
     private messageService: MessageService
   ) { }
 
-  // HttpClient API get() method => Fetch results
+  /**
+   * These parameters are initially defined in src/environments/environment(.prod).ts
+   * They are the constants used to build the endpoint urls used by components.
+   * The components themselves will append the final parameters to claify the
+   * specific service being used.
+   *
+   * @param {string} svcurl defines the http protocol and initial service URL
+   * @param {string} svcstr completes the service url
+   *
+   * @returns {JSON} results from RESTful endpoint
+   *
+   */
   getService(svcurl: string, svcstr: string): Observable<SvcResult> {
 
     const accessToken = this.oauthService.getAccessToken();
 
-    // Handle automatically refreshing auth token
-    // this.oauthService.setupAutomaticSilentRefresh();
-
+    /**
+     * We subscribe to oauthService events and generate messages
+     * that can be displayed in other components using the
+     * messages component. This can be useful for debugging Okta
+     * and OAuth issues.
+     */
     this.oauthService.events.subscribe(e => {
       this.messageService.add('http-api.services: oauth/oidc event fired' + ' - type = ' + e.type);
     });
 
+    /**
+     * This event generates a message when OAuth emits the `token_expires` event
+     * and infomation about the status of the silent-refresh
+     */
     this.oauthService.events
       .pipe(filter(e => e.type === 'token_expires' ))
       .subscribe(e => {
@@ -50,7 +73,9 @@ export class ApiService {
         .catch(err => console.log('refresh error', err));
     });
 
-    // Call Service 1 endpoint - get results
+    /**
+     * Returned results from the RESTful service endpoint
+     */
     return this.http.get<SvcResult>(svcurl + svcstr, {
       headers: {
         Authorization: 'Bearer ' + accessToken,
