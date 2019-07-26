@@ -16,8 +16,8 @@ export class HomeComponent implements OnInit {
   constructor(private oauthService: OAuthService) { }
 
   /**
-   * login funtion for authenticating with Okta
-   * Successful authentication provides the applications
+   * Login funtion for authenticating with Okta.
+   * Successful authentication provides the application
    * with an access_token that is used to expose protected
    * routes and to communicate with protected backing
    * services.

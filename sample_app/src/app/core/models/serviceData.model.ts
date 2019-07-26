@@ -5,9 +5,9 @@
  * specific models for the various data used in the tech
  * challenge.
  * 
- * It is used by both the http-api.service.ts file to describe
- * the output used by the components that are using the
- * http-api.service to consume RESTful endpoints.
+ * It is used by both the http-api.service.ts file and the
+ * service1.component.ts file to describe the output used by
+ * the components consuming RESTful service endpoints.
  */
 export class SvcResult {
     id?: number;

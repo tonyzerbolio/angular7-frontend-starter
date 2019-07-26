@@ -44,12 +44,6 @@ export class ApiService {
    * @param {string} svcstr completes the service url
    * 
    * @returns {JSON} results from RESTful endpoint
-   *
-   * The parameters in this example will retrieve a JSON object with customer
-   * information.
-   * @example
-   * svcurl = 'http://zuul.comet:8081'
-   * svcstr = '/service1/customers'
    * 
    */
   getService(svcurl: string, svcstr: string): Observable<SvcResult> {
