@@ -17,7 +17,7 @@
 export const environment = {
   production: true,
   service_url: 'http://dev-zuul.unisys-comet.com',
-  service_port: ':8081',
+  service_port: '',
   service1_str: '/service1/',
   service2_str: '/service2/'
 };
