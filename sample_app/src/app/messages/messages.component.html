@@ -1,15 +1,13 @@
-
-<div *ngIf="messageService.messages.length">
-  <div class="grid-container usa-alert">
-    <div class="grid-row">
+<div *ngIf="messageService.messages.length" class="width-full pop-up">
+  <div class="usa-alert usa-alert--info" role="alertdialog">
+    <div class="grid-row usa-alert__body">
       <div class="tablet:grid-col">
-        <strong>Messages:</strong>
-        <ul>
-          <li *ngFor='let message of messageService.messages'> {{message}} </li>
-        </ul>
-      </div>
-      <div class="tablet:gird-col">
-        <a class="clear text-right" (click)="messageService.clear()">[ X ]</a>
+        <h3 class="usa-alert__heading">Attention</h3>
+        <p *ngFor='let message of messageService.messages' class="usa-alert__text">
+          {{message}}<br>
+          You will be automatically logged out in {{timeLeft}} seconds.
+        </p>
+        <a class="usa-button" (click)="messageService.clear(); stopAndResetTimer();">Yes</a>
       </div>
     </div>
   </div>

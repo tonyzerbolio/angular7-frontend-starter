@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { Service1Component } from './service1.component';
-import { MessagesComponent } from '../messages/messages.component';
+// import { MessagesComponent } from '../messages/messages.component';
 import { AuthGuard } from '../core/services/auth-guard.service';
 
 const routes: Routes = [
@@ -23,7 +23,7 @@ const routes: Routes = [
     ],
     declarations: [
         Service1Component,
-        MessagesComponent
+        // MessagesComponent
     ],
     exports: [
         Service1Component
