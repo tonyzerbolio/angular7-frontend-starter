@@ -3,7 +3,10 @@
     <div class="grid-row usa-alert__body">
       <div class="tablet:grid-col">
         <h3 class="usa-alert__heading">Attention</h3>
-        <p *ngFor='let message of messageService.messages' class="usa-alert__text"> {{message}} </p>
+        <p *ngFor='let message of messageService.messages' class="usa-alert__text">
+          {{message}}<br>
+          You will be automatically logged out in {{timeLeft}} seconds.
+        </p>
         <a class="usa-button" (click)="messageService.clear(); stopAndResetTimer();">Yes</a>
       </div>
     </div>
