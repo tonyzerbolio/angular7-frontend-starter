@@ -15,14 +15,14 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { Service1Module } from './service1/service1.module';
-// import { MessagesComponent } from './messages/messages.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    // MessagesComponent
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
