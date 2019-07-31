@@ -9,7 +9,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { MessageService } from './message.service'
+// import { MessageService } from './message.service'
 import { SvcResult } from '../models/serviceData.model';
 import { Observable, throwError } from 'rxjs';
 import { filter, retry, catchError } from 'rxjs/operators';
@@ -31,7 +31,7 @@ export class ApiService {
   constructor(
     public oauthService: OAuthService,
     private http: HttpClient,
-    private messageService: MessageService
+    // private messageService: MessageService
   ) { }
 
   /**
@@ -56,22 +56,19 @@ export class ApiService {
      * messages component. This can be useful for debugging Okta
      * and OAuth issues.
      */
-    this.oauthService.events.subscribe(e => {
-      this.messageService.add('http-api.services: oauth/oidc event fired' + ' - type = ' + e.type);
-    });
+    // this.oauthService.events.subscribe(e => {
+    //   this.messageService.add('http-api.services: oauth/oidc event fired' + ' - type = ' + e.type);
+    // });
 
     /**
      * This event generates a message when OAuth emits the `token_expires` event
      * and infomation about the status of the silent-refresh
      */
-    this.oauthService.events
-      .pipe(filter(e => e.type === 'token_expires' ))
-      .subscribe(e => {
-        this.messageService.add('http-api.services: oauth/oidc event type "token_expires" fired');
-        this.oauthService.silentRefresh()
-        .then(info => console.log('refresh ok', info))
-        .catch(err => console.log('refresh error', err));
-    });
+    // this.oauthService.events
+    //   .pipe(filter(e => e.type === 'token_expires' ))
+    //   .subscribe(e => {
+    //     this.oauthService.silentRefresh();
+    // });
 
     /**
      * Returned results from the RESTful service endpoint
