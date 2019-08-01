@@ -12,8 +12,8 @@ export const authConfig: AuthConfig = {
   responseType: 'token id_token code',
   silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
   scope: 'openid profile email',
-  silentRefreshTimeout: 5000, // For faster testing decrease this value and/or use timeoutFactor.
-  timeoutFactor: 0.1, // For faster testing set this value lower
+  silentRefreshTimeout: 20000, // For faster testing decrease this value and/or use timeoutFactor.
+  timeoutFactor: 0.5, // For faster testing set this value lower
   sessionChecksEnabled: false,
   showDebugInformation: true, // Also requires enabling "Verbose" level in devtools
   clearHashAfterLogin: false
