@@ -37,9 +37,8 @@ export class MessagesComponent implements OnInit {
   // If user's mouse doesn't move for (X msec), prompt "Are you here?"
   // Uses timeLeft value and multiplys by XX,000 to change to msec.
   // If timeLeft value is 60 (1 minute), then activityTimeout * 20000 will be ~ 20min.
+  // activityTimeout = (this.timeLeft * 1000) + 1000; // << For faster testing
   activityTimeout = this.timeLeft * 20000;
-
-  
 
   constructor(
     private oauthService: OAuthService,
@@ -50,7 +49,7 @@ export class MessagesComponent implements OnInit {
     this.setTimeout();
     this.userInactive.subscribe(() => {
       if (this.oauthService.hasValidIdToken()) {
-        this.messageService.add('Are you still here?'),
+        this.messageService.add('Are you still here?');
         this.startTimer();
       }
     });
@@ -61,7 +60,7 @@ export class MessagesComponent implements OnInit {
    * Used to verify that an authenticated user is still using the app
    */
   setTimeout() {
-    this.userActivity = setTimeout(() => this.userInactive.next(undefined), this.activityTimeout);
+    this.userActivity = setTimeout(() => this.userInactive.next(), this.activityTimeout);
   }
 
   /**
