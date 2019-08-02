@@ -9,12 +9,12 @@
  *              <app-messages></app-messages>
  * </div>
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 
 import { MessageService } from '../core/services/message.service';
 import { filter } from 'rxjs/operators';
-import { timer } from 'rxjs';
+import { timer, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-messages',
@@ -31,42 +31,68 @@ export class MessagesComponent implements OnInit {
   interval;
   subscribeTimer: any;
 
+  userActivity;
+  userInactive: Subject<any> = new Subject();
+
+  // If user's mouse doesn't move for (X msec), prompt "Are you here?"
+  // Uses timeLeft value and multiplys by XX,000 to change to msec.
+  // If timeLeft value is 60 (1 minute), then activityTimeout * 20000 will be ~ 20min.
+  activityTimeout = this.timeLeft * 20000;
+
+  
+
   constructor(
     private oauthService: OAuthService,
     public messageService: MessageService
   ) {
-    // After silent refresh, make sure user is sent
-    // to the nav route they selected
-    this.oauthService.events
-    .pipe(filter(e => e.type === 'silently_refreshed' ))
-    .subscribe(e => {
-      // tslint:disable-next-line:no-console
-      console.log('silent refresh event in messages.component.ts');
 
-      // Increment and test to see if we need to prompt the user
-      this.updateRefreshCount();
+    // Initialize user timeout value
+    this.setTimeout();
+    this.userInactive.subscribe(() => {
+      if (this.oauthService.hasValidIdToken()) {
+        this.messageService.add('Are you still here?'),
+        this.startTimer();
+      }
     });
+
   }
   
+  /**
+   * Used to verify that an authenticated user is still using the app
+   */
+  setTimeout() {
+    this.userActivity = setTimeout(() => this.userInactive.next(undefined), this.activityTimeout);
+  }
+
+  /**
+   * If the user's mouse doesn't move for a period of time
+   * we want to prompt them to prove they are still here.
+   */
+  @HostListener('window:mousemove') refreshUserState() {
+    clearTimeout(this.userActivity);
+    this.setTimeout();
+  }
+
   // Initiates Okta logout
   logout() {
     this.oauthService.logOut();
   }
 
-  // Inactivity timer to see if the user is still there
+  /**
+   * Simple countdown timer to give the user an amount of time
+   * to prove they are still using the app before they get
+   * logged out.
+   */
   startTimer() {
     this.interval = setInterval(() => {
       if (this.timeLeft > 0) {
         this.timeLeft--;
       } else {
+        this.messageService.clear();
         this.timeLeft = 60;
         this.logout();
       }
     }, 1000)
-  }
-
-  pauseTimer() {
-    clearInterval(this.interval);
   }
 
   stopAndResetTimer() {
@@ -74,29 +100,6 @@ export class MessagesComponent implements OnInit {
     this.timeLeft = 60;
   }
 
-  oberserableTimer() {
-    const source = timer(1000, 2000);
-    const abc = source.subscribe(val => {
-      console.log(val, '-');
-      this.subscribeTimer = this.timeLeft - val;
-    });
-  }
-  /**
-   * Increment counter
-   * Get value of refreshCount (limit) from session storage
-   * Test if counter is greater than limit
-   * If so, prompt user and start the timer
-   * If user does not respond before timer expires, they will be logged out
-   */
-  updateRefreshCount() {
-    this.currentCount = this.currentCount + 1;
-    const refreshCount = parseInt(window.sessionStorage.refreshCount, 10);
-    if (this.currentCount > refreshCount) {
-      // Show dialog that warns that the session is about to expire
-      this.messageService.add('Your session is about to expire. Would you like to renew it?');
-      this.startTimer();
-    }
-  }
   ngOnInit() {}
 
 }

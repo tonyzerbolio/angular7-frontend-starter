@@ -12,8 +12,8 @@ export const authConfig: AuthConfig = {
   responseType: 'token id_token code',
   silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
   scope: 'openid profile email',
-  silentRefreshTimeout: 20000, // For faster testing decrease this value and/or use timeoutFactor.
-  timeoutFactor: 0.5, // For faster testing set this value lower
+  silentRefreshTimeout: 20000, // Timeout set when there is an error in the silentRefresh iframe.
+  timeoutFactor: 1, // Set to to a value between 0 and 1. For faster testing set this value lower. 
   sessionChecksEnabled: false,
   showDebugInformation: true, // Also requires enabling "Verbose" level in devtools
   clearHashAfterLogin: false
@@ -24,9 +24,6 @@ export const authConfig: AuthConfig = {
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-
-  
-  refreshCount = 2; // Number of times silent refresh can happen before user is prompted or logged out
 
   constructor(
     private oauthService: OAuthService,
@@ -57,9 +54,8 @@ export class AppComponent implements OnInit {
           // tslint:disable-next-line:no-console
           console.log('In app.component tryLogin callback', context);
 
-          // Set silent refresh counter in session storage
-          const key = 'refreshCount';
-          sessionStorage.setItem(key, this.refreshCount.toString());
+          // Do stuff here when token is received
+
         }
       });
     });
