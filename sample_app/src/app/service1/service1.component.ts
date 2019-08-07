@@ -83,12 +83,12 @@ export class Service1Component implements OnInit, OnDestroy {
   /**
    * getCustomer(result: SvcResult) {}
    *
-   * Sets showAll to true so the "Show All" link is shown and the user
-   * can click it to return the screen to showing all customers after
-   * being in a single customer's view or edit mode.
+   * Displays the data for a single customer and sets showAll to true so
+   * the "Show All" link is shown and the user can click it to return the
+   * screen to showing all customers.
    *
-   * @param {object} result Takes currently selected customer and submits
-   * it to the http-api.service to retrieve a single customer's details.
+   * @param {object} result The currently selected customer to submit to
+   * the http-api.service in order to retrieve a single customer's details.
    *
    * It this instance, it is using the customer's name.
    */

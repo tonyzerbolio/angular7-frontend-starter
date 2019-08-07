@@ -2,6 +2,10 @@
  * messages.component.ts will output messages to any component
  * that imports this service and has the <app-messages></app-messages>
  * selector in it's HTML template.
+ * 
+ * This component also has the logic for testing whether or not
+ * an apparently inactive authenticated user is still using the
+ * application and logging them out if they are not.
  *
  * @example
  * <div class="container">
