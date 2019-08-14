@@ -48,7 +48,7 @@ export class Service1Component implements OnInit, OnDestroy {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       // If it is a NavigationEnd event re-initalise the component
       if (e instanceof NavigationEnd) {
-        if ( !this.showAccount ) {
+        if ( this.currentPage === '/customers' ) {
           this.getCustomers();
         } else {
           this.getAccounts();
