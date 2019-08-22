@@ -18,24 +18,24 @@ import { SvcResult } from '../core/models/serviceData.model';
 })
 export class UserRegistrationComponent implements OnInit, OnDestroy {
 
-  Results: any = [];
-  ServiceURL = `${environment.service_url}`;
-  ServicePORT = `${environment.service_port}`;
-  Service1String = `${environment.service1_str}`;
-  Service2String = `${environment.service2_str}`;
+  // Results: any = [];
+  // ServiceURL = `${environment.service_url}`;
+  // ServicePORT = `${environment.service_port}`;
+  // Service1String = `${environment.service1_str}`;
+  // Service2String = `${environment.service2_str}`;
 
-  svcToCall: string;
+  // svcToCall: string;
 
-  selectedItem: SvcResult;
+  // selectedItem: SvcResult;
 
-  navigationSubscription;
+  // navigationSubscription;
 
-  currentPage = this.router.url;
+  // currentPage = this.router.url;
 
-  list = false; // Sets list/grid view
-  showAll = false; // showing all or showing single customer
-  showAccount = false; // if user clicks an account-related, show account info
-  showAccountTitle = false;
+  // list = false; // Sets list/grid view
+  // showAll = false; // showing all or showing single customer
+  // showAccount = false; // if user clicks an account-related, show account info
+  // showAccountTitle = false;
 
   constructor(
     public svcApi: ApiService,
@@ -45,16 +45,16 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
      * This subscription to router events allows currently active
      * routes to be reused so that data can be redisplayed as needed.
      */
-    this.navigationSubscription = this.router.events.subscribe((e: any) => {
-      // If it is a NavigationEnd event re-initalise the component
-      if (e instanceof NavigationEnd) {
-        if ( this.currentPage === '/customers' ) {
-          this.getCustomers();
-        } else {
-          this.getAccounts();
-        }
-      }
-    });
+    // this.navigationSubscription = this.router.events.subscribe((e: any) => {
+    //   // If it is a NavigationEnd event re-initalise the component
+    //   if (e instanceof NavigationEnd) {
+    //     if ( this.currentPage === '/customers' ) {
+    //       this.getCustomers();
+    //     } else {
+    //       this.getAccounts();
+    //     }
+    //   }
+    // });
   }
 
   /**
@@ -76,9 +76,9 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
    *
    * @param {object} result the selected item (customer or account)
    */
-  onSelect(result: SvcResult): void {
-    this.selectedItem = result;
-  }
+  // onSelect(result: SvcResult): void {
+  //   this.selectedItem = result;
+  // }
 
   /**
    * getCustomer(result: SvcResult) {}
@@ -92,10 +92,10 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
    *
    * It this instance, it is using the customer's name.
    */
-  getCustomer(result: SvcResult): void {
-    this.showAll = true;
-    this.getData(this.Service1String + 'customer/' + result.name);
-  }
+  // getCustomer(result: SvcResult): void {
+  //   this.showAll = true;
+  //   this.getData(this.Service1String + 'customer/' + result.name);
+  // }
 
   /**
    * getCustomers() {}
@@ -105,11 +105,11 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
    * Calls the getData() function passing the proper service endpoint
    * url and parameters to return all customers.
    */
-  getCustomers(): void {
-    this.showAccount = false;
-    this.showAll = false;
-    this.getData(this.Service1String + 'customers');
-  }
+  // getCustomers(): void {
+  //   this.showAccount = false;
+  //   this.showAll = false;
+  //   this.getData(this.Service1String + 'customers');
+  // }
 
   /**
    * getAccounts() {}
@@ -120,12 +120,12 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
    * Calls the getData() function passing the proper service endpoint
    * url and parameters to return all accounts.
    */
-  getAccounts(): void {
-    this.showAccountTitle = true;
-    this.showAccount = true;
-    this.showAll = false;
-    this.getData(this.Service2String + 'accounts');
-  }
+  // getAccounts(): void {
+  //   this.showAccountTitle = true;
+  //   this.showAccount = true;
+  //   this.showAll = false;
+  //   this.getData(this.Service2String + 'accounts');
+  // }
 
   /**
    * getAccount(result: SvcResult) {}
@@ -141,43 +141,43 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
    * In this case, it is using the 'pesel' data column to return all accounts
    * that share a common pesel value.
    */
-  getAccount(result: SvcResult): void {
-    this.showAccount = true;
-    this.showAll = true;
-    this.getData(this.Service2String + 'pesel/' + result.pesel);
-  }
+  // getAccount(result: SvcResult): void {
+  //   this.showAccount = true;
+  //   this.showAll = true;
+  //   this.getData(this.Service2String + 'pesel/' + result.pesel);
+  // }
 
   // Toggles list/grid view by setting list variable to true or false
-  toggleList(): void {
-    if ( !this.list ) {
-      this.list = true;
-    } else {
-      this.list = false;
-    }
-  }
+  // toggleList(): void {
+  //   if ( !this.list ) {
+  //     this.list = true;
+  //   } else {
+  //     this.list = false;
+  //   }
+  // }
 
   // Toggle to show all after user selects a single customer
-  toggleShowAll(): void {
-    if ( !this.showAll ) {
-      this.showAll = true;
-    } else {
-      this.showAll = false;
-    }
-  }
+  // toggleShowAll(): void {
+  //   if ( !this.showAll ) {
+  //     this.showAll = true;
+  //   } else {
+  //     this.showAll = false;
+  //   }
+  // }
 
   // Toggle to show account info if user clicks Pesel
-  toggleShowAccount(): void {
-    if ( !this.showAll ) {
-      if ( this.currentPage === '/customers' ) {
-        this.showAccountTitle = false;
-      } else {
-        this.showAccountTitle = true;
-      }
-      this.showAccount = true;
-    } else {
-      this.showAccount = false;
-    }
-  }
+  // toggleShowAccount(): void {
+  //   if ( !this.showAll ) {
+  //     if ( this.currentPage === '/customers' ) {
+  //       this.showAccountTitle = false;
+  //     } else {
+  //       this.showAccountTitle = true;
+  //     }
+  //     this.showAccount = true;
+  //   } else {
+  //     this.showAccount = false;
+  //   }
+  // }
 
   /**
    * showAllResults() {}
@@ -186,21 +186,21 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
    * 'customers' or 'accounts' depending on what the current view
    * state is.
    */
-  showAllResults(): void {
-    if ( this.currentPage === '/customers' ) {
-      this.getCustomers();
-    } else {
-      this.getAccounts();
-    }
-  }
+  // showAllResults(): void {
+  //   if ( this.currentPage === '/customers' ) {
+  //     this.getCustomers();
+  //   } else {
+  //     this.getAccounts();
+  //   }
+  // }
 
   ngOnDestroy() {
     // avoid memory leaks here by cleaning up after ourselves. If we
     // don't then we will continue to run our initialiseInvites()
     // method on every navigationEnd event.
-    if (this.navigationSubscription) {
-       this.navigationSubscription.unsubscribe();
-    }
+    // if (this.navigationSubscription) {
+    //    this.navigationSubscription.unsubscribe();
+    // }
   }
 
   /**
@@ -210,14 +210,14 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
    *
    * @returns {JSON} A JSON object with customer or account data
    */
-  getData(svcName: string) {
-    return this.svcApi.getService(this.ServiceURL + this.ServicePORT, svcName).subscribe((data: {}) => {
-        this.Results = data;
-    })
-  }
+  // getData(svcName: string) {
+  //   return this.svcApi.getService(this.ServiceURL + this.ServicePORT, svcName).subscribe((data: {}) => {
+  //       this.Results = data;
+  //   })
+  // }
 
   ngOnInit() {
-    this.showAllResults();
+    // this.showAllResults();
   }
 
 }
