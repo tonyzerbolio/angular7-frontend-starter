@@ -38,8 +38,8 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
   // showAccountTitle = false;
 
   constructor(
-    public svcApi: ApiService,
-    private router: Router
+    // public svcApi: ApiService,
+    // private router: Router
   ) {
     /**
      * This subscription to router events allows currently active
