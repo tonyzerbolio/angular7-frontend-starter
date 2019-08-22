@@ -68,6 +68,9 @@
         <li *ngIf="givenName" class="usa-nav__primary-item">
           <button class="usa-button" routerLink="/customers"> Customers </button>
         </li>
+        <li *ngIf="givenName" class="usa-nav__primary-item">
+          <button class="usa-button" routerLink="/user-registration"> User Registration </button>
+        </li>
         <li *ngIf="!givenName" class="usa-nav__primary-item">
           <button class="usa-button" (click)="login()">Login</button>
         </li>

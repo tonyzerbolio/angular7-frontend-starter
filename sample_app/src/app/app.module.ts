@@ -15,6 +15,7 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { Service1Module } from './service1/service1.module';
+import { UserRegistrationModule } from './user-registration/user-registration.module';
 import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { MessagesComponent } from './messages/messages.component';
     SharedModule,
     HomeModule,
     Service1Module,
+    UserRegistrationModule,
     AppRoutingModule,
     HttpClientModule,
     OAuthModule.forRoot()

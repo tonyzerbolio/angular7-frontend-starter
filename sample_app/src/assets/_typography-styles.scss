@@ -11,6 +11,8 @@ h1, h2, h3 {
     line-height: 1.625rem;
 }
 p {
+    font-size: $gsa-body-font-size;
+    font-weight: normal;
     line-height: 1.63432rem;
 }
 a {
@@ -38,6 +40,11 @@ a {
 }
 .page-link {
     cursor: pointer;
+}
+
+// .required
+.required {
+    color: $gsa-required-color;
 }
 
 // General text alignment classes
@@ -142,6 +149,12 @@ a {
     h2 {
         @include u-text('primary');
         font-size: 1.2rem;
+    }
+}
+.reg-form {
+    h1 {
+        @include u-text('primary');
+        font-size: 2rem;
     }
 }
 

@@ -14,12 +14,12 @@ input, textarea {
 }
 
 // Defines an absolutely positioned element for CRUD operations
-.crudInterface {
+.crudInterface, .reg-form {
     position: absolute;
     top: 0;
     width: calc(100% - 2rem);
     .crudForm {
-        border: 1px solid color('base-light');
+        border: 0px solid color('base-light');
         margin-bottom: 1em;
         padding: 1em;
     }
@@ -29,5 +29,14 @@ input, textarea {
     label {
         display: inline-flex;
         min-width: 5.675rem;
+    }
+    input {
+        width: 100%;
+    }
+}
+.reg-form {
+    input {
+        height: 2.23rem;
+        margin-bottom: 2rem;
     }
 }
