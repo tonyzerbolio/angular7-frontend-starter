@@ -76,9 +76,9 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
    *
    * @param {object} result the selected item (customer or account)
    */
-  // onSelect(result: SvcResult): void {
-  //   this.selectedItem = result;
-  // }
+  onSelect(result: SvcResult): void {
+    // this.selectedItem = result;
+  }
 
   /**
    * getCustomer(result: SvcResult) {}
