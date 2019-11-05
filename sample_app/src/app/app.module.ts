@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { AuthGuard } from './core/services/auth-guard.service';
 
@@ -14,7 +14,7 @@ import {
 } from './shared';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-import { Service1Module } from './service1/service1.module';
+import { AuthorsModule } from './authors/authors.module';
 import { UserRegistrationModule } from './user-registration/user-registration.module';
 import { MessagesComponent } from './messages/messages.component';
 
@@ -31,7 +31,7 @@ import { MessagesComponent } from './messages/messages.component';
     CoreModule,
     SharedModule,
     HomeModule,
-    Service1Module,
+    AuthorsModule,
     UserRegistrationModule,
     AppRoutingModule,
     HttpClientModule,
