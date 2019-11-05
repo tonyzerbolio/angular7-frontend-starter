@@ -30,7 +30,7 @@
                 <li>
                   <a routerLink="/accounts" href="javascript:void(0);">Show Accounts</a>
                 </li>
-                <li *ngIf="showAccount">
+                <li>
                   <span *ngIf="!showAccountTitle">
                     <a (click)="showAllResults()" href="javascript:void(0);">Clear Filter</a>
                   </span>
@@ -58,17 +58,15 @@
               <div class="card">
                 <div class="card-content text-base-darkest">
                   <div>
-                    <h3 (click)="getAuthor(result)">{{result.name}}</h3>
-                    <a href="javascript:void(0);"
-                    (click)="onSelect(result)"
-                    class="font-sans-3xs"
-                    [class.selected]="result === selectedItem">edit</a>
+                    <h3 (click)="getAuthor(result)">{{result.firstName}} {{result.lastName}}</h3>
                     <p>
-                      <span class="sub-title">Author Info</span><br>
                       ID: {{result.id}}<br>
                       Age: {{result.age}}
                     </p>
-                    <a href="https://www.gsa.gov/">View Website</a>
+                    <a href="javascript:void(0);"
+                    (click)="onSelect(result)"
+                    class="font-sans-3xs"
+                    [class.selected]="result === selectedItem">Edit Author Info</a>
                   </div>
                 </div>
               </div>
@@ -81,20 +79,23 @@
               <form class="usa-form crudForm">
                 <fieldset class="usa-fieldset">
                   <legend class="usa-legend">
-                    <h2>Update Author {{ selectedItem.name }} Details:</h2>
+                    <h2>Update Author {{ selectedItem.firstName }} {{ selectedItem.lastName }} Details:</h2>
                   </legend>
                   <div class="grid-row grid-gap">
                     <div class="tablet:grid-col">
-                      <label>Full Name: </label>
-                      <input [(ngModel)] = "selectedItem.name" placeholder="name" [ngModelOptions]="{standalone: true}" />
+                      <label>First Name: </label>
+                      <input [(ngModel)] = "selectedItem.firstName" placeholder="firstName" [ngModelOptions]="{standalone: true}" />
                     </div>
                     <div class="tablet:grid-col">
-                      <label>ID: </label>
-                      <label *ngIf="showAccount">ID: </label>
-                      <input [(ngModel)] = "selectedItem.id" placeholder="id" [ngModelOptions]="{standalone: true}" />
+                      <label>Last Name: </label>
+                      <input [(ngModel)] = "selectedItem.lastName" placeholder="lastName" [ngModelOptions]="{standalone: true}" />
                     </div>
                   </div>
                   <div class="grid-row grid-gap">
+                    <div class="tablet:grid-col">
+                      <label>ID: </label>
+                      <input [(ngModel)] = "selectedItem.id" placeholder="id" [ngModelOptions]="{standalone: true}" />
+                    </div>
                     <div class="tablet:grid-col">
                       <label>Age: </label>
                       <input [(ngModel)] = "selectedItem.age" placeholder="age" [ngModelOptions]="{standalone: true}" />

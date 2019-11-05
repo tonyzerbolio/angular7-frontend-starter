@@ -9,7 +9,7 @@ import { Router, NavigationEnd } from '@angular/router';
 
 import { ApiService } from '../core/services/http-api.service';
 import { environment } from '../../environments/environment';
-import { SvcResult } from '../core/models/serviceData.model';
+import { AuthorsResult } from '../core/models/authors.model';
 
 @Component({
   selector: 'app-authors',
@@ -28,7 +28,7 @@ export class AuthorsComponent implements OnInit, OnDestroy {
 
   svcToCall: string;
 
-  selectedItem: SvcResult;
+  selectedItem: AuthorsResult;
 
   navigationSubscription;
 
@@ -76,7 +76,7 @@ export class AuthorsComponent implements OnInit, OnDestroy {
    *
    * @param {object} result the selected item (customer or account)
    */
-  onSelect(result: SvcResult): void {
+  onSelect(result: AuthorsResult): void {
     this.selectedItem = result;
   }
 
@@ -106,9 +106,9 @@ export class AuthorsComponent implements OnInit, OnDestroy {
    *
    * It this instance, it is using the author's name.
    */
-  getAuthor(result: SvcResult): void {
+  getAuthor(result: AuthorsResult): void {
     this.showAll = true;
-    this.getData('/authors?name=' + result.name);
+    this.getData('/authors?id=' + result.id);
   }
 
   // Toggles list/grid view by setting list variable to true or false
