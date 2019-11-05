@@ -22,10 +22,6 @@ export class AuthorsComponent implements OnInit, OnDestroy {
   ServiceURL = `${environment.service_url}`;
   ServicePORT = `${environment.service_port}`;
 
-  // get data functions
-  get_pictures: '/pictures';
-  get_comments: '/comments';
-
   svcToCall: string;
 
   selectedItem: AuthorsResult;
@@ -50,7 +46,7 @@ export class AuthorsComponent implements OnInit, OnDestroy {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       // If it is a NavigationEnd event re-initalise the component
       if (e instanceof NavigationEnd) {
-        if ( this.currentPage === '/customers' ) {
+        if ( this.currentPage === '/authors' ) {
           this.getAuthors();
         }
       }
