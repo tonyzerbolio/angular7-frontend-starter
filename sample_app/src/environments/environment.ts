@@ -17,8 +17,5 @@ export const environment = {
   production: false,
   // Dev Note: Configured to hit Zuul in local K8s cluster using port-forwarding
   service_url: window.location.protocol + '//' + window.location.hostname,
-  // service_url: 'http://dev-zuul.unisys-comet.com',
-  service_port: ':8081',
-  service1_str: '/service1/',
-  service2_str: '/service2/'
+  service_port: ':3000'
 };
