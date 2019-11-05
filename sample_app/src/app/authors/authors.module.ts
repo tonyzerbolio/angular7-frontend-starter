@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { Service1Component } from './service1.component';
+import { AuthorsComponent } from './authors.component';
 // import { MessagesComponent } from '../messages/messages.component';
 import { AuthGuard } from '../core/services/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'service1',
-    component: Service1Component,
+  { path: 'authors',
+    component: AuthorsComponent,
     canActivate: [AuthGuard],
     runGuardsAndResolvers: 'always'
   }
@@ -22,11 +22,11 @@ const routes: Routes = [
       RouterModule.forChild(routes)
     ],
     declarations: [
-        Service1Component,
+      AuthorsComponent,
         // MessagesComponent
     ],
     exports: [
-        Service1Component
+      AuthorsComponent
   ]
   })
-  export class Service1Module {}
+  export class AuthorsModule {}

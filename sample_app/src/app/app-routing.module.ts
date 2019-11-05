@@ -2,18 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { OAuthModule } from 'angular-oauth2-oidc';
 
-import { Service1Component } from './service1/service1.component';
+import { AuthorsComponent } from './authors/authors.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { AuthGuard } from './core/services/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'customers',
-    component: Service1Component,
-    canActivate: [AuthGuard],
-    runGuardsAndResolvers: 'always'
-  },
-  { path: 'accounts',
-    component: Service1Component,
+  { path: 'authors',
+    component: AuthorsComponent,
     canActivate: [AuthGuard],
     runGuardsAndResolvers: 'always'
   },
