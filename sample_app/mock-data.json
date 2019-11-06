@@ -1,80 +1,194 @@
 {
-    "authors" : [
-      {
-        "id": 1,
-        "firstName" : "Andy",
-        "lastName" : "Schmandy",
-        "age": 30
-      }, 
-      {
-        "id": 2,
-        "firstName" : "Billy",
-        "lastName" : "Barooky",
-        "age": 40
-      }, 
-      {
-        "id": 3,
-        "firstName" : "Charles",
-        "lastName" : "Bobarles",
-        "age": 50
-      }, 
-      {
-        "id": 4,
-        "firstName" : "Donald",
-        "lastName" : "Dontaskme",
-        "age": 25
-      }, 
-      {
-        "id": 5,
-        "firstName" : "Erin",
-        "lastName" : "Elferin",
-        "age": 36
-      }, 
-      {
-        "id": 6,
-        "firstName" : "Francis",
-        "lastName" : "Finkfinder",
-        "age": 24
-      }, 
-      {
-        "id": 7,
-        "firstName" : "Gerald",
-        "lastName" : "Getmedata",
-        "age": 32
-      }, 
-      {
-        "id": 8,
-        "firstName" : "Henry",
-        "lastName" : "Hackinslash",
-        "age": 52
-      }
-    ],
-    "comments" : [
-      {
-        "id": 1,
-        "date" : "03-18-2016",
-        "message" : "Nice!"
-      },
-      {
-        "id": 2,
-        "date" : "06-21-2017",
-        "message" : "Great view!"
-      }
-    ],
-    "pictures" : [
-      {
-        "id": 1,
-        "author" : "Lisa",
-        "description" : "A wonderful view of nature",
-        "img" : "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg",
-        "title" : "A natural view"
-      },
-      {
-        "id": 2,
-        "author" : "Andy",
-        "description" : "Seaside sunset",
-        "img" : "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg",
-        "title" : "Landscape view"
-      }
-    ]
-  }
+  "authors" : [
+    {
+      "id": 1,
+      "firstName" : "Andy",
+      "lastName" : "Schmandy",
+      "age": 30
+    }, 
+    {
+      "id": 2,
+      "firstName" : "Billy",
+      "lastName" : "Barooky",
+      "age": 40
+    }, 
+    {
+      "id": 3,
+      "firstName" : "Charles",
+      "lastName" : "Bobarles",
+      "age": 50
+    }, 
+    {
+      "id": 4,
+      "firstName" : "Donald",
+      "lastName" : "Dontaskme",
+      "age": 25
+    }, 
+    {
+      "id": 5,
+      "firstName" : "Erin",
+      "lastName" : "Elferin",
+      "age": 36
+    }, 
+    {
+      "id": 6,
+      "firstName" : "Francis",
+      "lastName" : "Finkfinder",
+      "age": 24
+    }, 
+    {
+      "id": 7,
+      "firstName" : "Gerald",
+      "lastName" : "Getmedata",
+      "age": 32
+    }, 
+    {
+      "id": 8,
+      "firstName" : "Henry",
+      "lastName" : "Hackinslash",
+      "age": 52
+    }
+  ],
+  "books" : [
+    {
+      "id": 1,
+      "title" : "Andy Schmandy's Book",
+      "section" : "Biography",
+      "pages": 300
+    }, 
+    {
+      "id": 2,
+      "title" : "Billy's Book",
+      "section" : "Fiction",
+      "age": 400
+    }, 
+    {
+      "id": 3,
+      "title" : "Charles's Book",
+      "section" : "Non-Fiction",
+      "age": 500
+    }, 
+    {
+      "id": 4,
+      "title" : "Donald's Book",
+      "section" : "Adventure",
+      "age": 250
+    }, 
+    {
+      "id": 5,
+      "title" : "Erin's Book",
+      "section" : "Travel",
+      "age": 360
+    }, 
+    {
+      "id": 6,
+      "title" : "Francis's Book",
+      "section" : "Mystery",
+      "age": 240
+    }, 
+    {
+      "id": 7,
+      "title" : "Gerald's Book",
+      "section" : "Science Fiction",
+      "age": 320
+    }, 
+    {
+      "id": 8,
+      "title" : "Henry's Book",
+      "section" : "Graphic Novel",
+      "age": 520
+    }
+  ],
+  "comments" : [
+    {
+      "id": 1,
+      "date" : "03-18-2016",
+      "message" : "Nice!"
+    },
+    {
+      "id": 2,
+      "date" : "06-21-2017",
+      "message" : "Great view!"
+    },
+    {
+      "id": 3,
+      "date" : "07-26-2018",
+      "message" : "Excellent!"
+    },
+    {
+      "id": 4,
+      "date" : "05-25-2018",
+      "message" : "Awesome!"
+    },
+    {
+      "id": 5,
+      "date" : "04-16-2018",
+      "message" : "Wonderful!"
+    },
+    {
+      "id": 6,
+      "date" : "02-06-2018",
+      "message" : "Transcendent!"
+    },
+    {
+      "id": 7,
+      "date" : "09-16-2019",
+      "message" : "Life-Changing!"
+    },
+    {
+      "id": 8,
+      "date" : "12-31-2019",
+      "message" : "Year-Changing!"
+    }
+  ],
+  "pictures" : [
+    {
+      "id": 1,
+      "description" : "Picture for this book",
+      "img" : "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg",
+      "title" : "image title attribute"
+    },
+    {
+      "id": 2,
+      "description" : "Seaside sunset",
+      "img" : "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg",
+      "title" : "image title attribute"
+    },
+    {
+      "id": 3,
+      "description" : "Picture for this book",
+      "img" : "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg",
+      "title" : "image title attribute"
+    },
+    {
+      "id": 4,
+      "description" : "Picture for this book",
+      "img" : "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg",
+      "title" : "image title attribute"
+    },
+    {
+      "id": 5,
+      "description" : "Picture for this book",
+      "img" : "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg",
+      "title" : "image title attribute"
+    },
+    {
+      "id": 6,
+      "description" : "Picture for this book",
+      "img" : "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg",
+      "title" : "image title attribute"
+    },
+    {
+      "id": 7,
+      "description" : "Picture for this book",
+      "img" : "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg",
+      "title" : "image title attribute"
+    },
+    {
+      "id": 8,
+      "description" : "Picture for this book",
+      "img" : "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg",
+      "title" : "image title attribute"
+    }
+  ]
+}
