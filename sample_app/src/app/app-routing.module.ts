@@ -3,10 +3,16 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { OAuthModule } from 'angular-oauth2-oidc';
 
 import { AuthorsComponent } from './authors/authors.component';
+import { BooksComponent } from './books/books.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { AuthGuard } from './core/services/auth-guard.service';
 
 const routes: Routes = [
+  { path: 'books',
+    component: BooksComponent,
+    canActivate: [AuthGuard],
+    runGuardsAndResolvers: 'always'
+  },
   { path: 'authors',
     component: AuthorsComponent,
     canActivate: [AuthGuard],

@@ -6,17 +6,18 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import { AuthGuard } from './core/services/auth-guard.service';
 
 import { AppComponent } from './app.component';
-import { HomeModule } from './home/home.module';
+import { MessagesComponent } from './messages/messages.component';
 import {
   FooterComponent,
   HeaderComponent,
   SharedModule
 } from './shared';
-import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-import { AuthorsModule } from './authors/authors.module';
+import { HomeModule } from './home/home.module';
+import { AppRoutingModule } from './app-routing.module';
 import { UserRegistrationModule } from './user-registration/user-registration.module';
-import { MessagesComponent } from './messages/messages.component';
+import { AuthorsModule } from './authors/authors.module';
+import { BooksModule } from './books/books.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MessagesComponent } from './messages/messages.component';
     SharedModule,
     HomeModule,
     AuthorsModule,
+    BooksModule,
     UserRegistrationModule,
     AppRoutingModule,
     HttpClientModule,
