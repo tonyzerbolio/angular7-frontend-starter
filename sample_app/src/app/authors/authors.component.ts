@@ -1,8 +1,8 @@
 /**
- * service1.component.ts is a catch-all component used to display
- * data returned by the http-api.services.ts service.
+ * authors.component.ts is a component used to display data returned
+ * by the http-api.services.ts service.
  *
- * It handles output for both the "Accounts" and "Customers" services.
+ * It handles output for the "Authors" service.
  */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
@@ -14,7 +14,7 @@ import { AuthorsResult } from '../core/models/authors.model';
 @Component({
   selector: 'app-authors',
   templateUrl: './authors.component.html',
-  styleUrls: ['./authors.component.css']
+  styleUrls: ['./authors.component.scss']
 })
 export class AuthorsComponent implements OnInit, OnDestroy {
 
@@ -55,12 +55,11 @@ export class AuthorsComponent implements OnInit, OnDestroy {
 
   /**
    * onSelect() is used to open an editing interface when the user
-   * clicks on the 'edit' link or the account/customer name.
+   * clicks on the 'edit' link or the item title.
    *
-   * It passes the selected customer or account object to the editing
-   * interface to populate the form fields. The user can edit those
-   * items and they will be reflected immeditely when the user closes
-   * the editing screen.
+   * It passes the selected object to the editing interface to populate
+   * the form fields. The user can edit those items and they will be
+   * reflected immeditely when the user closes the editing screen.
    *
    * IMPORTANT - The editing screen DOES NOT PROVIDE ACTUAL EDITING
    * of the underlying data. While the changes you make are reflected
@@ -79,8 +78,6 @@ export class AuthorsComponent implements OnInit, OnDestroy {
   /**
    * getAuthors() {}
    *
-   * Sets 'showAccountTitle' to true to allow the component title to change
-   * Sets 'showAccount' to true to indicate we are viewing authors
    * Sets 'showAll' to false to reset hide the "Show All" option
    * Calls the getData() function passing the proper service endpoint
    * url and parameters to return all authors.
@@ -91,7 +88,7 @@ export class AuthorsComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * getAuthor(result: SvcResult) {}
+   * getAuthor(result: AuthorsResult) {}
    *
    * Displays the data for a single author and sets showAll to true so
    * the "Show All" link is shown and the user can click it to return the
@@ -100,7 +97,7 @@ export class AuthorsComponent implements OnInit, OnDestroy {
    * @param {object} result The currently selected author to submit to
    * the http-api.service in order to retrieve a single author's details.
    *
-   * It this instance, it is using the author's name.
+   * It this instance, it is using the author's id.
    */
   getAuthor(result: AuthorsResult): void {
     this.showAll = true;
