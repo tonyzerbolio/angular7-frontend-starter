@@ -60,43 +60,43 @@
       "id": 2,
       "title" : "Billy's Book",
       "section" : "Fiction",
-      "age": 400
+      "pages": 400
     }, 
     {
       "id": 3,
       "title" : "Charles's Book",
       "section" : "Non-Fiction",
-      "age": 500
+      "pages": 500
     }, 
     {
       "id": 4,
       "title" : "Donald's Book",
       "section" : "Adventure",
-      "age": 250
+      "pages": 250
     }, 
     {
       "id": 5,
       "title" : "Erin's Book",
       "section" : "Travel",
-      "age": 360
+      "pages": 360
     }, 
     {
       "id": 6,
       "title" : "Francis's Book",
       "section" : "Mystery",
-      "age": 240
+      "pages": 240
     }, 
     {
       "id": 7,
       "title" : "Gerald's Book",
       "section" : "Science Fiction",
-      "age": 320
+      "pages": 320
     }, 
     {
       "id": 8,
       "title" : "Henry's Book",
       "section" : "Graphic Novel",
-      "age": 520
+      "pages": 520
     }
   ],
   "comments" : [
