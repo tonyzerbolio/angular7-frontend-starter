@@ -1,0 +1,154 @@
+<div class="service-results-page padding-top-2 padding-bottom-5">
+
+    <!-- Results table - it hides when there are no results -->
+    <div class="grid-container">
+      <div class="grid-row">
+        <div class="tablet:grid-col-12 text-right padding-y-1">
+          <!-- If only showing a single customer, show the 'Show All' option -->
+          <a *ngIf="showAll" href="javascript:void(0);"
+          class="font-sans-3xs margin-right-1"
+          (click)="getBooks()">Show All</a>
+          <!-- Toggle grid/list view - If editing a record, hide List/Grid toggle and show cancel -->
+          <a *ngIf="!selectedItem" href="javascript:void(0);"
+          class="font-sans-3xs"
+          (click)="toggleList()">List/Grid</a>
+          <!-- Cancel button removes edit view and reshows List/Grid toggle -->
+          <a *ngIf="selectedItem" href="javascript:void(0);"
+          class="font-sans-3xs"
+          (click)="onSelect()">Cancel Editing</a>
+        </div>
+      </div>
+      <div class="grid-row grid-gap">
+        <div class="tablet:grid-col-3">
+          <div class="card aside">
+            <div class="card-content">
+              <h1>Books</h1>
+              <!-- <h1 *ngIf="!showAccountTitle">Customers</h1>
+              <h1 *ngIf="showAccountTitle">Accounts</h1> -->
+              <!-- <nav class="interior">
+                <ul>
+                  <li>
+                    <a routerLink="/accounts" href="javascript:void(0);">Show Accounts</a>
+                  </li>
+                  <li>
+                    <span *ngIf="!showAccountTitle">
+                      <a (click)="showAllResults()" href="javascript:void(0);">Clear Filter</a>
+                    </span>
+                    <span *ngIf="showAccountTitle">
+                      <a routerLink="/customers" href="javascript:void(0);">Show Customers</a>
+                    </span>
+                  </li>
+                </ul>
+              </nav> -->
+            </div>
+            <div class="card-image">
+              <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-1.png" alt="Customers Card Decoration Image" />
+            </div>
+          </div>
+        </div>
+  
+        <div *ngIf="Results.length !== 0" class="tablet:grid-col-9 usa-prose position-relative">
+          <div class="grid-container padding-x-0">
+            <div class="grid-row grid-gap">
+              <div *ngFor="let result of Results"
+                      [ngClass]="{
+                        'tablet:grid-col-12': list,
+                        'tablet:grid-col-4': !list
+                      }">
+                <div class="card">
+                  <div class="card-content text-base-darkest">
+                    <div>
+                      <h3 (click)="getBook(result)">{{result.title}}</h3>
+                      <p>
+                        ID: {{result.id}}<br>
+                        Section: {{result.section}}<br>
+                        Pages: {{result.pages}}
+                      </p>
+                      <a href="javascript:void(0);"
+                      (click)="onSelect(result)"
+                      class="font-sans-3xs"
+                      [class.selected]="result === selectedItem">Edit Book Info</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="selectedItem" class="crudInterface z-top">
+            <div class="page">
+              <div class="page-content">
+                <form class="usa-form crudForm">
+                  <fieldset class="usa-fieldset">
+                    <legend class="usa-legend">
+                      <h2>Update {{ selectedItem.title }} Details:</h2>
+                    </legend>
+                    <div class="grid-row grid-gap">
+                      <div class="tablet:grid-col">
+                        <label>Title: </label>
+                        <input [(ngModel)] = "selectedItem.title" placeholder="title" [ngModelOptions]="{standalone: true}" />
+                      </div>
+                      <div class="tablet:grid-col">
+                          <label>ID: </label>
+                          <input [(ngModel)] = "selectedItem.id" placeholder="id" [ngModelOptions]="{standalone: true}" />
+                        </div>
+                    </div>
+                    <div class="grid-row grid-gap">
+                      <div class="tablet:grid-col">
+                        <label>Section: </label>
+                        <input [(ngModel)] = "selectedItem.section" placeholder="section" [ngModelOptions]="{standalone: true}" />
+                      </div>
+                      <div class="tablet:grid-col">
+                        <label>Pages: </label>
+                        <input [(ngModel)] = "selectedItem.pages" placeholder="pages" [ngModelOptions]="{standalone: true}" />
+                      </div>
+                    </div>
+                    <div class="grid-row grid-gap">
+                      <div class="grid-col-4"></div>
+                      <div class="tablet:grid-col-2">
+                        <button class="usa-button" (click)="onSelect()">Update</button>
+                      </div>
+                      <div class="tablet:grid-col-2">
+                        <button class="usa-button" (click)="onSelect()">Cancel</button>
+                      </div>
+                      <div class="grid-col-4"></div>
+                    </div>
+                  </fieldset>
+                </form>
+                <!-- app-messages displays messages on the page in this location.
+                      Currently not in use as of 07/24/2019.
+                      Can be used to output useful information, alerts or other.
+                -->
+                <!-- <app-messages></app-messages> -->
+                <div class="grid-row grid-gap">
+                  <div class="tablet:grid-col">
+                    <div class="card">
+                      <div class="card-image">
+                        <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-2.png" alt="Second Card Decoration Image" />
+                      </div>
+                      <div class="card-content text-base-darkest">
+                        <h3>Card Title</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis ante eu turpis malesuada, eget posuere diam pretium.</p>
+                        <button class="usa-button ">Card Button</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tablet:grid-col">
+                    <div class="card">
+                      <div class="card-image">
+                        <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-3.png" alt="Third Card Decoration Image" />
+                      </div>
+                      <div class="card-content text-base-darkest">
+                        <h3>Card Title</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis ante eu turpis malesuada, eget posuere diam pretium.</p>
+                        <button class="usa-button ">Card Button</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
