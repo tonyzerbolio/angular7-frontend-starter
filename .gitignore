@@ -27,4 +27,4 @@ npm-debug.log
 .vscode
 *.log
 *.stackdump
-package-lock.json
+sample_app/package-lock.json
