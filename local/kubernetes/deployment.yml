@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    author: Levon Becker
+  labels:
+    comet.app: angularjs
+  name: angularjs
+  namespace: comet
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      comet.app: angularjs
+  template:
+    metadata:
+      labels:
+        comet.app: angularjs
+      namespace: comet
+    spec:
+      containers:
+      - env:
+        - name: LOCAL_DEV
+          value: "true"
+        - name: SERVICE1_API_URL
+          value: http://zuul.comet.svc.cluster.local:8081/svc1
+        - name: SERVICE2_API_URL
+          value: http://zuul.comet.svc.cluster.local:8081/svc2
+        image: comet/angularjs
+        name: angularjs
+        ports:
+          - protocol: TCP
+            containerPort: 8080
+            hostPort: 8080
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always

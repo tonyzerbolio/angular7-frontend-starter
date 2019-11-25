@@ -1,0 +1,121 @@
+<div class="home-page bg-white">
+  <section class="usa-hero home-hero">
+    <div class="grid-container">
+      <div class="usa-hero__callout">
+          <div *ngIf="givenName">
+            <h1 class="usa-hero__heading"><span class="usa-hero__heading--alt">GSA Project:</span>Your tool to browse and manage critical assets</h1>
+            <p>You have successfully logged in and now have access to all features and content!</p>
+            <button class="usa-button" (click)="logout()">Logout</button>
+          </div>
+        <div *ngIf="!givenName">
+          <h1 class="usa-hero__heading"><span class="usa-hero__heading--alt">GSA Project:</span>Your tool to browse and manage critical assets</h1>
+          <p>This interface provides authenticated users the ability to browse and manage critial assets and information.</p>
+          <button class="usa-button" (click)="login()">Login</button>
+        </div>
+      </div>
+    </div>
+  </section>    
+  <section class="grid-container">
+    <div class="grid-row">
+      <h1>Welcome to the GSA Project</h1>
+      <div class="tablet:grid-col-12 bg-base-lightest padding-2">
+        <div *ngIf="givenName">
+          <h2>Welcome, {{givenName}}!</h2>
+          <p class="site-text-intro">As an authenticated user, you get content that is customized to your needs as well as access to content that non-authenticated users cannot see.</p>
+        </div>
+        <div *ngIf="!givenName">
+          <h2>Content Title</h2>
+          <p class="site-text-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a augue vulputate, aliquet neque ut, placerat tellus. Nunc non augue ac quam sodales imperdiet sed nec nibh. Quisque iaculis lacus lacus. Donec semper egestas imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed vel dolor non augue pulvinar facilisis elementum id nisi. Nam a nisi non nibh maximus convallis id nec orci. Nulla nec enim et turpis scelerisque faucibus nec at arcu. Duis at lacinia felis, vel fermentum sapien. Morbi viverra quam quis dignissim laoreet. Curabitur ac porta ligula.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="usa-hero home-sub-hero usa-section margin-top-4">
+    <!-- For Anonymous Users -->
+    <div *ngIf="!givenName">
+      <div class="grid-container">
+        <div class="grid-row grid-gap-lg">
+          <div class="tablet:grid-col">
+            <div class="card">
+              <div class="card-image">
+                <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-1.png" alt="First Card Decoration Image" />
+              </div>
+              <div class="card-content text-base-darkest">
+                <h3>Card Title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis ante eu turpis malesuada, eget posuere diam pretium.</p>
+                <button class="usa-button ">Card Button</button>
+              </div>
+            </div>
+          </div>
+          <div class="tablet:grid-col">
+            <div class="card">
+              <div class="card-image">
+                <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-2.png" alt="Second Card Decoration Image" />
+              </div>
+              <div class="card-content text-base-darkest">
+                <h3>Card Title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis ante eu turpis malesuada, eget posuere diam pretium.</p>
+                <button class="usa-button ">Card Button</button>
+              </div>
+            </div>
+          </div>
+          <div class="tablet:grid-col">
+            <div class="card">
+              <div class="card-image">
+                <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-3.png" alt="Third Card Decoration Image" />
+              </div>
+              <div class="card-content text-base-darkest">
+                <h3>Card Title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis ante eu turpis malesuada, eget posuere diam pretium.</p>
+                <button class="usa-button ">Card Button</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- For Authenticated Users -->
+    <div *ngIf="givenName">
+      <div class="grid-container">
+        <div class="grid-row grid-gap-lg">
+          <div class="tablet:grid-col">
+            <div class="card">
+              <div class="card-image">
+                <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-2.png" alt="Accounts Card Decoration Image" />
+              </div>
+              <div class="card-content text-base-darkest">
+                <h3>Accounts</h3>
+                <p>This section displays simulated Account records that this application manages. Vist the Accounts section to see how you can view and manage them.</p>
+                <button class="usa-button" routerLink="/accounts"> Accounts </button>
+              </div>
+            </div>
+          </div>
+          <div class="tablet:grid-col">
+            <div class="card">
+              <div class="card-image">
+                <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-1.png" alt="Customers Card Decoration Image" />
+              </div>
+              <div class="card-content text-base-darkest">
+                <h3>Customers</h3>
+                <p>This section displays simulated Client records that this application manages. Vist the Customers section to see how you can view and manage them.</p>
+                <button class="usa-button" routerLink="/customers"> Customers </button>
+              </div>
+            </div>
+          </div>
+          <div class="tablet:grid-col">
+            <div class="card">
+              <div class="card-image">
+                <img src="assets/uswds-2.0.2/img/mediabarn/card-decoration-3.png" alt="Third Card Decoration Image" />
+              </div>
+              <div class="card-content text-base-darkest">
+                <h3>Another Section TBD</h3>
+                <p>This application is evolving. This card can be used to highlight and feature another critical aspect of the application.</p>
+                <button class="usa-button ">Card Button</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

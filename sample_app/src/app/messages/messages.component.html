@@ -1,0 +1,14 @@
+<div *ngIf="messageService.messages.length" class="width-full pop-up">
+  <div class="usa-alert usa-alert--info" role="alertdialog">
+    <div class="grid-row usa-alert__body">
+      <div class="tablet:grid-col">
+        <h3 *ngFor='let message of messageService.messages' class="usa-alert__heading">{{message}}</h3>
+        <div class="width-full text-center">
+          <a class="usa-button width-full " (click)="messageService.clear(); stopAndResetTimer();">
+            Yes ({{timeLeft}})
+          </a>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<footer class="usa-footer usa-footer--slim  border-top-1 border-secondary-dark" role="contentinfo">
+  <div class="usa-footer__primary-section">
+    <div class="grid-row grid-row maxw-desktop margin-x-auto desktop:padding-x-4">
+      <div class="mobile-lg:grid-col-8">
+        <nav class="usa-footer__nav">
+          <ul class="add-list-reset grid-row grid-gap">
+            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" routerLink="/">
+                Home
+              </a>
+            </li>
+            <li *ngIf="givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" routerLink="/accounts"> Accounts </a>
+            </li>
+            <li *ngIf="givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" routerLink="/customers"> Customers </a>
+            </li>
+            <li *ngIf="givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" routerLink="/user-registration"> User Registration </a>
+            </li>
+            <li *ngIf="!givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" (click)="login()">Login</a>
+            </li>
+            <li *ngIf="givenName" class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="javascript:void(0);" (click)="logout()">Logout</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="mobile-lg:grid-col-4">
+        <address class="usa-footer__address">
+          <div class="grid-row grid-gap mobile-lg:grid-gap-0">
+            <div class="grid-col-auto mobile-lg:grid-col-12 desktop:grid-col-auto">
+              <div class="usa-footer__contact-info contact-phone-number">
+                <a href="tel:1-800-555-5555">(800) CALL-GOVT</a>
+              </div>
+            </div>
+            <div class="grid-col-auto mobile-lg:grid-col-12 desktop:grid-col-auto">
+              <div class="usa-footer__contact-info contact-email-address">
+                <a href="mailto:info@agency.gov">info@agency.gov</a>
+              </div>
+            </div>
+          </div>
+        </address>
+      </div>
+    </div>
+  </div>
+  <div class="usa-footer__secondary-section">
+    <div class="grid-container">
+      <div class="usa-footer__logo grid-row grid-gap-2">
+        <div class="grid-col-auto">
+          <h3 class="footer-logo" title="GSA Logo">U.S. General Services Administration</h3>
+          <!-- <span class="attribution">
+            &copy; {{ today | date: 'yyyy' }}.
+          </span> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

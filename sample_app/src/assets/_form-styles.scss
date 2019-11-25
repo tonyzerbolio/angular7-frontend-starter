@@ -1,0 +1,42 @@
+/** 
+ * Form Element Overrides
+ */
+ form.usa-form {
+    margin: auto;
+    max-width: unset;
+}
+
+fieldset {
+    border: none;
+}
+input, textarea {
+    margin-bottom: 0.5em;
+}
+
+// Defines an absolutely positioned element for CRUD operations
+.crudInterface, .reg-form {
+    position: absolute;
+    top: 0;
+    width: calc(100% - 2rem);
+    .crudForm {
+        border: 0px solid color('base-light');
+        margin-bottom: 1em;
+        padding: 1em;
+    }
+    legend {
+        margin-bottom: 1rem
+    }
+    label {
+        display: inline-flex;
+        min-width: 5.675rem;
+    }
+    input {
+        width: 100%;
+    }
+}
+.reg-form {
+    input {
+        height: 2.23rem;
+        margin-bottom: 2rem;
+    }
+}

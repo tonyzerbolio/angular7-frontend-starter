@@ -1,0 +1,24 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: angular-tc-service
+  namespace: <%= @namespace %>
+  labels:
+    app: angular-tc-service
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-timeout: "20"
+    service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: "environment=<%= @env %>,owner=comet"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-healthy-threshold: "2"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-unhealthy-threshold: "5"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-interval: "60"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-timeout: "15"
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  selector:
+    app: angular-tc-app
+  type: LoadBalancer

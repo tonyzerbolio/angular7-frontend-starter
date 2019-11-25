@@ -1,0 +1,88 @@
+/*
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+========================================
+========================================
+========================================
+----------------------------------------
+USWDS THEME CUSTOM STYLES
+----------------------------------------
+!! Copy this file to your project's
+   sass root. Don't edit the version
+   in node_modules.
+----------------------------------------
+Custom project SASS goes here.
+
+i.e.
+@include u-padding-right('05');
+----------------------------------------
+*/
+
+
+/*
+----------------------------------------
+Custom Elements
+-- Header Elements
+-- Footer Elements
+-- Typography
+----------------------------------------
+*/
+
+
+/*
+----------------------------------------
+Header Elements
+----------------------------------------
+*/
+
+// Header Backgrounds
+$gsa-header-bg-color:       color('white');
+$gsa-header-banner-bg-color:       color('blue-50');
+
+// -- Header Button Text
+$gsa-header-button-color:             color('white');
+$gsa-header-button-visited-color:     color('white');
+$gsa-header-button-hover-color:       color('white');
+$gsa-header-button-active-color:      color('white');
+// -- Header Button Backgrounds
+$gsa-header-button-bg-color:             color('transparent');
+$gsa-header-button-bg-visited-color:     color('transparent');
+$gsa-header-button-bg-hover-color:       color('blue-warm-60v');
+$gsa-header-button-bg-active-color:      color('transparent');
+// -- Header Logo Color
+$gsa-header-logo-color:             color('white');
+
+/*
+----------------------------------------
+Footer Elements
+----------------------------------------
+*/
+// Footer Primary
+$gsa-footer-bg-primary: 'ccd6e0';
+// Footer Secondary
+$gsa-footer-bg-secondary: 'bccad6';
+
+// -- Footer Link Text
+$gsa-footer-link-hover-color:             color('blue-60v');
+
+/*
+----------------------------------------
+Typography
+----------------------------------------
+*/
+// Body Text
+$gsa-body-text-color:   color('gray-90');
+$gsa-body-font-size:    size('body', 4);
+$gsa-small-font-size:   size('body', 1);
+
+// -- Link Text
+$gsa-link-color:             color('blue-60v');
+$gsa-link-hover-color:             color('blue-50v');
+$gsa-link-focus-color:             color('blue-50v');
+$gsa-link-visited-color:             color('violet-70v');
+$gsa-link-active-color:             color('blue-60v');
+
+// Required
+$gsa-required-color:             color('red-60v');

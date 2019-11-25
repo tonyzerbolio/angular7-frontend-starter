@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+========================================
+styles.scss
+----------------------------------------
+*/
+
+
+// USWDS styles
+@import 'src/assets/uswds-2.0.2/scss/uswds.scss';
+
+@import 'src/assets/uswds-2.0.2/scss/theme/uswds-theme-custom-styles.scss';
+
+// Unisys starter kit adjustments
+@import 'src/assets/button-styles.scss';
+
+@import 'src/assets/container-styles.scss';
+
+@import 'src/assets/form-styles.scss';
+
+@import 'src/assets/list-styles.scss';
+
+@import 'src/assets/navigation-styles.scss';
+
+@import 'src/assets/tag-cloud-styles.scss';
+
+@import 'src/assets/typography-styles.scss';
